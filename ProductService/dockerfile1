@@ -1,0 +1,12 @@
+FROM microsoft/dotnet:2.2-sdk AS build
+WORKDIR /app
+COPY . .
+RUN dotnet publish -c Release -o out
+
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
+WORKDIR /app/out
+ENV aspnetcore_urls http://*:80
+ENV ASPNETCORE_ENVIRONMENT docker
+EXPOSE 80
+ENTRYPOINT dotnet ProductService.dll
+           

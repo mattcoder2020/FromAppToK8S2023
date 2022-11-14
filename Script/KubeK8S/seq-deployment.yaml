@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose-3party.yml
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: seq
+  name: seq
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: seq
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: seq
+    spec:
+      containers:
+      - env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        image: datalust/seq
+        name: seq
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}

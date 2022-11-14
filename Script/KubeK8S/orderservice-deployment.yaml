@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.17.0 (a74acad)
+    traefik.frontend.rule: 'AddPrefix: /order'
+  creationTimestamp: null
+  labels:
+    io.kompose.service: orderservice
+  name: orderservice
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: orderservice
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: orderservice
+    spec:
+      containers:
+      - env:
+        - name: CONSUL_ENABLED
+          value: "false"
+        - name: VAULT_ENABLED
+          value: "false"
+        image: mattcoder/fromapp-to-k8s:orderservice
+        imagePullPolicy: Always
+        name: orderservice
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}

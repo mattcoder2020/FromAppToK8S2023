@@ -1,0 +1,43 @@
+version: "3.0"
+
+services:
+  productservice:
+    image: productservice
+    container_name: productservice
+    ports:
+      - 5002:80
+    networks:
+      - my-network
+    environment:
+      - 'CONSUL_ENABLED=false'
+      - 'VAULT_ENABLED=false'
+
+  orderservice:
+    image: orderservice
+    container_name: orderservice
+    ports:
+      - 5001:80  
+    networks:
+      - my-network
+    environment:
+      - 'CONSUL_ENABLED=false'
+      - 'VAULT_ENABLED=false'
+    labels:
+      - "traefik.frontend.rule=AddPrefix: /order"
+
+  isignalrservice:
+    image: isignalrservice
+    container_name: isignalrservice
+    ports:
+      - 5000:80  
+    networks:
+      - my-network
+    environment:
+      - 'CONSUL_ENABLED=false'
+      - 'VAULT_ENABLED=false'
+
+networks:
+  my-network:
+   # name: my-network
+    external: true
+

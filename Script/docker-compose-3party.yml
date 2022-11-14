@@ -1,0 +1,75 @@
+version: "3.0"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - my-network
+    # network_mode: host
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    networks:
+      - my-network
+    # network_mode: host
+    #volumes:
+    #  - grafana:/var/lib/grafana
+
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    ports:
+      - '8086:8086'
+    networks:
+      - my-network
+    # network_mode: host
+    #volumes:
+    #  - influxdb:/var/lib/influxdb
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - my-network
+    # network_mode: host
+   
+  seq:
+    image: datalust/seq 
+    container_name: seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:80
+    networks:
+      - my-network
+    # network_mode: host
+    
+  jaeger:
+    image: jaegertracing/all-in-one
+    container_name: jaeger
+    ports:
+      - 5775:5775/udp
+      - 5778:5778
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 9411:9411
+      - 14268:14268
+      - 16686:16686
+    networks:
+      - my-network
+    # network_mode: host
+
+ 
+networks:
+  my-network:
+    #name: my-network
+    external: true
+

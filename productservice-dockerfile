@@ -1,0 +1,16 @@
+FROM microsoft/dotnet:2.2-sdk AS build
+WORKDIR /src
+COPY ProductService /ProductService
+COPY Common /Common
+RUN dotnet restore "/ProductService/ProductService.csproj"
+WORKDIR /ProductService
+RUN dotnet publish "ProductService.csproj" -c Release -o /out
+
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
+WORKDIR /publish
+COPY --from=build /out .
+ENV aspnetcore_urls http://*:80
+ENV ASPNETCORE_ENVIRONMENT docker
+EXPOSE 80
+ENTRYPOINT dotnet ProductService.dll
+           

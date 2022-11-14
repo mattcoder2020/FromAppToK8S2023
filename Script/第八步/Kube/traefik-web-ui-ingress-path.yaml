@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-web-ui-path
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    #traefik.ingress.kubernetes.io/rule-type: "PathPrefixStrip"
+    #traefik.ingress.kubernetes.io/rule-type: "PathPrefix"
+    ingress.kubernetes.io/add-base-url: "true"
+spec:
+  rules:
+#  - host: pc-myang
+  - http:
+       paths:
+       - path: /order
+         backend:
+           serviceName: orderservice
+           servicePort: 5001
+       - path: /product
+         backend:
+           serviceName: productservice
+           servicePort: 5002
+       - path: /signalr
+         backend:
+           serviceName: isignalrservice
+           servicePort: 5000
+  

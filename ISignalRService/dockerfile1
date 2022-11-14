@@ -1,0 +1,8 @@
+FROM microsoft/dotnet:2.2-aspnetcore-runtime
+WORKDIR /APP
+COPY ./bin/Debug/netcoreapp2.2/publish .
+ENV aspnetcore_urls http://*:80
+ENV ASPNETCORE_ENVIRONMENT docker
+EXPOSE 80
+ENTRYPOINT dotnet ISignalRService.dll
+           

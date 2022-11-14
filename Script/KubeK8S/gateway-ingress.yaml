@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  namespace: default
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /orderservice
+        backend:
+          serviceName: orderservice
+          servicePort: 80
+      - path: /productservice
+        backend:
+          serviceName: productservice
+          servicePort: 80
+      - path: /isignalrservice
+        backend:
+          serviceName: isignalrservice
+          servicePort: 80
+      - path: /rabbitmq
+        backend:
+          serviceName: rabbitmq
+          servicePort: 15672
+      - path: /jaeger
+        backend:
+          serviceName: jaeger
+          servicePort: 16686
+      - path: /seq
+        backend:
+          serviceName: seq
+          servicePort: 5341
+      - path: /grafana
+        backend:
+          serviceName: grafana
+          servicePort: 3000
+      - path: /influxdb
+        backend:
+          serviceName: influxdb
+          servicePort: 8086

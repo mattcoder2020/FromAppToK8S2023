@@ -1,0 +1,61 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: traefik-web-ui
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/rule-type: "PathPrefixStrip"
+    ingress.kubernetes.io/add-base-url: "true"
+    #traefik.frontend.rule.type: "PathPrefix"
+spec:
+  rules:
+  - host: order.internal.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: orderservice
+          servicePort: 5001
+  - host: product.internal.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: productservice
+          servicePort: 5002
+  - host: signalr.internal.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: isignalrservice
+          servicePort: 5000
+  - host: manage.rabbitmq.internal.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: rabbitmq
+          servicePort: 15672
+  - host: manage.jaeger.internal.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: jaeger
+          servicePort: 16686
+  - host: manage.seq.internal.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: seq
+          servicePort: 5341
+  - host: manage.grafana.internal.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: 3000
+  

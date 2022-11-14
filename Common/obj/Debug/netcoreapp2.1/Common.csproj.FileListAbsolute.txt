@@ -1,0 +1,9 @@
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\bin\Debug\netcoreapp2.1\Common.deps.json
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\bin\Debug\netcoreapp2.1\Common.dll
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\obj\Debug\netcoreapp2.1\Common.csproj.CoreCompileInputs.cache
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\obj\Debug\netcoreapp2.1\Common.AssemblyInfoInputs.cache
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\obj\Debug\netcoreapp2.1\Common.AssemblyInfo.cs
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\bin\Debug\netcoreapp2.1\Common.pdb
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\obj\Debug\netcoreapp2.1\Common.dll
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\obj\Debug\netcoreapp2.1\Common.pdb
+D:\SourceCode\DynamicDependencyInjection\DynamicDI\Common\obj\Debug\netcoreapp2.1\Common.csprojAssemblyReference.cache

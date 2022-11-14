@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: productservice
+  name: productservice
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: productservice
+    spec:
+      containers:
+      - env:
+        - name: CONSUL_ENABLED
+          value: "false"
+        - name: VAULT_ENABLED
+          value: "false"
+        image:  mattcoder/fromapp-to-k8s:productservice
+        imagePullPolicy: Always
+        name: productservice
+        ports:
+        - containerPort: 80
+        resources: {}
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "100m"
+      restartPolicy: Always
+status: {}
