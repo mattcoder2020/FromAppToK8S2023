@@ -45,6 +45,10 @@ namespace Common.Repo
         {
             return Records.FindAll(match) as IEnumerable<T>;
         }
-        
+
+        public IEnumerable<T> GetRecords()
+        {
+            return Records as IEnumerable<T>;
+        }
     }
 }

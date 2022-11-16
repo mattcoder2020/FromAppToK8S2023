@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using DynamicDI.Models;
 using System.Net;
 using System.Net.Sockets;
+using OrderService.Events;
+using Common.Repo;
 
 namespace DynamicDI.Controllers
 {
@@ -17,7 +19,8 @@ namespace DynamicDI.Controllers
             string DNS = Dns.GetHostName();
             string IP = Dns.GetHostEntry(DNS).AddressList.FirstOrDefault(x => x.AddressFamily == AddressFamily.InterNetwork).ToString();
             ViewBag.Message = "DNS: " + DNS + " IP:" + IP;
-            return View();
+            var ProductList =  DataStore<ProductCreated>.GetInstance().GetRecords();
+            return View(ProductList);
         }
 
         public IActionResult About()

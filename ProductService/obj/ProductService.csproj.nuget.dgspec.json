@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SourceCode\\FromAppToK8S\\ProductService\\ProductService.csproj": {}
+    "D:\\SourceCode\\FromAppToK8S2023\\productservice\\ProductService.csproj": {}
   },
   "projects": {
-    "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj": {
+    "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj",
+        "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\FromAppToK8S\\Common\\obj\\",
+        "outputPath": "D:\\SourceCode\\FromAppToK8S2023\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -204,18 +204,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\SourceCode\\FromAppToK8S\\ProductService\\ProductService.csproj": {
+    "D:\\SourceCode\\FromAppToK8S2023\\productservice\\ProductService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S\\ProductService\\ProductService.csproj",
+        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2023\\productservice\\ProductService.csproj",
         "projectName": "ProductService",
-        "projectPath": "D:\\SourceCode\\FromAppToK8S\\ProductService\\ProductService.csproj",
+        "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\productservice\\ProductService.csproj",
         "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\FromAppToK8S\\ProductService\\obj\\",
+        "outputPath": "D:\\SourceCode\\FromAppToK8S2023\\productservice\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -235,8 +235,8 @@
           "netcoreapp2.2": {
             "targetAlias": "netcoreapp2.2",
             "projectReferences": {
-              "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj": {
-                "projectPath": "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj"
+              "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj": {
+                "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj"
               }
             }
           }
@@ -303,7 +303,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -4,6 +4,21 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome to <img src="~/images/order.png" /> Service</h1>
-  
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            
+        </tr>
+        @foreach (var c in Model)
+        {
+        <tr>
+            <td>@c.Name</td>
+            <td>@c.Category</td>
+            <td>@c.Price</td>
+
+        </tr>
+        }
+    </table>
     <p><font size="15">@ViewBag.Message</font></p>
 </div>

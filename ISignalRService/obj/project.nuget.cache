@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G246T6yJSrNdAFZalckx2jEPQYXmADNF62FqS8FJprj/plbmcC61KHihOHci8gvR5XMpS05qOfT2eKGqpkovEg==",
+  "dgSpecHash": "kqYsi+afvEKIm6LWXiIoipAdzuVdHkYRxxwtunhI1j05Le4+YjFVcn9EWqXwk/l4J4599O7vMbTt3myhys673w==",
   "success": true,
-  "projectFilePath": "D:\\SourceCode\\FromAppToK8S\\Isignalrservice\\ISignalRService.csproj",
+  "projectFilePath": "D:\\SourceCode\\FromAppToK8S2023\\ISignalRService\\ISignalRService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lp-myang2\\.nuget\\packages\\app.metrics\\3.0.0\\app.metrics.3.0.0.nupkg.sha512",
     "C:\\Users\\lp-myang2\\.nuget\\packages\\app.metrics.abstractions\\3.0.0\\app.metrics.abstractions.3.0.0.nupkg.sha512",

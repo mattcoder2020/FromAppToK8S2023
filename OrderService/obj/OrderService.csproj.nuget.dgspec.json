@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SourceCode\\FromAppToK8S\\orderservice\\OrderService.csproj": {}
+    "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\OrderService.csproj": {}
   },
   "projects": {
-    "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj": {
+    "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj",
+        "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj",
         "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\FromAppToK8S\\Common\\obj\\",
+        "outputPath": "D:\\SourceCode\\FromAppToK8S2023\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -208,14 +208,14 @@
         }
       }
     },
-    "D:\\SourceCode\\FromAppToK8S\\orderservice\\OrderService.csproj": {
+    "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\OrderService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S\\orderservice\\OrderService.csproj",
+        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\OrderService.csproj",
         "projectName": "OrderService",
-        "projectPath": "D:\\SourceCode\\FromAppToK8S\\orderservice\\OrderService.csproj",
+        "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\OrderService.csproj",
         "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\FromAppToK8S\\orderservice\\obj\\",
+        "outputPath": "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -235,8 +235,8 @@
           "netcoreapp2.2": {
             "targetAlias": "netcoreapp2.2",
             "projectReferences": {
-              "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj": {
-                "projectPath": "D:\\SourceCode\\FromAppToK8S\\Common\\Common.csproj"
+              "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj": {
+                "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj"
               }
             }
           }

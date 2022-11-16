@@ -16282,11 +16282,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2022\\OrderService\\OrderService.csproj",
+      "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\OrderService.csproj",
       "projectName": "OrderService",
-      "projectPath": "D:\\SourceCode\\FromAppToK8S2022\\OrderService\\OrderService.csproj",
+      "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\OrderService.csproj",
       "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-      "outputPath": "D:\\SourceCode\\FromAppToK8S2022\\OrderService\\obj\\",
+      "outputPath": "D:\\SourceCode\\FromAppToK8S2023\\orderservice\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -16304,9 +16304,10 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "projectReferences": {
-            "D:\\SourceCode\\FromAppToK8S2022\\Common\\Common.csproj": {
-              "projectPath": "D:\\SourceCode\\FromAppToK8S2022\\Common\\Common.csproj"
+            "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj": {
+              "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\Common\\Common.csproj"
             }
           }
         }
@@ -16319,6 +16320,7 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
+        "targetAlias": "netcoreapp2.2",
         "dependencies": {
           "Autofac": {
             "target": "Package",
@@ -16363,10 +16365,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -15016,11 +15016,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2022\\ProductServiceIntegrationTest\\ProductService.IntegrationTest.csproj",
+      "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2023\\ProductServiceIntegrationTest\\ProductService.IntegrationTest.csproj",
       "projectName": "ProductService.IntegrationTest",
-      "projectPath": "D:\\SourceCode\\FromAppToK8S2022\\ProductServiceIntegrationTest\\ProductService.IntegrationTest.csproj",
+      "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\ProductServiceIntegrationTest\\ProductService.IntegrationTest.csproj",
       "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-      "outputPath": "D:\\SourceCode\\FromAppToK8S2022\\ProductServiceIntegrationTest\\obj\\",
+      "outputPath": "D:\\SourceCode\\FromAppToK8S2023\\ProductServiceIntegrationTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -15039,8 +15039,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "D:\\SourceCode\\FromAppToK8S2022\\ProductService\\ProductService.csproj": {
-              "projectPath": "D:\\SourceCode\\FromAppToK8S2022\\ProductService\\ProductService.csproj"
+            "D:\\SourceCode\\FromAppToK8S2023\\ProductService\\ProductService.csproj": {
+              "projectPath": "D:\\SourceCode\\FromAppToK8S2023\\ProductService\\ProductService.csproj"
             }
           }
         }
