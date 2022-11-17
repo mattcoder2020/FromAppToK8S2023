@@ -16267,6 +16267,7 @@
       },
       "frameworks": {
         "netcoreapp2.2": {
+          "targetAlias": "netcoreapp2.2",
           "projectReferences": {
             "D:\\SourceCode\\Git-FromAppToK8S\\Common\\Common.csproj": {
               "projectPath": "D:\\SourceCode\\Git-FromAppToK8S\\Common\\Common.csproj"
@@ -16282,6 +16283,7 @@
     },
     "frameworks": {
       "netcoreapp2.2": {
+        "targetAlias": "netcoreapp2.2",
         "dependencies": {
           "Autofac": {
             "target": "Package",
@@ -16326,10 +16328,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
       }
     }
   }
