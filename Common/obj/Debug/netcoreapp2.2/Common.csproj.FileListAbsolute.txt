@@ -63,3 +63,13 @@ D:\SourceCode\Git-FromAppToK8S\Common\obj\Debug\netcoreapp2.2\Common.dll
 D:\SourceCode\Git-FromAppToK8S\Common\obj\Debug\netcoreapp2.2\Common.pdb
 D:\SourceCode\Git-FromAppToK8S\Common\obj\Debug\netcoreapp2.2\Common.csproj.AssemblyReference.cache
 D:\SourceCode\Git-FromAppToK8S\Common\obj\Debug\netcoreapp2.2\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\SourceCode\FromAppToK8S2022\Common\bin\Debug\netcoreapp2.2\Common.deps.json
+D:\SourceCode\FromAppToK8S2022\Common\bin\Debug\netcoreapp2.2\Common.dll
+D:\SourceCode\FromAppToK8S2022\Common\bin\Debug\netcoreapp2.2\Common.pdb
+D:\SourceCode\FromAppToK8S2022\Common\obj\Debug\netcoreapp2.2\Common.csproj.AssemblyReference.cache
+D:\SourceCode\FromAppToK8S2022\Common\obj\Debug\netcoreapp2.2\Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\SourceCode\FromAppToK8S2022\Common\obj\Debug\netcoreapp2.2\Common.AssemblyInfoInputs.cache
+D:\SourceCode\FromAppToK8S2022\Common\obj\Debug\netcoreapp2.2\Common.AssemblyInfo.cs
+D:\SourceCode\FromAppToK8S2022\Common\obj\Debug\netcoreapp2.2\Common.csproj.CoreCompileInputs.cache
+D:\SourceCode\FromAppToK8S2022\Common\obj\Debug\netcoreapp2.2\Common.dll
+D:\SourceCode\FromAppToK8S2022\Common\obj\Debug\netcoreapp2.2\Common.pdb
