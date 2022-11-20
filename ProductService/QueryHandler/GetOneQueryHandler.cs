@@ -1,21 +1,25 @@
-﻿using ProductService.Models;
+﻿using Common.Handlers;
+using Common.Messages;
+using Common.Repo;
+using ProductService.Models;
 using ProductService.Query;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ProductService.QueryHandler
 {
-    public class GetOneQueryHandler : IQueryHandler<GetOneQuery, DemoModel>
+    public class GetOneQueryHandler : IQueryHandler<GetOneQuery, Product>
     {
         public GetOneQueryHandler()
         {
             //A repo implemenation can be defined as constructor param as DI approach 
         }
-        public DemoModel execute(GetOneQuery query)
+       
+        public Product HandleAsync(GetOneQuery query, ICorrelationContext context)
         {
-            return new DemoModel { Id = 0, Name = "Matt" };
+            return DataStore<Product>.GetInstance().GetRecords(i => i.Id == query.Id).FirstOrDefault();
         }
+
+
     }
 }

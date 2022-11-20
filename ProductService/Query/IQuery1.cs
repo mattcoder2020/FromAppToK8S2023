@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace ProductService.Query
 {
-    public interface IQuery<TResult>
+
+    //all base query should be derive from common library 
+    public interface IQuery1<TResult>
     {
     }
 }

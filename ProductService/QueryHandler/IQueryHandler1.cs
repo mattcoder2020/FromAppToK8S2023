@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProductService.QueryHandler
 {
-    interface IQueryHandler<IQuery, TResult>
+    interface IQueryHandler1<IQuery, TResult>
     {
         TResult execute(IQuery query);
     }

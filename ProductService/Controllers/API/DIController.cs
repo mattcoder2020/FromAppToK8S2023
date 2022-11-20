@@ -30,7 +30,7 @@ namespace ProductService.Controllers
             controller.Send(null);
             return Ok("123");
         }
-   
+
         //[HttpGet]
         //public IActionResult GetAll([FromQuery] GetAllQuery query)
         //{
@@ -39,13 +39,13 @@ namespace ProductService.Controllers
         //    return new JsonResult(QueryHandler.execute((dynamic)query));
         // }
 
-        [HttpPost]
-        [Route("One")]
-        public IActionResult GetOne([FromQuery] GetAllQuery query)
-        {
-            var handleType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(List<DemoModel>));
-            dynamic QueryHandler = _context.Resolve(handleType);
-            return new JsonResult(QueryHandler.execute((dynamic)query));
-        }
+        //[HttpPost]
+        //[Route("One")]
+        //public IActionResult GetOne([FromQuery] GetAllQuery query)
+        //{
+        //    var handleType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(List<DemoModel>));
+        //    dynamic QueryHandler = _context.Resolve(handleType);
+        //    return new JsonResult(QueryHandler.execute((dynamic)query));
+        //}
     }
 }

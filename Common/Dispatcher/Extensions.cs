@@ -12,6 +12,7 @@ namespace Common.Dispatcher
         {
             builder.RegisterType<Dispatcher>().As<IDispatcher>();
             builder.RegisterType<CommandDispatcher>().As<ICommandDispatcher>();
+            builder.RegisterType<QueryDispatcher>().As<IQueryDispatcher>();
            // builder.RegisterType<Dispatcher>().As<IDispatcher>();
         }
     }

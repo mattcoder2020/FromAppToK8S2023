@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProductService.Query
 {
-    public class GetAllQuery : IQuery<List<DemoModel>> 
-    {
-        public int Id { get; set; }
-    }
+    //public class GetAllQuery : IQuery<List<DemoModel>> 
+    //{
+    //    public int Id { get; set; }
+    //}
 }

@@ -4,20 +4,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Dispacher;
 using Common.Messages;
-using Common.Types;
+
 
 namespace Common.Dispatcher
 {
     public class Dispatcher : IDispatcher
     {
         ICommandDispatcher _commandDispatcher;
-        public Dispatcher(ICommandDispatcher commandDispatcher)
+        IQueryDispatcher _queryDispacher;
+
+        public Dispatcher(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
         {
             _commandDispatcher = commandDispatcher;
+            _queryDispacher = queryDispatcher;
         }
-        public Task<TResult> QueryAsync<TResult>(IQuery<TResult> query)
+        public TResult QueryAsync<TResult>(IQuery query)
         {
-            throw new NotImplementedException();
+            return _queryDispacher.Query<IQuery,TResult>(query);
         }
 
         public async Task SendAsync<TCommand>(TCommand command) where TCommand : ICommand

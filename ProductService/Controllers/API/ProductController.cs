@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Autofac;
 using Common.Dispatcher;
 using Common.Messages;
@@ -7,8 +8,11 @@ using Common.Metrics;
 using Common.RabbitMQ;
 using Common.Web;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using OpenTracing;
 using ProductService.Commands;
+using ProductService.Models;
+using ProductService.Query;
 
 namespace ProductService.Controllers.API
 {
@@ -21,12 +25,12 @@ namespace ProductService.Controllers.API
         public ProductController
             (IComponentContext componentContext,
             IDispatcher dispatcher,
-            //IBusPublisher busPublisher,
-            ITracer tracer) : base( tracer)
+            ITracer tracer) : base(tracer)
         {
-            _componentContext = componentContext; _dispatcher = dispatcher;
+            _componentContext = componentContext;
+            _dispatcher = dispatcher;
         }
- 
+
         // POST: api/Product
         [HttpPost]
         [AppMetricCount(MetricName: "post-new-product")]
@@ -35,5 +39,17 @@ namespace ProductService.Controllers.API
             value.Context = GetContext<NewProductCommand>(null, null);
             await _dispatcher.SendAsync<NewProductCommand>(value);
         }
+
+        [HttpGet("{id}")]
+        [AppMetricCount(MetricName: "Get-product")]
+        public IActionResult Get(int id)
+        {
+            //value.Context = GetContext<NewProductCommand>(null, null);
+            var q = new GetOneQuery { Id = id };
+            return new JsonResult(_dispatcher.QueryAsync<Product>(q));
+            //await _dispatcher.SendAsync<NewProductCommand>(value);
+        }
+
+
     }
 }

@@ -3,7 +3,6 @@ using Common.Messages;
 using Common.Repo;
 using ProductService.Commands;
 using ProductService.Events;
-//using ProductService.Metrics;
 using ProductService.Models;
 using System.Linq;
 using System.Threading.Tasks;
