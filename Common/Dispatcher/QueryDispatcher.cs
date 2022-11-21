@@ -19,6 +19,7 @@ namespace Common.Dispatcher
 
         public TResult Query<TQuery, TResult>(TQuery query) where TQuery : IQuery
         {
+            //implementation new
             var type = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
             dynamic queryHandler = _context.Resolve(type);
             //await CommandHandler.HandleAsync(command, CorrelationContext.Empty);
