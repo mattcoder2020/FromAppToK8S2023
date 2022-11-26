@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <!--<form (submit)="onlogin()" #theform="ngForm">-->
+        <form (submit)="onlogin()" #theForm="ngForm" novalidate>
+            <div class="form-group">
+                <label for="UserName">User name:</label>
+                <input type="text" class="form-control" name="UserName" [(ngModel)]="creds.UserName" #UserName="ngModel" required />
+                <label class="alert" *ngIf="UserName.touched && UserName.invalid && UserName.errors.required">User Name is required!!</label>
+            </div>
+            <div class="form-group">
+                <label for="Password">password: </label>
+                <input type="password" class="form-control" name="Password" [(ngModel)]="creds.Password" #Password="ngModel" required />
+                <label class="alert" *ngIf="Password.touched && Password.invalid && Password.errors.required">Password is required!!</label>
+            </div>
+            <div class="form-group">
+                <label>remember me?</label>
+                <input type="checkbox" [(ngModel)]="creds.RememberMe" />
+            </div>
+            <button type="submit" [disabled]="theForm.invalid">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+﻿<div class="row">
+    Checking out
+    <div *ngIf="errMessage">{{errMessage}}</div>
+    <the-cart [showButton]="false"></the-cart>
+    <button (click)="SubmitOrder()">Submit Order</button>
+    <button (click)="NavigateToStore()">Navigate Backr</button>
+</div>
