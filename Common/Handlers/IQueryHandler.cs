@@ -10,6 +10,6 @@ namespace Common.Handlers
 {
     public interface IQueryHandler<TQuery, TResult> where TQuery : IQuery
     {
-        TResult HandleAsync(TQuery @query, ICorrelationContext context);
+        Task<TResult> HandleAsync(TQuery @query, ICorrelationContext context);
     }
 }

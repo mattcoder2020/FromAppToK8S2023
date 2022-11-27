@@ -8,6 +8,6 @@ namespace Common.Dispatcher
 {
     public interface IQueryDispatcher
     {
-        TResult Query<TQuery,TResult>(TQuery query) where TQuery:IQuery;
+        Task<TResult> Query<TQuery,TResult>(TQuery query) where TQuery:IQuery;
     }
 }

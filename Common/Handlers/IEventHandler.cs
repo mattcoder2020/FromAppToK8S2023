@@ -9,6 +9,6 @@ namespace Common.Handlers
 {
     public interface IEventHandler<TEvent> where TEvent : IEvent
     {
-        Task HandleAsync(TEvent @event, ICorrelationContext context);
+        Task<Task> HandleAsync(TEvent @event, ICorrelationContext context);
     }
 }

@@ -18,7 +18,7 @@ namespace Common.Dispatcher
             _commandDispatcher = commandDispatcher;
             _queryDispacher = queryDispatcher;
         }
-        public TResult QueryAsync<TResult>(IQuery query)
+        public Task<TResult> QueryAsync<TResult>(IQuery query)
         {
             return _queryDispacher.Query<IQuery,TResult>(query);
         }

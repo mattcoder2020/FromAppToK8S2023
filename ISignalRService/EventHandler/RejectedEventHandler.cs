@@ -17,9 +17,10 @@ namespace ISignalRService.EventHandler
         }
      
 
-        public async Task HandleAsync(RejectedEvent @event, ICorrelationContext context)
+        public async Task<Task> HandleAsync(RejectedEvent @event, ICorrelationContext context)
         {
             await signalRService.Publish(@event);
+            return Task.CompletedTask;
          }
     }
 }

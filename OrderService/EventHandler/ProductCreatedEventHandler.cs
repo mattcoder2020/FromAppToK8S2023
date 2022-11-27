@@ -14,10 +14,11 @@ namespace OrderService.EventHandler
 {
     public class ProductCreatedEventHandler : IEventHandler<ProductCreated>
     {
-        public Task HandleAsync(ProductCreated @event, ICorrelationContext context)
+        public async Task<Task> HandleAsync(ProductCreated @event, ICorrelationContext context)
         {
             var dStore = DataStore<ProductCreated>.GetInstance();
-            if (dStore.GetRecords(i => i.Id == @event.Id).Count() > 0)
+            var list = await dStore.GetRecords(i => i.Id == @event.Id);
+            if (list.Count() > 0)
                 throw new CustomizedException<ProductCreatedEventHandler>("HandleAsync-ProductExisted");
             dStore.AddRecord(@event);
             return Task.CompletedTask;

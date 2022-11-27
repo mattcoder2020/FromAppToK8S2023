@@ -24,7 +24,7 @@ namespace ProductService.CommandHandlers
         } 
         public async Task  HandleAsync(NewProductCommand command, ICorrelationContext context)
         {
-           var enumerator = DataStore<Product>.GetInstance().GetRecords(i=>i.Name == command.Name) ;
+           var enumerator = await DataStore<Product>.GetInstance().GetRecords(i=>i.Name == command.Name) ;
             if (enumerator.Count() == 0 )
             {
                 DataStore<Product>.GetInstance().AddRecord

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Common.Repo
 {
@@ -41,9 +42,9 @@ namespace Common.Repo
                 Records.Remove(record);
             }
         }
-        public IEnumerable<T> GetRecords(Predicate<T> match)
+        public async Task<IEnumerable<T>> GetRecords(Predicate<T> match)
         {
-            return Records.FindAll(match) as IEnumerable<T>;
+            return await Task.Run(()=> { return Records.FindAll(match) as IEnumerable<T>; });
         }
 
         public IEnumerable<T> GetRecords()

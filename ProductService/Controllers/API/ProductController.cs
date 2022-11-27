@@ -42,11 +42,11 @@ namespace ProductService.Controllers.API
 
         [HttpGet("{id}")]
         [AppMetricCount(MetricName: "Get-product")]
-        public IActionResult Get(int id)
+        public async Task<Product> Get(int id)
         {
             //value.Context = GetContext<NewProductCommand>(null, null);
             var q = new GetOneQuery { Id = id };
-            return new JsonResult(_dispatcher.QueryAsync<Product>(q));
+            return await _dispatcher.QueryAsync<Product>(q);
             //await _dispatcher.SendAsync<NewProductCommand>(value);
         }
 

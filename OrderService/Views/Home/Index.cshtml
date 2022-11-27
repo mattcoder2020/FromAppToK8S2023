@@ -12,12 +12,13 @@
         </tr>
         @foreach (var c in Model)
         {
-        <tr>
-            <td>@c.Name</td>
-            <td>@c.Category</td>
-            <td>@c.Price</td>
+    <tr>
+        <td>@c.Id</td>
+        <td>@c.Name</td>
 
-        </tr>
+     
+
+    </tr>
         }
     </table>
     <p><font size="15">@ViewBag.Message</font></p>

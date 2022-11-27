@@ -4,7 +4,7 @@ using Common.Repo;
 using ProductService.Models;
 using ProductService.Query;
 using System.Linq;
-
+using System.Threading.Tasks;
 
 namespace ProductService.QueryHandler
 {
@@ -15,9 +15,11 @@ namespace ProductService.QueryHandler
             //A repo implemenation can be defined as constructor param as DI approach 
         }
        
-        public Product HandleAsync(GetOneQuery query, ICorrelationContext context)
+        public async Task<Product> HandleAsync(GetOneQuery query, ICorrelationContext context)
         {
-            return DataStore<Product>.GetInstance().GetRecords(i => i.Id == query.Id).FirstOrDefault();
+             var list =  await DataStore<Product>.GetInstance().GetRecords(i => i.Id == query.Id);
+              return list.FirstOrDefault();
+
         }
 
 

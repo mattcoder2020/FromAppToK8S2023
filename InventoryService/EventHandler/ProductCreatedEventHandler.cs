@@ -12,10 +12,11 @@ namespace InventoryService.EventHandler
 {
     public class ProductCreatedEventHandler:IEventHandler<ProductCreated>
     {
-        public Task HandleAsync (ProductCreated @event, ICorrelationContext context)
+        public async Task<Task> HandleAsync (ProductCreated @event, ICorrelationContext context)
         {
             var datastore = DataStore<ProductCreated>.GetInstance();
-            if (datastore.GetRecords(i => i.Name == @event.Name).Count() > 0)
+            var list = await datastore.GetRecords(i => i.Name == @event.Name);
+            if (list.Count() > 0)
                 throw new CustomizedException<ProductCreatedEventHandler>("HandleAsync-ProductExisted");
 
             datastore.AddRecord(@event);

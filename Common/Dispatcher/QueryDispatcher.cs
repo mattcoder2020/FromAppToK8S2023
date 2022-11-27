@@ -17,7 +17,7 @@ namespace Common.Dispatcher
             _context = context;
         }
 
-        public TResult Query<TQuery, TResult>(TQuery query) where TQuery : IQuery
+        public Task<TResult> Query<TQuery, TResult>(TQuery query) where TQuery : IQuery
         {
             //implementation new
             var type = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));

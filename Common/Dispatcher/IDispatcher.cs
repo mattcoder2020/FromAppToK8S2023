@@ -11,7 +11,7 @@ namespace Common.Dispatcher
     public interface IDispatcher 
     {
         Task SendAsync<TCommand>(TCommand command) where TCommand:ICommand;
-        TResult QueryAsync<TResult>(IQuery query) ;
+        Task<TResult> QueryAsync<TResult>(IQuery query) ;
 
     }
 }
