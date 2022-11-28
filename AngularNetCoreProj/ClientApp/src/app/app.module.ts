@@ -11,13 +11,13 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { MyComponent } from './test-component/test.component';
-//import { Store } from './store/store';
-//import { ProductList } from './store/productlist';
-//import { checkout } from './store/Checkout';
-//import { cart } from './store/cart';
-//import { login } from './store/login';
-//import { dataservice } from './share/dataservice';
-//import { StarsComponent } from './store/stars/stars.component';
+import { Store } from './store/store';
+import { ProductList } from './productlist/productlist';
+import { checkout } from './Checkout/Checkout';
+import { cart } from './cart/cart';
+import { login } from './login/login';
+import { dataservice } from './share/dataservice';
+import { StarsComponent } from './productlist/stars/stars.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +26,13 @@ import { MyComponent } from './test-component/test.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    MyComponent
-    //dataservice,
-    //Store
-    //ProductList,
-    //checkout,
-    //cart,
-    //login,
-    //StarsComponent
+    MyComponent,
+    Store,
+    ProductList,
+    checkout,
+    cart,
+    login,
+    StarsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,12 +42,12 @@ import { MyComponent } from './test-component/test.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'store', component: MyComponent }
-      //{ path: 'checkout', component: checkout },
-      //{ path: 'login', component: login }
+      { path: 'store', component: Store },
+      { path: 'checkout', component: checkout },
+      { path: 'login', component: login }
     ])
   ],
-  providers: [],
+  providers: [dataservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-﻿import { Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { templateSourceUrl } from '@angular/compiler';
 import { dataservice } from '../share/dataservice';
 import { OrderItem } from '../share/OrderItem';

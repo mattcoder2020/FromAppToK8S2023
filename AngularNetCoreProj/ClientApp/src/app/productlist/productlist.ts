@@ -1,4 +1,4 @@
-﻿import { Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { dataservice } from "../share/dataservice";
 import { Product } from "../share/Product";
 
@@ -14,10 +14,11 @@ export class ProductList
     public chosenStarWidth: string;
     constructor(private dataservice: dataservice)
     {
-       dataservice.LoadProducts().subscribe
+      dataservice.LoadProducts().subscribe
             (
             (success) => { if (success) this.products = dataservice.Products; }
-            )
+      )
+      this.products = dataservice.Products;
     }
     
 
