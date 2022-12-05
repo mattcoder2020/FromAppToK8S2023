@@ -32,7 +32,6 @@
 
 
   <ItemGroup>
-    <Folder Include="SQLiteDB\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
