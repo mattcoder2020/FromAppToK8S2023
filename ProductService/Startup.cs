@@ -43,7 +43,7 @@ namespace ProductService
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
 
-            
+            services.
             services.AddConsul();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(options =>
