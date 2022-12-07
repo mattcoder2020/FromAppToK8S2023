@@ -20,6 +20,8 @@ using Common.Metrics;
 using Common.Web;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Common.Messages;
+using ProductService.SQLiteDB;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProductService
 {
@@ -42,7 +44,8 @@ namespace ProductService
             //    options.CheckConsentNeeded = context => true;
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
-
+            //services.AddDbContext<StoreDBContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<StoreDBContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddConsul();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(options =>

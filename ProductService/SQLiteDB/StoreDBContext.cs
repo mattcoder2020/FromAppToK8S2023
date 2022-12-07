@@ -9,8 +9,9 @@ namespace ProductService.SQLiteDB
 {
     public class StoreDBContext:DbContext
     {
-        public StoreDBContext():base()
-        {}
+        public StoreDBContext(DbContextOptions<StoreDBContext> options) : base(options)
+        {
+        }
 
         public DbSet<NewProductCommand> Products { get; set; }
     }
