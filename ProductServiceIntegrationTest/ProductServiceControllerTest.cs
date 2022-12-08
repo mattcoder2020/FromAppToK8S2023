@@ -32,7 +32,7 @@ namespace ProductService.IntegrationTest
                 }
                 , queueName: queueName);
             //ACT
-            var command = new NewProductCommand { Id = 10, Price = 10, Category = "any", Name = "demo1" };
+            var command = new NewProductCommand { Id = 10, Price = 10, CategoryId = 1, Name = "demo1" };
             var stringContent = new StringContent(JsonConvert.SerializeObject(command), Encoding.UTF8, "application/json");
             var response = await client.PostAsync(endpoint, stringContent);  // post the json commnad to service so it will 
             response.StatusCode.Should().Be(200);                            // publish to rabbitmq

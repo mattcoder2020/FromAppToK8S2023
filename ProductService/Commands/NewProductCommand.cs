@@ -9,9 +9,8 @@ namespace ProductService.Commands
     {
             public int Id { get; set; }
             public String Name { get; set; }
-            public String Category { get; set; }
+            public int CategoryId { get; set; }
             public decimal Price { get; set; }
-            [NotMapped]
             public ICorrelationContext Context { get; set; }
     }
 }

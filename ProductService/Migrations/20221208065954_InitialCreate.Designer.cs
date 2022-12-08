@@ -8,29 +8,41 @@ using ProductService.SQLiteDB;
 namespace ProductService.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    [Migration("20221207223935_add tabl")]
-    partial class addtabl
+    [Migration("20221208065954_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
+                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
 
-            modelBuilder.Entity("ProductService.Commands.NewProductCommand", b =>
+            modelBuilder.Entity("ProductService.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Category");
+                    b.Property<int>("CategoryId");
 
                     b.Property<string>("Name");
 
-                    b.Property<decimal>("Price");
+                    b.Property<double>("Price");
 
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ProductService.Models.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategory");
                 });
 #pragma warning restore 612, 618
         }
