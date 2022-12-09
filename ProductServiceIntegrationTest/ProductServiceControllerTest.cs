@@ -16,10 +16,14 @@ namespace ProductService.IntegrationTest
         private readonly RabbitMqFixture fixture;
         public ProductServiceControllerTest(WebApplicationFactory<Startup> factory, RabbitMqFixture rabbitmqfixture)
         {
+            // create a webapi app in memory and its client, so not IP is needed
             client = factory.CreateClient();
             fixture = rabbitmqfixture;
         }
         [Theory]
+        //each Inline data entry will be fed to the parameter of the test function, in this case 'endpoint'
+        //Inline data can be multiple to repeat the same test for different inputs
+        //[Fact] run only once
         [InlineData("api/product")]
         public async void Post_GivenProperCommand_ShouldReturnOk(string endpoint)
         {   //ARRANGE
