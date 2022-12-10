@@ -14,6 +14,7 @@ namespace ProductService.SQLiteDB
     {
         public StoreDBContext(DbContextOptions<StoreDBContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
 
         public DbSet<Product> Products { get; set; }

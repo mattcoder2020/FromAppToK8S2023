@@ -45,7 +45,8 @@ namespace ProductService
             //    options.MinimumSameSitePolicy = SameSiteMode.None;
             //});
             //services.AddDbContext<StoreDBContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDbContext<StoreDBContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            string connectionstring = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<StoreDBContext>(options => options.UseSqlite(connectionstring));
             services.AddConsul();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(options =>
