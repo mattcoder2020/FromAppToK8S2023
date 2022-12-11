@@ -11,8 +11,8 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\SourceCode\\FromAppToK8S2022\\Common", "Common.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\SourceCode\\FromAppToK8S2022\\ProductService", "ProductService.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\SourceCode\\FromAppToK8S2023\\Common", "Common.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\SourceCode\\FromAppToK8S2023\\ProductService", "ProductService.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProductService.IntegrationTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

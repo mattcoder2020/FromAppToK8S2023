@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,19 +23,21 @@ namespace Common.DataAccess
             await _dbcontext.SaveChangesAsync();
         }
 
-        //public async Task<bool> FindByPredicate(TEntity entity)
-        //{
-        //    await _dbcontext.Set<TEntity>().AddAsync(entity);
-        //}
-
-        public void DeleteModel(TEntity entity)
+        public async Task<TEntity> FindByPrimaryKey(int id)
         {
-            _dbcontext.Set<TEntity>().Remove(entity);
+            return await _dbcontext.Set<TEntity>().FindAsync(id);
         }
 
-        public void UpdateModel(TEntity entity)
+        public async Task DeleteModel(TEntity entity)
         {
-            _dbcontext.Set<TEntity>().Update(entity);
+            _dbcontext.Set<TEntity>().Remove(entity);
+             await _dbcontext.SaveChangesAsync();
+        }
+
+        public async Task UpdateModel(TEntity entity)
+        {
+             _dbcontext.Set<TEntity>().Update(entity);
+            await _dbcontext.SaveChangesAsync();
         }
 
     }

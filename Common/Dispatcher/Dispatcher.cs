@@ -18,9 +18,9 @@ namespace Common.Dispatcher
             _commandDispatcher = commandDispatcher;
             _queryDispacher = queryDispatcher;
         }
-        public Task<TResult> QueryAsync<TResult>(IQuery query)
+        public Task<TResult> QueryAsync<TQuery,TResult>(TQuery query) where TQuery: IQuery
         {
-            return _queryDispacher.Query<IQuery,TResult>(query);
+            return _queryDispacher.Query<TQuery,TResult>(query);
         }
 
         public async Task SendAsync<TCommand>(TCommand command) where TCommand : ICommand

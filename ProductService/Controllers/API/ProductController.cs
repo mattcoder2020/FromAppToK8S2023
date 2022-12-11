@@ -13,6 +13,7 @@ using OpenTracing;
 using ProductService.Commands;
 using ProductService.Models;
 using ProductService.Query;
+using ProductService.QueryHandler;
 
 namespace ProductService.Controllers.API
 {
@@ -46,10 +47,19 @@ namespace ProductService.Controllers.API
         {
             //value.Context = GetContext<NewProductCommand>(null, null);
             var q = new GetOneQuery { Id = id };
-            return await _dispatcher.QueryAsync<Product>(q);
+            return await _dispatcher.QueryAsync<GetOneQuery, Product>(q);
             //await _dispatcher.SendAsync<NewProductCommand>(value);
         }
 
+        [HttpDelete("{id}")]
+        [AppMetricCount(MetricName: "Delete-product")]
+        public async void Delete(int id)
+        {
+            //value.Context = GetContext<NewProductCommand>(null, null);
+            var q = new DeleteProductCommand { Id = id };
+             await _dispatcher.SendAsync<DeleteProductCommand>(q);
+            //await _dispatcher.SendAsync<NewProductCommand>(value);
+        }
 
     }
 }

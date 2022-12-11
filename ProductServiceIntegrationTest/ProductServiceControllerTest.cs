@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using ProductService.Commands;
 using ProductService.Events;
+using ProductService.Models;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,17 +37,23 @@ namespace ProductService.IntegrationTest
                 }
                 , queueName: queueName);
             //ACT
-            var command = new NewProductCommand { Id = 10, Price = 10, CategoryId = 1, Name = "demo1" };
+            var command = new NewProductCommand { Id = 22, Price = 10, CategoryId = 1, Name = "demo1" };
             var stringContent = new StringContent(JsonConvert.SerializeObject(command), Encoding.UTF8, "application/json");
             var response = await client.PostAsync(endpoint, stringContent);  // post the json commnad to service so it will 
-            response.StatusCode.Should().Be(200);                            // publish to rabbitmq
-            
-            //ASSERT
-            var createdEvent = await source.Task;   
-            createdEvent.Id.Should().Be(10);                                  // Verify the rabbitmq
-            createdEvent.Name.Should().Be("demo1");
+            var createdEvent = await source.Task;
 
-            //YOU CAN ADD validation to command persisted to DB 
+            //ASSERT
+            response.StatusCode.Should().Be(200);                            // received sucess returncode 
+            createdEvent.Id.Should().Be(command.Id);                                  // Verify the rabbitmq
+            createdEvent.Name.Should().Be("demo1");
+            //response = await client.GetAsync(endpoint+"/"+ command.Id.ToString());
+            //var entityReturnFromDB = await response.Content.ReadAsAsync<Product>();
+            ////YOU CAN ADD validation to get api to verify if command persisted to DB 
+            //entityReturnFromDB.Id.Should().Be(command.Id);
+            //entityReturnFromDB.Name.Should().Be("demo1");
+
+            //Teardown
+            await client.DeleteAsync(endpoint + "/" + command.Id.ToString());
         }
     }
 }

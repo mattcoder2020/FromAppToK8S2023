@@ -19,11 +19,11 @@ namespace Common.Dispatcher
 
         public Task<TResult> Query<TQuery, TResult>(TQuery query) where TQuery : IQuery
         {
-            //implementation new
-            var type = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
-            dynamic queryHandler = _context.Resolve(type);
-            //await CommandHandler.HandleAsync(command, CorrelationContext.Empty);
-            return queryHandler.HandleAsync((dynamic)query, CorrelationContext.Empty);
+            var queryHandler = _context.Resolve<IQueryHandler<TQuery, TResult>>();
+            //var type = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
+            //dynamic queryHandler = _context.Resolve(type);
+            
+            return queryHandler.HandleAsync(query, CorrelationContext.Empty);
         }
     }
 }
