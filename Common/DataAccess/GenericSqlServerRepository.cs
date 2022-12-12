@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,6 @@ namespace Common.DataAccess
             await _dbcontext.SaveChangesAsync();
         }
 
-        public async Task<TEntity> FindByPrimaryKey(int id)
-        {
-            return await _dbcontext.Set<TEntity>().FindAsync(id);
-        }
-
         public async Task DeleteModel(TEntity entity)
         {
             _dbcontext.Set<TEntity>().Remove(entity);
@@ -40,5 +36,21 @@ namespace Common.DataAccess
             await _dbcontext.SaveChangesAsync();
         }
 
+        public async Task<TEntity> FindByPrimaryKey(int id)
+        {
+            return await _dbcontext.Set<TEntity>().FindAsync(id);
+        }
+
+        public async Task<TEntity> GetEntityBySpec(BaseSpecification<TEntity> spec)
+        {
+            return await spec.GenerateIQuerable(_dbcontext.Set<TEntity>().AsQueryable<TEntity>()).FirstOrDefaultAsync();
+        }
+
+        public async Task<IReadOnlyList<TEntity>> GetEntityListBySpec(BaseSpecification<TEntity> spec)
+        {
+            return await spec.GenerateIQuerable(_dbcontext.Set<TEntity>().AsQueryable<TEntity>()).ToListAsync();
+        }
+
+        
     }
 }

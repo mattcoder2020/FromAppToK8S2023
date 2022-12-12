@@ -23,7 +23,9 @@ namespace ProductService.QueryHandler
         {
             // var list =  await DataStore<Product>.GetInstance().GetRecords(i => i.Id == query.Id);
             var repository = new GenericSqlServerRepository<Product, StoreDBContext>(_dbcontext);
-            return await repository.FindByPrimaryKey(query.Id);
+            var spec = new ProductByProductIdSpec(query.Id);
+            return await repository.GetEntityBySpec(spec);
+            // await repository.FindByPrimaryKey(query.Id);
         }
     }
 }

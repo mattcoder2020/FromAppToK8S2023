@@ -28,10 +28,18 @@ namespace ProductService.CommandHandlers
         public async Task  HandleAsync(NewProductCommand command, ICorrelationContext context)
         {
             var repository = new GenericSqlServerRepository<Product, StoreDBContext>(_dbcontext);
+            var spec = new ProductByNameSpec(command.Name);
+            var existedwithName = await repository.GetEntityBySpec(spec);
+            if (existedwithName == null)
+            { 
             await repository.AddModel(new Product(command.Id, command.Name, command.CategoryId, command.Price));
             await _messageBrokerFactory.Publisher.PublishAsync<ProductCreated>(new ProductCreated { Id = command.Id, Name = command.Name }, context);
-            
-         }
+            }
+            else
+            {
+                await _messageBrokerFactory.Publisher.PublishAsync<RejectedEvent>(new RejectedEvent(command.Name + " already exists", command.Id.ToString()), context);
+            }
+        }
 
         public async Task HandleAsync1(NewProductCommand command, ICorrelationContext context)
         {

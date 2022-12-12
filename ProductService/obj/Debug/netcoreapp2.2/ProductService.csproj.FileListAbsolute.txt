@@ -286,3 +286,4 @@ D:\SourceCode\FromAppToK8S2022\ProductService\obj\Debug\netcoreapp2.2\ProductSer
 D:\SourceCode\FromAppToK8S2022\ProductService\obj\Debug\netcoreapp2.2\ProductService.genruntimeconfig.cache
 D:\SourceCode\FromAppToK8S2022\ProductService\bin\Debug\netcoreapp2.2\MattHome
 D:\SourceCode\FromAppToK8S2023\ProductService\bin\Debug\netcoreapp2.2\MattHome
+D:\SourceCode\Git-FromAppToK8S\ProductService\bin\Debug\netcoreapp2.2\MattHome
