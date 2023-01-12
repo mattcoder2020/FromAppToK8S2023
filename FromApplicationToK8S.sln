@@ -40,6 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{519819E8-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularNetCoreProj", "AngularNetCoreProj\AngularNetCoreProj.csproj", "{B8ED03ED-FB88-4518-9247-19A32AF274F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpExercise", "CsharpExercise\CsharpExercise.csproj", "{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{B8ED03ED-FB88-4518-9247-19A32AF274F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8ED03ED-FB88-4518-9247-19A32AF274F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8ED03ED-FB88-4518-9247-19A32AF274F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{253BCF5D-706A-450F-9A47-578156220BD1} = {4E264B36-FC51-4B0E-A841-6EABD0C613AF}
 		{88E5A4C2-172A-4186-9FA6-7A1E3FBB4BB5} = {413FA903-35D0-44E3-B528-746D24D7A604}
 		{B8ED03ED-FB88-4518-9247-19A32AF274F4} = {413FA903-35D0-44E3-B528-746D24D7A604}
+		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7} = {519819E8-0264-4ADE-9182-9F1EDAC73F1E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D39E1FFE-C367-4BF8-9A62-8F7EB28C0A31}

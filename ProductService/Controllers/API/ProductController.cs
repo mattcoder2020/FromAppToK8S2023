@@ -18,7 +18,6 @@ using ProductService.QueryHandler;
 namespace ProductService.Controllers.API
 {
     [Route("api/product")]
-    [ApiController]
     public class ProductController : BaseController
     {
         IComponentContext _componentContext;
@@ -35,19 +34,21 @@ namespace ProductService.Controllers.API
         // POST: api/Product
         [HttpPost]
         [AppMetricCount(MetricName: "post-new-product")]
-        public async void Post([FromBody] NewProductCommand value)
+        public async Task<IActionResult> Post([FromBody] NewProductCommand value)
         {
             value.Context = GetContext<NewProductCommand>(null, null);
             await _dispatcher.SendAsync<NewProductCommand>(value);
+            return Ok();
         }
 
         [HttpGet("{id}")]
         [AppMetricCount(MetricName: "Get-product")]
-        public async Task<Product> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             //value.Context = GetContext<NewProductCommand>(null, null);
             var q = new GetOneQuery { Id = id };
-            return await _dispatcher.QueryAsync<GetOneQuery, Product>(q);
+            Product p = await _dispatcher.QueryAsync<GetOneQuery, Product>(q);
+            return Single<Product>(p, p1 => { return p1 != null; });
             //await _dispatcher.SendAsync<NewProductCommand>(value);
         }
 
@@ -58,7 +59,7 @@ namespace ProductService.Controllers.API
             //value.Context = GetContext<NewProductCommand>(null, null);
             var q = new DeleteProductCommand { Id = id };
              await _dispatcher.SendAsync<DeleteProductCommand>(q);
-            //await _dispatcher.SendAsync<NewProductCommand>(value);
+           
         }
 
     }
