@@ -10,6 +10,12 @@ namespace CsharpExercise
         {
             SortString(new string[] { "aacd", "bbcd", "aaac", "abc"});
             SortIntegers(new int[] {4,3,1,2 });
+            int[] Fibonics = FindFibonics(10);
+            foreach (int i in Fibonics)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
             int[] primeNumber = FindPrimeNumber(10);
             foreach (int i in primeNumber)
             {
@@ -40,6 +46,27 @@ namespace CsharpExercise
 
             //Event
             Event.Controller.SubscribeToPub();
+
+        }
+
+        private static int[] FindFibonics(int v)
+        {
+            // Fibonic numbers 0, 1, 1, 2, 3, 5, 8, 13
+                int first = 0;
+                int second = 1;
+            int[] fibonics = new int[v+1];
+            int index = 0;
+            int sum = 0;
+            fibonics[0] = first;
+            fibonics[1] = second;
+            for (int i=2; i<=v ; i++ )
+            {
+                sum = first + second;
+                fibonics[i] = sum;
+                first = second;
+                second = sum;
+            }
+            return fibonics;
 
         }
 
