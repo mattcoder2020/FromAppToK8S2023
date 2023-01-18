@@ -25,5 +25,13 @@ namespace ProductService.Controllers.API.BuggyApi
         {
             return Ok();
         }
+
+        [HttpGet("badrequest")]
+        public ActionResult GetBadRequestError()
+        {
+            return BadRequest();
+        }
+
+
     }
 }
