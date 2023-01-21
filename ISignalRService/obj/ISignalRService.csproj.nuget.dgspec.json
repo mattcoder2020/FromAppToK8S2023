@@ -193,6 +193,10 @@
             "Serilog.Sinks.Seq": {
               "target": "Package",
               "version": "[4.0.0, )"
+            },
+            "System.Text.Json": {
+              "target": "Package",
+              "version": "[4.6.0, )"
             }
           },
           "imports": [

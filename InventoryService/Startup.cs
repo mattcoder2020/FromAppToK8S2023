@@ -18,6 +18,7 @@ using Common.Metrics;
 using Common.RabbitMQ;
 using Microsoft.AspNetCore.Http;
 using InventoryService.Events;
+using Common.Web.Middleware;
 
 namespace InventoryService
 {
@@ -57,6 +58,7 @@ namespace InventoryService
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseStatusCodePagesWithReExecute("/error/{0}");
 
             //app.UseMessageService()    //get the messaging utility factory instance from the IOC mapper, either rabbitmq or azurebus 
