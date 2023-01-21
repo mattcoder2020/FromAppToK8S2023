@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProductService.Controllers.API.BuggyApi
+namespace Common.Web
 {
     [Route("api/buggy")]
     public class BuggyApi: ControllerBase
