@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "R/Fx/Jn42AYL8aOlCqc25LpyxfuEyOQISkEKSYb6ViQxZAgudzMxwvMFf+QgE9uGSQXbfVGIbCoHDEqRmEfbUw==",
+  "dgSpecHash": "5Re5EgXuTS3ViOr132PFWgA9owbUrYM8uutYGkc6mUBX5fSRgZs50Al/C+M/upNnAqB7zKjwDXRMKJhkC3o3jg==",
   "success": true,
   "projectFilePath": "D:\\SourceCode\\FromAppToK8S2023\\OrderService\\OrderService.csproj",
   "expectedPackageFiles": [
@@ -218,6 +218,7 @@
     "C:\\Users\\myang1\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.2.0\\microsoft.netcore.dotnethostresolver.2.2.0.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\microsoft.netcore.platforms\\2.2.0\\microsoft.netcore.platforms.2.2.0.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\microsoft.netcore.targets\\2.0.0\\microsoft.netcore.targets.2.0.0.nupkg.sha512",
+    "C:\\Users\\myang1\\.nuget\\packages\\microsoft.openapi\\1.2.0\\microsoft.openapi.1.2.0.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.0.2105168\\microsoft.visualstudio.azure.containers.tools.targets.1.0.2105168.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration\\2.2.2\\microsoft.visualstudio.web.codegeneration.2.2.2.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\microsoft.visualstudio.web.codegeneration.contracts\\2.2.2\\microsoft.visualstudio.web.codegeneration.contracts.2.2.2.nupkg.sha512",
@@ -280,6 +281,10 @@
     "C:\\Users\\myang1\\.nuget\\packages\\serilog.sinks.file\\4.0.0\\serilog.sinks.file.4.0.0.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\serilog.sinks.periodicbatching\\2.1.1\\serilog.sinks.periodicbatching.2.1.1.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\serilog.sinks.seq\\4.0.0\\serilog.sinks.seq.4.0.0.nupkg.sha512",
+    "C:\\Users\\myang1\\.nuget\\packages\\swashbuckle.aspnetcore\\2.2.0\\swashbuckle.aspnetcore.2.2.0.nupkg.sha512",
+    "C:\\Users\\myang1\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\2.2.0\\swashbuckle.aspnetcore.swagger.2.2.0.nupkg.sha512",
+    "C:\\Users\\myang1\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\2.2.0\\swashbuckle.aspnetcore.swaggergen.2.2.0.nupkg.sha512",
+    "C:\\Users\\myang1\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\2.2.0\\swashbuckle.aspnetcore.swaggerui.2.2.0.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\myang1\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

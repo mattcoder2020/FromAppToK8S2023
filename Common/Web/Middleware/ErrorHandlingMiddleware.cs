@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -14,11 +14,13 @@ namespace Common.Web.Middleware
     {
         private readonly ILogger<ErrorHandlingMiddleware> logger;
         private readonly RequestDelegate del;
+        private readonly IHostingEnvironment env;
 
-        public ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger, RequestDelegate del)
+        public ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger, RequestDelegate del, IHostingEnvironment env)
         {
             this.logger = logger;
             this.del = del;
+            this.env = env;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -31,12 +33,12 @@ namespace Common.Web.Middleware
             {
                 context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
-                var json = new { code = (int)HttpStatusCode.InternalServerError, message = ex.Message, stacktrace = ex.StackTrace };
-                string content = JsonSerializer.Serialize(json);
+                string content;
+                if (env.IsDevelopment())
+                     content = JsonSerializer.Serialize(new { code = (int)HttpStatusCode.InternalServerError, message = ex.Message, stacktrace = ex.StackTrace });
+                else
+                    content = JsonSerializer.Serialize(new { code = (int)HttpStatusCode.InternalServerError, message = ex.Message});
                 await context.Response.WriteAsync(content);
-
-
             }
         }
     }

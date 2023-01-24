@@ -6,19 +6,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Reflection;
 using Common.Messages;
 using Common.Metrics;
-using Common.RabbitMQ;
-using Microsoft.AspNetCore.Http;
-using InventoryService.Events;
 using Common.Web.Middleware;
+using Common.Swagger;
 
 namespace InventoryService
 {
@@ -40,6 +33,8 @@ namespace InventoryService
                 AddOpenTracing().
                 AddGaugeMetric();
 
+            services.AddSwagger();
+
             //Leverage Autofac to add all types including the interface and implementation base on paraemeter type
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly()).AsImplementedInterfaces();
@@ -60,6 +55,7 @@ namespace InventoryService
             }
             app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseStatusCodePagesWithReExecute("/error/{0}");
+            app.UseSwaggerA();
 
             //app.UseMessageService()    //get the messaging utility factory instance from the IOC mapper, either rabbitmq or azurebus 
             //    .SubscribeEvent<ProductCreated>(@namespace:"Matt-product",queueName:"Matt-product", 

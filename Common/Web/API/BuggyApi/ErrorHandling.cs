@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Common.Web.API.BuggyApi
 {
     [Route("Error/{code}")]
+    [ApiExplorerSettings(IgnoreApi =true)]
     public class ErrorHandling: ControllerBase
     {
         public IActionResult Handling (int code)

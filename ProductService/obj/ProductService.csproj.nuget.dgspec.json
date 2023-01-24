@@ -130,6 +130,10 @@
               "version": "[2.2.0, )",
               "autoReferenced": true
             },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
             "Polly": {
               "target": "Package",
               "version": "[7.0.2, )"
@@ -193,6 +197,10 @@
             "Serilog.Sinks.Seq": {
               "target": "Package",
               "version": "[4.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "System.Text.Json": {
               "target": "Package",
