@@ -10,14 +10,13 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
+
 import { MyComponent } from './test-component/test.component';
-import { Store } from './store/store';
-import { ProductList } from './productlist/productlist';
-import { checkout } from './Checkout/Checkout';
-import { cart } from './cart/cart';
-import { login } from './login/login';
-import { dataservice } from './share/dataservice';
-import { StarsComponent } from './productlist/stars/stars.component';
+//import { login } from './login/login';
+ import { dataservice } from './storemodule/share/dataservice';
+import { StoreModule } from './storemodule/app.module';
+
+ 
 
 @NgModule({
   declarations: [
@@ -26,25 +25,22 @@ import { StarsComponent } from './productlist/stars/stars.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    MyComponent,
-    Store,
-    ProductList,
-    checkout,
-    cart,
-    login,
-    StarsComponent
+    //login,
+    MyComponent
+    
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+   // StoreModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'store', component: Store },
-      { path: 'checkout', component: checkout },
-      { path: 'login', component: login }
+     // { path: 'login', component: login },
+      { path: 'fetch-data', component: FetchDataComponent }
+      
     ])
   ],
   providers: [dataservice],
