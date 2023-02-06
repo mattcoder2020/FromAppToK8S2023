@@ -14,7 +14,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MyComponent } from './test-component/test.component';
 //import { login } from './login/login';
  import { dataservice } from './storemodule/share/dataservice';
-import { StoreModule } from './storemodule/app.module';
+//import { StoreModule } from './storemodule/app.module';
 
  
 

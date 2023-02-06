@@ -1,6 +1,6 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { dataservice } from '../share/dataservice';
+import { dataservice } from '../storemodule/share/dataservice';
 import { error } from '@angular/compiler/src/util';
 import { retry } from 'rxjs/operators';
 

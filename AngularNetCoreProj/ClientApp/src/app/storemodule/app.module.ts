@@ -27,7 +27,11 @@ import { StarsComponent } from './productlist/stars/stars.component';
     ])
   ],
   exports: [
-     StoreModule
+    Store,
+    ProductList,
+    checkout,
+    cart,
+    StarsComponent
   ]
   
 })
