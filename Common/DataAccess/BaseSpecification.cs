@@ -24,6 +24,11 @@ namespace Common.DataAccess
             IncludeList.Add(includeItem);
         }
 
+        public void AddSort(Expression<Func<T, object>> sortItem)
+        {
+            Orderby = sortItem;
+        }
+
         public IQueryable<T> GenerateIQuerable (IQueryable<T> queryable)
         {
             
