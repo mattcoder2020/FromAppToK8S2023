@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
+//import { NavMenuComponent } from './coremodule/nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
@@ -16,12 +16,13 @@ import { MyComponent } from './test-component/test.component';
  import { dataservice } from './storemodule/share/dataservice';
 //import { StoreModule } from './storemodule/app.module';
 
+import { CoreModule } from './coremodule/core.module';
  
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
+    //NavMenuComponent,
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
@@ -33,6 +34,7 @@ import { MyComponent } from './test-component/test.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    CoreModule,
    // StoreModule,
     FormsModule,
     RouterModule.forRoot([
