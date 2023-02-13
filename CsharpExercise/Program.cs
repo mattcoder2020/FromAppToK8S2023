@@ -27,7 +27,7 @@ namespace CsharpExercise
             //Delegate
             PhotoLoader l = new PhotoLoader(new Photo());
             PhotoHandler h = new PhotoHandler();
-
+              //assigning 3 methods to delegate object
             PhotoLoader.photohandling h1 = h.AdjustEffect;
             h1 += h.AdjustSaturation;
             h1 += h.AdjustTransparency;

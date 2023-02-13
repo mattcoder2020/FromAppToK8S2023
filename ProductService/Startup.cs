@@ -67,7 +67,7 @@ namespace ProductService
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                 .AsImplementedInterfaces();
 
-            builder.AddMessageService(services);//.AddRabbitMq();
+            //builder.AddMessageService(services);//.AddRabbitMq();
             builder.AddDispatcher();
             Container = builder.Build();
 
@@ -91,7 +91,7 @@ namespace ProductService
             app.UseCookiePolicy();
             //app.UseRabbitMq();
             app.UseCors("CorsPolicy");
-            app.UseMessageService();
+            //app.UseMessageService();
            
 
             app.UseMvc(

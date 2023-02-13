@@ -52,6 +52,16 @@ namespace ProductService.Controllers.API
             //await _dispatcher.SendAsync<NewProductCommand>(value);
         }
 
+        [HttpGet]
+        [AppMetricCount(MetricName: "Get-all")]
+        public async Task<Product[]> Getall()
+        {
+            var q = new GetAllQuery ();
+            var products = await _dispatcher.QueryAsync<GetAllQuery, Product[]>(q);
+            return products ;
+        }
+
+
         [HttpDelete("{id}")]
         [AppMetricCount(MetricName: "Delete-product")]
         public async void Delete(int id)

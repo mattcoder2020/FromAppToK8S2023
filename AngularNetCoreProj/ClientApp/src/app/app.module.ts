@@ -17,6 +17,7 @@ import { MyComponent } from './test-component/test.component';
 //import { StoreModule } from './storemodule/app.module';
 
 import { CoreModule } from './coremodule/core.module';
+import { productservice } from './coremodule/productservice';
  
 
 @NgModule({
