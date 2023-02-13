@@ -11,7 +11,6 @@ export class productservice  {
 
   getall() {
     return this.http.get("http://localhost:5002/api/product");
-     // .pipe(map((data: any[]) => { this.products = data; return true; }));
     }
 
 }

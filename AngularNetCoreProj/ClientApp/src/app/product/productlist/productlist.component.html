@@ -1,0 +1,9 @@
+<p>
+  productlist works!
+</p>
+<ul *ngFor="let product of products">
+  <!--<app-product [product]="p"></app-product>-->
+  <span>ID: "{{product.id}}"</span>
+  <span>Name: "{{product.name}}""</span>
+  <span>Price: "{{product.price | currency}}"</span>
+</ul>

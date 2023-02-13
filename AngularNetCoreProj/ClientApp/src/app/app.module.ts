@@ -18,6 +18,9 @@ import { MyComponent } from './test-component/test.component';
 
 import { CoreModule } from './coremodule/core.module';
 import { productservice } from './coremodule/productservice';
+import { Productmodule } from './product/product.module/product.module';
+import { ProductComponent } from './product/product/product.component';
+import { ProductlistComponent } from './product/productlist/productlist.component';
  
 
 @NgModule({
@@ -27,6 +30,8 @@ import { productservice } from './coremodule/productservice';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    ProductComponent,
+    ProductlistComponent,
     //login,
     MyComponent
     
@@ -36,6 +41,7 @@ import { productservice } from './coremodule/productservice';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     CoreModule,
+   // Productmodule,
    // StoreModule,
     FormsModule,
     RouterModule.forRoot([
