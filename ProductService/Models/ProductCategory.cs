@@ -10,5 +10,6 @@ namespace ProductService.Models
     public class ProductCategory : ModelBase
     {
         public string Description { get; set; }
+      
     }
 }

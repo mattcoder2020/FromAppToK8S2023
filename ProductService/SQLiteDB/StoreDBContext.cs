@@ -22,6 +22,7 @@ namespace ProductService.SQLiteDB
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //modelBuilder.Entity<Product>().hasHasOne(e=>e.ProductCategory).
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

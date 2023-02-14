@@ -24,9 +24,11 @@ namespace ProductService.QueryHandler
         public async Task<Product[]> HandleAsync(GetAllQuery query, ICorrelationContext context)
         {
             // var list =  await DataStore<Product>.GetInstance().GetRecords(i => i.Id == query.Id);
-            List<Product> products =  await _dbcontext.Products.AsQueryable().ToListAsync();
+            var spec = new ProductIncludeCategory();
+            var repository = new GenericSqlServerRepository<Product, StoreDBContext>(_dbcontext);
+            IReadOnlyList<Product> products =  await repository.GetEntityListBySpec(spec);
             return products.ToArray();
-           
+            
         }
     }
 }
