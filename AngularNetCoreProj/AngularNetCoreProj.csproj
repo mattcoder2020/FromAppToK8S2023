@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\coremodule\productservice.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\product\productservice.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\entity\IProduct.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\test-component\test.component.ts" />
   </ItemGroup>

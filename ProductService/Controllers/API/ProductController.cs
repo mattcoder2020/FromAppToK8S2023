@@ -53,12 +53,22 @@ namespace ProductService.Controllers.API
         }
 
         [HttpGet]
-        [AppMetricCount(MetricName: "Get-all")]
-        public async Task<Product[]> Getall()
+        [AppMetricCount(MetricName: "Get-allProduct")]
+        public async Task<Product[]> GetallProduct()
         {
             var q = new GetAllQuery ();
             var products = await _dispatcher.QueryAsync<GetAllQuery, Product[]>(q);
             return products ;
+        }
+
+        [HttpGet]
+        [Route("productcategory")]
+        [AppMetricCount(MetricName: "Get-allProductCateory")]
+        public async Task<ProductCategory[]> GetallCategory()
+        {
+            var q = new GetAllCategoryQuery();
+            var productcategorys = await _dispatcher.QueryAsync<GetAllCategoryQuery, ProductCategory[]>(q);
+            return productcategorys;
         }
 
 

@@ -17,7 +17,6 @@ import { MyComponent } from './test-component/test.component';
 //import { StoreModule } from './storemodule/app.module';
 
 import { CoreModule } from './coremodule/core.module';
-import { productservice } from './coremodule/productservice';
 import { Productmodule } from './product/product.module/product.module';
 import { ProductComponent } from './product/product/product.component';
 import { ProductlistComponent } from './product/productlist/productlist.component';

@@ -1,11 +1,8 @@
 <h1 class="display-4 fw-normal">Product List</h1>
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center" data-example-id="list-group-anchors">
   <div class="list-group">
-    <a href="#" class="list-group-item active"> Cras justo odio </a>
-    <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-    <a href="#" class="list-group-item">Morbi leo risus</a>
-    <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-    <a href="#" class="list-group-item">Vestibulum at eros</a>
+    <a href="#" class="list-group-item active" *ngFor="let p of productcategories"> {{p.description}} </a>
+   
   </div>
   <div class="row row-cols-md-3 row-cols-md-3 mb-3 text-center">
      <div class="col" *ngFor="let product of products">

@@ -4,8 +4,7 @@ import { ProductComponent } from '../product/product.component';
 
 @NgModule({
   imports: [
-    CommonModule
-    
+    CommonModule    
   ],
   declarations: [ProductComponent]
 })

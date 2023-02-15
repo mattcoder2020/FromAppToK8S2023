@@ -11,6 +11,11 @@ export class productservice  {
 
   getall() {
     return this.http.get("http://localhost:5002/api/product");
-    }
+  }
+
+  getallCategory() {
+    return this.http.get("http://localhost:5002/api/product/productcategory");
+  }
+
 
 }

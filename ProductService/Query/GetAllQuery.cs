@@ -10,4 +10,8 @@ namespace ProductService.Query
     public class GetAllQuery : IQuery
     {
     }
+
+    public class GetAllCategoryQuery : IQuery
+    {
+    }
 }
