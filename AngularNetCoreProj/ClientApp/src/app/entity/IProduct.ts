@@ -1,7 +1,12 @@
+export interface IProductCategory {
+  description: string;
+  id: number;
+}
+
 export interface IProduct {
   name: string;
-  categoryId: number;
+  productCategoryId: number;
   price: number;
-  productCategory: number;
+  productCategory: IProductCategory;
   id: number;
 }
