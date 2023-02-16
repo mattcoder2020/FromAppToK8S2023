@@ -1,7 +1,4 @@
-export interface IProductCategory {
-  description: string;
-  id: number;
-}
+import { IProductCategory } from "./IProductCategory";
 
 export interface IProduct {
   name: string;

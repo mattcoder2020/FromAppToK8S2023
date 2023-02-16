@@ -62,6 +62,15 @@ namespace ProductService.Controllers.API
         }
 
         [HttpGet]
+        [AppMetricCount(MetricName: "Get-allProductByFiltration")]
+        public async Task<Product[]> GetallProduct([FromQuery] Params productparams)
+        {
+            var q = new GetAllQuery();
+            var products = await _dispatcher.QueryAsync<GetAllQuery, Product[]>(q);
+            return products;
+        }
+
+        [HttpGet]
         [Route("productcategory")]
         [AppMetricCount(MetricName: "Get-allProductCateory")]
         public async Task<ProductCategory[]> GetallCategory()

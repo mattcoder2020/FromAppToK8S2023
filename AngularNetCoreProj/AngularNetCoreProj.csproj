@@ -27,10 +27,12 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\coremodule\nav-menu\productservice.ts" />
     <None Remove="ClientApp\src\app\entity\IProduct.ts" />
+    <None Remove="ClientApp\src\app\entity\params.ts" />
     <None Remove="ClientApp\src\app\test-component\test.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\entity\params.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\productservice.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\entity\IProduct.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\test-component\test.component.ts" />

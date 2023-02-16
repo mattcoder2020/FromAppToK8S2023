@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { productservice } from '../productservice';
-import { IProduct, IProductCategory } from '../../entity/IProduct';
+import { IProduct } from '../../entity/IProduct';
+import { IProductCategory } from "../../entity/IProductCategory";
 
 @Component({
   selector: 'app-productlist',
@@ -16,6 +17,7 @@ export class ProductlistComponent implements OnInit {
   constructor(private ps1: productservice) { }
   ngOnInit(): void {
     this.getallproduct();
+    this.getallproductCategory();
   }
 
   getallproduct() {
