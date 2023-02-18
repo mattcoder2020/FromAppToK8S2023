@@ -23,7 +23,7 @@ namespace ProductService.QueryHandler
 
         public async Task<ProductCategory[]> HandleAsync(GetAllCategoryQuery query, ICorrelationContext context)
         {
-            var spec = new ProductIncludeCategory();
+            var spec = new ProductIncludeCategorySpec();
             var repository = new GenericSqlServerRepository<ProductCategory, StoreDBContext>(_dbcontext);
             IReadOnlyList<ProductCategory> productcategorys = await _dbcontext.ProductCategory.AsQueryable().ToListAsync();
             return productcategorys.ToArray();

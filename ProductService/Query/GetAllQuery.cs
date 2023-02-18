@@ -11,6 +11,16 @@ namespace ProductService.Query
     {
     }
 
+    public class GetByFiltrationQuery : IQuery
+    {
+        public GetByFiltrationQuery(QueryParams QueryParams)
+        {
+            this.QueryParams = QueryParams;
+
+        }
+        public QueryParams QueryParams { get; set; }
+    }
+
     public class GetAllCategoryQuery : IQuery
     {
     }

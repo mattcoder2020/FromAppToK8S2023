@@ -1,4 +1,4 @@
 export class params {
-  productcatetoryid: number;
-
-}
+    public productcatetoryid?: number;
+    public orderby: string;
+ }

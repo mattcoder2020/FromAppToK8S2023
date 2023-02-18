@@ -18,10 +18,31 @@ namespace ProductService.SQLiteDB
         { }
     }
 
-    public class ProductIncludeCategory : BaseSpecification<Product>
+    public class ProductIncludeCategorySpec : BaseSpecification<Product>
     {
-        public ProductIncludeCategory(): base(null)
+        public ProductIncludeCategorySpec(): base(null)
         {
+            base.AddIncludes(e => e.ProductCategory);
+        }
+    }
+
+    public class ProductByFiltrationSpec : BaseSpecification<Product>
+    {
+        public ProductByFiltrationSpec(QueryParams queryParams) : 
+            base(e=>(!queryParams.ProductCategoryId.HasValue || e.ProductCategoryId == queryParams.ProductCategoryId ))
+        {
+            if (!String.IsNullOrEmpty(queryParams.OrderBy))
+            {
+                switch (queryParams.OrderBy)
+                {
+                    case "name": base.AddSort(e => e.Name);
+                        break;
+                    case "price_asc": base.AddSort(e => e.Price);
+                        break;
+                    case "price_desc": base.AddSortDesc(e => e.Price);
+                        break;
+                }
+            }
             base.AddIncludes(e => e.ProductCategory);
         }
     }

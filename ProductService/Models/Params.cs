@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace ProductService.Models
 {
-    public class Params
+    public class QueryParams
     {
-        public int ProductCategoryId { get; set; }
+        public int? ProductCategoryId { get; set; }
+        public string OrderBy { get; set; }
     }
 }

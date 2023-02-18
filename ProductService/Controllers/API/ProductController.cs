@@ -52,21 +52,21 @@ namespace ProductService.Controllers.API
             //await _dispatcher.SendAsync<NewProductCommand>(value);
         }
 
-        [HttpGet]
-        [AppMetricCount(MetricName: "Get-allProduct")]
-        public async Task<Product[]> GetallProduct()
-        {
-            var q = new GetAllQuery ();
-            var products = await _dispatcher.QueryAsync<GetAllQuery, Product[]>(q);
-            return products ;
-        }
+        //[HttpGet]
+        //[AppMetricCount(MetricName: "Get-allProduct")]
+        //public async Task<Product[]> GetallProduct()
+        //{
+        //    var q = new GetAllQuery ();
+        //    var products = await _dispatcher.QueryAsync<GetAllQuery, Product[]>(q);
+        //    return products ;
+        //}
 
         [HttpGet]
         [AppMetricCount(MetricName: "Get-allProductByFiltration")]
-        public async Task<Product[]> GetallProduct([FromQuery] Params productparams)
+        public async Task<Product[]> GetallProductByFiltration([FromQuery] QueryParams productparams)
         {
-            var q = new GetAllQuery();
-            var products = await _dispatcher.QueryAsync<GetAllQuery, Product[]>(q);
+            var q = new GetByFiltrationQuery(productparams);
+            var products = await _dispatcher.QueryAsync<GetByFiltrationQuery, Product[]>(q);
             return products;
         }
 

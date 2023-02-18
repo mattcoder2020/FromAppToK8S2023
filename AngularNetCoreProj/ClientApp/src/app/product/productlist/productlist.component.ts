@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { productservice } from '../productservice';
 import { IProduct } from '../../entity/IProduct';
 import { IProductCategory } from "../../entity/IProductCategory";
+import { params } from '../../entity/params';
 
 @Component({
   selector: 'app-productlist',
@@ -13,6 +14,12 @@ export class ProductlistComponent implements OnInit {
 
   public products: IProduct[];
   public productcategories: IProductCategory[];
+  public selectedproductcategoryid: number = 0;
+  public sortOptions= [
+    { name: "Price from low to high", value: "price_asc" },
+    { name: "Price from high to low", value: "price_desc" },
+    { name: "Name", value: "name" }]
+  public selectedSort = "name";
 
   constructor(private ps1: productservice) { }
   ngOnInit(): void {
@@ -26,8 +33,30 @@ export class ProductlistComponent implements OnInit {
   }
 
   getallproductCategory() {
-    this.ps1.getallCategory().subscribe((prodcats: IProductCategory[]) => { this.productcategories = prodcats; },
+    this.ps1.getallCategory().subscribe((prodcats: IProductCategory[]) =>
+      this.productcategories = [{ id: 0, description: 'All' }, ...prodcats],
       error => { console.log(error) });
+  }
+
+  onCategorySelected(catid: number) {
+    this.selectedproductcategoryid = catid;
+    this.getProductsByFiltration();
+  }
+
+  onSortChange(value: string)
+  {
+    this.selectedSort = value;
+    this.getProductsByFiltration();
+  }
+
+  getProductsByFiltration() {
+    var p = new params();
+    p.productcatetoryid = this.selectedproductcategoryid;
+    p.orderby = this.selectedSort;
+    this.ps1.getproductsbyfiltration(p).subscribe(
+      (prods: IProduct[]) => { this.products = prods; },
+      error => { console.log(error) }
+    );
   }
 }
 

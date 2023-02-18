@@ -11,8 +11,8 @@ namespace Common.DataAccess
     {
         public Expression<Func<T, bool>> Criteria { get; private set; }
         public Expression<Func<T, object>> Orderby { get; private set; }
-        public Expression<Func<T, bool>> AscOrdered { get; private set; }
         public List<Expression<Func<T, object>>> IncludeList { get; set; } = new List<Expression<Func<T, object>>>();
+        public Expression<Func<T, object>> OrderbyDesc { get; private set; }
 
         public BaseSpecification(Expression<Func<T, bool>> criteria)
         {
@@ -28,6 +28,10 @@ namespace Common.DataAccess
         {
             Orderby = sortItem;
         }
+        public void AddSortDesc(Expression<Func<T, object>> sortItem)
+        {
+            OrderbyDesc = sortItem;
+        }
 
         public IQueryable<T> GenerateIQuerable (IQueryable<T> queryable)
         {
@@ -36,8 +40,8 @@ namespace Common.DataAccess
                 queryable = queryable.Where(Criteria);
             if (Orderby != null)
                 queryable = queryable.OrderBy(Orderby);
-            if (AscOrdered != null)
-                queryable = queryable.OrderByDescending(AscOrdered);
+            if (OrderbyDesc != null)
+                queryable = queryable.OrderByDescending(OrderbyDesc);
 
             queryable = IncludeList.Aggregate(queryable, (current, includeitem) => (current.Include(includeitem)));
 
@@ -45,7 +49,9 @@ namespace Common.DataAccess
 
 
         }
-     }
+
+        
+    }
 
     
 }
