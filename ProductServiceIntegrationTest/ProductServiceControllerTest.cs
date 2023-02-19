@@ -37,7 +37,7 @@ namespace ProductService.IntegrationTest
                 }
                 , queueName: queueName);
             //ACT
-            var command = new NewProductCommand { Id = 25, Price = 10, CategoryId = 1, Name = "demo3" };
+            var command = new NewProductCommand { Id = 26, Price = 10, CategoryId = 4, Name = "demo4" };
             var stringContent = new StringContent(JsonConvert.SerializeObject(command), Encoding.UTF8, "application/json");
             var response = await client.PostAsync(endpoint, stringContent);  // post the json commnad to service so it will 
             var createdEvent = await queueHandle.Task;

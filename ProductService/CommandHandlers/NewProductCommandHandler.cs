@@ -6,6 +6,7 @@ using ProductService.Commands;
 using ProductService.Events;
 using ProductService.Models;
 using ProductService.SQLiteDB;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,7 +30,15 @@ namespace ProductService.CommandHandlers
         {
             var repository = new GenericSqlServerRepository<Product, StoreDBContext>(_dbcontext);
             var spec = new ProductByNameSpec(command.Name);
-            var existedwithName = await repository.GetEntityBySpec(spec);
+            Product existedwithName = null; 
+            try
+            {
+                existedwithName = await repository.GetEntityBySpec(spec);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message + "  "+ ex.StackTrace); 
+            }
             if (existedwithName == null)
             { 
             await repository.AddModel(new Product(command.Id, command.Name, command.CategoryId, command.Price));

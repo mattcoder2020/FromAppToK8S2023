@@ -32,13 +32,13 @@ services:
     #volumes:
     #  - influxdb:/var/lib/influxdb
 
-  redis:
-    image: redis
-    container_name: redis
-    ports:
-      - 6379:6379
-    networks:
-      - my-network
+  #redis:
+  #  image: redis
+  #  container_name: redis
+  #  ports:
+  #    - 6379:6379
+  #  networks:
+  #    - my-network
     # network_mode: host
    
   seq:
