@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SourceCode\\FromAppToK8S2022\\ISignalRService\\ISignalRService.csproj": {}
+    "D:\\SourceCode\\Git-FromAppToK8S\\ISignalRService\\ISignalRService.csproj": {}
   },
   "projects": {
-    "D:\\SourceCode\\FromAppToK8S2022\\Common\\Common.csproj": {
+    "D:\\SourceCode\\Git-FromAppToK8S\\Common\\Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2022\\Common\\Common.csproj",
+        "projectUniqueName": "D:\\SourceCode\\Git-FromAppToK8S\\Common\\Common.csproj",
         "projectName": "Common",
-        "projectPath": "D:\\SourceCode\\FromAppToK8S2022\\Common\\Common.csproj",
-        "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\FromAppToK8S2022\\Common\\obj\\",
+        "projectPath": "D:\\SourceCode\\Git-FromAppToK8S\\Common\\Common.csproj",
+        "packagesPath": "C:\\Users\\Matt\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceCode\\Git-FromAppToK8S\\Common\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\lp-myang2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Matt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -220,24 +220,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\SourceCode\\FromAppToK8S2022\\ISignalRService\\ISignalRService.csproj": {
+    "D:\\SourceCode\\Git-FromAppToK8S\\ISignalRService\\ISignalRService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\FromAppToK8S2022\\ISignalRService\\ISignalRService.csproj",
+        "projectUniqueName": "D:\\SourceCode\\Git-FromAppToK8S\\ISignalRService\\ISignalRService.csproj",
         "projectName": "ISignalRService",
-        "projectPath": "D:\\SourceCode\\FromAppToK8S2022\\ISignalRService\\ISignalRService.csproj",
-        "packagesPath": "C:\\Users\\lp-myang2\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\FromAppToK8S2022\\ISignalRService\\obj\\",
+        "projectPath": "D:\\SourceCode\\Git-FromAppToK8S\\ISignalRService\\ISignalRService.csproj",
+        "packagesPath": "C:\\Users\\Matt\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceCode\\Git-FromAppToK8S\\ISignalRService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\lp-myang2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Matt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -251,8 +251,8 @@
           "netcoreapp2.2": {
             "targetAlias": "netcoreapp2.2",
             "projectReferences": {
-              "D:\\SourceCode\\FromAppToK8S2022\\Common\\Common.csproj": {
-                "projectPath": "D:\\SourceCode\\FromAppToK8S2022\\Common\\Common.csproj"
+              "D:\\SourceCode\\Git-FromAppToK8S\\Common\\Common.csproj": {
+                "projectPath": "D:\\SourceCode\\Git-FromAppToK8S\\Common\\Common.csproj"
               }
             }
           }
@@ -315,7 +315,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.414\\RuntimeIdentifierGraph.json"
         }
       }
     }
