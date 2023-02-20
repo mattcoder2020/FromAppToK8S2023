@@ -5,11 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-//import { NavMenuComponent } from './coremodule/nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-
 
 import { MyComponent } from './test-component/test.component';
 //import { login } from './login/login';
@@ -17,9 +15,8 @@ import { MyComponent } from './test-component/test.component';
 //import { StoreModule } from './storemodule/app.module';
 
 import { CoreModule } from './coremodule/core.module';
-import { Productmodule } from './product/product.module/product.module';
-import { ProductComponent } from './product/product/product.component';
-import { ProductlistComponent } from './product/productlist/productlist.component';
+import { Productmodule } from './product/product.module';
+import { ProductRouteModule } from './product/product-route/product-route.module';
  
 
 @NgModule({
@@ -29,8 +26,6 @@ import { ProductlistComponent } from './product/productlist/productlist.componen
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ProductComponent,
-    ProductlistComponent,
     //login,
     MyComponent
     
@@ -40,7 +35,8 @@ import { ProductlistComponent } from './product/productlist/productlist.componen
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     CoreModule,
-   // Productmodule,
+    ProductRouteModule,
+    Productmodule,
    // StoreModule,
     FormsModule,
     RouterModule.forRoot([

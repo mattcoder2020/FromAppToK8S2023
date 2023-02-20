@@ -6,7 +6,7 @@
         <li>Price: {{product.price | currency}} </li>
         <li>Desc: {{product.productCategory.description}} </li>
       </ul>
-      <button type="button" class="w-100 btn btn-lg btn-primary">Getstarted</button>
+      <button type="button" class="w-100 btn btn-lg btn-primary" routerLink="/product/{{product.id}}">Edit</button>
     </div>
   </div>
 
