@@ -9,5 +9,6 @@ namespace ProductService.Models
     {
         public int? ProductCategoryId { get; set; }
         public string OrderBy { get; set; }
+        public int? Id { get; set; }
     }
 }

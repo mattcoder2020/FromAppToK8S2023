@@ -52,6 +52,15 @@ namespace ProductService.Controllers.API
             //await _dispatcher.SendAsync<NewProductCommand>(value);
         }
 
+        [HttpPut()]
+        [AppMetricCount(MetricName: "Put-product")]
+        public async Task<IActionResult> Put(Product p)
+        {
+            var c = new PutProductCommand(p);
+            await _dispatcher.SendAsync<PutProductCommand>(c);
+            return Ok();
+        }
+
         //[HttpGet]
         //[AppMetricCount(MetricName: "Get-allProduct")]
         //public async Task<Product[]> GetallProduct()

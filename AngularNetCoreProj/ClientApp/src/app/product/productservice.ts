@@ -7,9 +7,12 @@ import { params } from "../entity/params";
 
 @Injectable({ providedIn: "root" })
 export class productservice  {
-  
   constructor(private http: HttpClient) { }
   public products: any[];
+
+  getbyid(id: number) {
+    return this.http.get("http://localhost:5002/api/product/" + id);
+  }
 
   getall() {
     return this.http.get("http://localhost:5002/api/product");
@@ -19,6 +22,9 @@ export class productservice  {
     return this.http.get("http://localhost:5002/api/product/productcategory");
   }
 
+  updateproduct(product: IProduct) {
+    return this.http.put("http://localhost:5002/api/product", product);
+  }
   getproductsbyfiltration(p: params) {
     let params = new HttpParams();
     //if (p.productcatetoryid != 0)

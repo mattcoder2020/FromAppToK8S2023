@@ -29,7 +29,10 @@ namespace ProductService.SQLiteDB
     public class ProductByFiltrationSpec : BaseSpecification<Product>
     {
         public ProductByFiltrationSpec(QueryParams queryParams) : 
-            base(e=>(!queryParams.ProductCategoryId.HasValue || e.ProductCategoryId == queryParams.ProductCategoryId ))
+            base(
+                e=>(!queryParams.ProductCategoryId.HasValue || e.ProductCategoryId == queryParams.ProductCategoryId )
+                && (!queryParams.Id.HasValue || e.Id == queryParams.Id)
+                )
         {
             if (!String.IsNullOrEmpty(queryParams.OrderBy))
             {
