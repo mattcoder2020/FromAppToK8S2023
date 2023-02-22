@@ -29,6 +29,7 @@ export class ProductmodifyComponent implements OnInit {
   }
 
   Confirm() {
+    this.updateresult = "";
     this.productservice.updateproduct(this.product).subscribe(
       success => this.updateresult = "Updated",
       error => this.updateresult = "Failed to update"
