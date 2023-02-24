@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { error } from 'protractor';
 import { IProduct } from '../../entity/IProduct';
 import { IProductCategory } from '../../entity/IProductCategory';
 import { params } from '../../entity/params';

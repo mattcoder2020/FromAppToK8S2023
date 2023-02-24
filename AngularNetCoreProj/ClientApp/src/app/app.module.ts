@@ -9,9 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
-import { MyComponent } from './test-component/test.component';
+
 //import { login } from './login/login';
- import { dataservice } from './storemodule/share/dataservice';
+// import { dataservice } from './storemodule/share/dataservice';
 //import { StoreModule } from './storemodule/app.module';
 
 import { CoreModule } from './coremodule/core.module';
@@ -26,10 +26,6 @@ import { ProductRouteModule } from './product/product-route/product-route.module
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    //login,
-    MyComponent
-    
-    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,7 +43,7 @@ import { ProductRouteModule } from './product/product-route/product-route.module
       
     ])
   ],
-  providers: [dataservice],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
