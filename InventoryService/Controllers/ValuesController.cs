@@ -41,5 +41,10 @@ namespace InventoryService.Controllers
         public void Delete(int id)
         {
         }
+
+        [HttpDelete("{id}")]
+        public void Delete1(int id)
+        {
+        }
     }
 }
