@@ -17,6 +17,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CoreModule } from './coremodule/core.module';
 import { Productmodule } from './product/product.module';
 import { ProductRouteModule } from './product/product-route/product-route.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ProductRouteModule } from './product/product-route/product-route.module
      // { path: 'login', component: login },
       { path: 'fetch-data', component: FetchDataComponent }
       
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

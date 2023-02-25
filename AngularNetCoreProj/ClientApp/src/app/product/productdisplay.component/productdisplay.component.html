@@ -1,12 +1,16 @@
-  <div class="card mb-4 rounded-3 shadow-sm">
-    <div class="card-body">
-      <h1 class="card-title pricing-card-title">{{product.name}} </h1>
-      <ul class="list-unstyled mt-3 mb-4">
-        <li>ID: {{product.id}}</li>
-        <li>Price: {{product.price | currency}} </li>
-        <li>Desc: {{product.productCategory.description}} </li>
-      </ul>
-      <button type="button" class="w-100 btn btn-lg btn-primary" routerLink="/product/{{product.id}}">Edit</button>
-    </div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"> {{product.name}} </h5>
+    <h6 class="card-subtitle mb-2 text-muted">ID: {{product.id}}</h6>
+
+    <h6 class="card-subtitle mb-2 text-muted">Price: {{product.price | currency}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">Desc: {{product.productCategory.description}}</h6>
+   
+    <button type="button" class="w-100 btn btn-lg btn-primary" routerLink="/product/{{product.id}}">Edit</button>
   </div>
+</div>
+
+
+  
 
