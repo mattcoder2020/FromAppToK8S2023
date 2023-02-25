@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -15,9 +15,10 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 //import { StoreModule } from './storemodule/app.module';
 
 import { CoreModule } from './coremodule/core.module';
-import { Productmodule } from './product/product.module';
-import { ProductRouteModule } from './product/product-route/product-route.module';
+//import { Productmodule } from './product/product.module';
+//import { ProductRouteModule } from './product/product-route/product-route.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorInterceptor } from './coremodule/interceptors/error.interceptor';
  
 
 @NgModule({
@@ -32,20 +33,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     CoreModule,
-    ProductRouteModule,
-    Productmodule,
+  //  ProductRouteModule,
+  //  Productmodule,
    // StoreModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
-     // { path: 'login', component: login },
+      { path: 'product', loadChildren: () => import('./product/product.module').then(mod => mod.Productmodule) },
+      { path: 'core', loadChildren: () => import('./coremodule/core.module').then(mod => mod.CoreModule) },
       { path: 'fetch-data', component: FetchDataComponent }
       
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

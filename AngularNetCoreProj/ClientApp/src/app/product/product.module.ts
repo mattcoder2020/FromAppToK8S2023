@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { ProductDisplayComponent } from './productdisplay.component/productdisplay.component';
 import { ProductlistComponent } from './productlist.component/productlist.component';
 import { ProductmodifyComponent } from './productmodify.component/productmodify.component';
+import { ProductRouteModule } from './product-route/product-route.module';
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule, FormsModule
+    CommonModule, RouterModule, FormsModule, ProductRouteModule
   ],
   declarations: [ProductDisplayComponent, ProductlistComponent, ProductmodifyComponent],
   exports: [ProductDisplayComponent, ProductlistComponent]

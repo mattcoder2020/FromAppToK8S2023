@@ -5,13 +5,14 @@ import { ProductlistComponent } from '../productlist.component/productlist.compo
 import { ProductmodifyComponent } from '../productmodify.component/productmodify.component';
 const routes: Routes = 
   [
-    { path: 'product', component: ProductlistComponent },
-    { path: 'product/:id', component: ProductmodifyComponent, pathMatch: 'full'}
+    { path: '', component: ProductlistComponent },
+    { path: ':id', component: ProductmodifyComponent}
   ]
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule.forRoot(routes)
+    CommonModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [],
   exports: [RouterModule]
