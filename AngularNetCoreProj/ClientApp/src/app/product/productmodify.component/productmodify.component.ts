@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IProduct } from '../../entity/IProduct';
 import { IProductCategory } from '../../entity/IProductCategory';
 import { params } from '../../entity/params';
@@ -14,7 +15,8 @@ export class ProductmodifyComponent implements OnInit {
   public productcategories: IProductCategory[];
   public product: IProduct;
   public updateresult: string;
-  constructor(private productservice: productservice, private activatedRoute: ActivatedRoute) { }
+  constructor(private productservice: productservice,
+    private activatedRoute: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.productservice.getallCategory().subscribe(
@@ -30,8 +32,11 @@ export class ProductmodifyComponent implements OnInit {
   Confirm() {
     this.updateresult = "";
     this.productservice.updateproduct(this.product).subscribe(
-      success => this.updateresult = "Updated",
-      error => this.updateresult = "Failed to update"
+      //success => this.updateresult = "Updated",
+      //error => this.updateresult = "Failed to update"
+
+      success => this.toastr.success('Update Successful!', 'Product Update'),
+      error => this.toastr.error(error.error.message, error.error.statuscode)
     )
 
   }

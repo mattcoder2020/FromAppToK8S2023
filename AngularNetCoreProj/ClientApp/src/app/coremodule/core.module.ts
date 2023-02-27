@@ -4,6 +4,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { ExceptionviewComponent } from './error/exceptionview/exceptionview.component';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes =
   [
@@ -19,7 +20,11 @@ const routes: Routes =
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    })
   ],
   exports: [NavMenuComponent, RouterModule]
 })
