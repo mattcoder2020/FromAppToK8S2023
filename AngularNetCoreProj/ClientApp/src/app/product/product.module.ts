@@ -7,10 +7,13 @@ import { ProductDisplayComponent } from './productdisplay.component/productdispl
 import { ProductlistComponent } from './productlist.component/productlist.component';
 import { ProductmodifyComponent } from './productmodify.component/productmodify.component';
 import { ProductRouteModule } from './product-route/product-route.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule, FormsModule, ProductRouteModule
+    CommonModule, RouterModule, FormsModule, ProductRouteModule,
+    NgxSpinnerModule.forRoot()
+
   ],
   declarations: [ProductDisplayComponent, ProductlistComponent, ProductmodifyComponent],
   exports: [ProductDisplayComponent, ProductlistComponent]

@@ -1,7 +1,8 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="small" color="#fff" type="timer" [fullScreen]="true"><p style="color: white"> Wait a second!! </p></ngx-spinner>
 <form class="row g-3">
   <div class="col-md-6" *ngIf="product">
     <label for="inputEmail4" class="form-label">ID</label>
-    <input  class="form-control" name="pid"  value={{product.id}}>
+    <input class="form-control" name="pid" value={{product.id}}>
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Name</label>
@@ -11,17 +12,17 @@
   </div>
   <div class="col-12">
     <label for="inputAddress" class="form-label">Price</label>
-    <input  class="form-control" name="inputAddress" [(ngModel)]="product.price" value= {{product.price}}>
+    <input class="form-control" name="inputAddress" [(ngModel)]="product.price" value={{product.price}}>
   </div>
   <div class="col-md-4">
     <label for="inputState" class="form-label">Product Category</label>
     <select name="inputState" class="form-select" [(ngModel)]="product.productCategoryId">
-      <option *ngFor="let c of productcategories"  [selected]="product.productCategoryId == c.id" value={{c.id}}>{{c.description}}</option>
-     </select>
+      <option *ngFor="let c of productcategories" [selected]="product.productCategoryId == c.id" value={{c.id}}>{{c.description}}</option>
+    </select>
   </div>
   <div class="col-12">
     <label class="form-label">{{updateresult}}</label>
     <span class="col-md-6"><button type="submit" class="btn btn-primary" (click)="Confirm()">Confirm</button></span>
     <span class="col-md-4"><button type="submit" class="btn btn-primary" routerLink="/product">Cancel</button></span>
-</div>
+  </div>
 </form>

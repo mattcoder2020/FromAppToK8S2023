@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { ExceptionviewComponent } from './error/exceptionview/exceptionview.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes =
   [
@@ -21,6 +22,7 @@ const routes: Routes =
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       preventDuplicates: true

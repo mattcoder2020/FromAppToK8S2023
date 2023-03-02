@@ -19,6 +19,9 @@ import { CoreModule } from './coremodule/core.module';
 //import { ProductRouteModule } from './product/product-route/product-route.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptor } from './coremodule/interceptors/error.interceptor';
+import { LoadingInterceptor } from './coremodule/interceptors/loading.interceptor';
+import { NgxSpinnerModule } from "ngx-spinner";
+
  
 
 @NgModule({
@@ -33,6 +36,7 @@ import { ErrorInterceptor } from './coremodule/interceptors/error.interceptor';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     CoreModule,
+    NgxSpinnerModule,
   //  ProductRouteModule,
   //  Productmodule,
    // StoreModule,
@@ -48,7 +52,10 @@ import { ErrorInterceptor } from './coremodule/interceptors/error.interceptor';
     BrowserAnimationsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }  ],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
