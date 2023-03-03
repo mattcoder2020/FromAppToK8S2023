@@ -22,6 +22,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Common.Messages;
 using ProductService.SQLiteDB;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 namespace ProductService
 {
@@ -46,7 +47,9 @@ namespace ProductService
             //});
             //services.AddDbContext<StoreDBContext>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             string connectionstring = Configuration.GetConnectionString("DefaultConnection");
+            string redisstring = Configuration.GetConnectionString("RedisConnection");
             services.AddDbContext<StoreDBContext>(options => options.UseSqlite(connectionstring));
+            services.AddSingleton<IConnectionMultiplexer>((config) => { return ConnectionMultiplexer.Connect(redisstring); });
             services.AddConsul();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors(options =>

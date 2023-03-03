@@ -32,14 +32,28 @@ services:
     #volumes:
     #  - influxdb:/var/lib/influxdb
 
-  #redis:
-  #  image: redis
-  #  container_name: redis
-  #  ports:
-  #    - 6379:6379
-  #  networks:
-  #    - my-network
-    # network_mode: host
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - my-network
+     #network_mode: host
+    volumes:
+      - redis-data:/data
+     
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+      - HTTP_USER=root
+      - HTTP_PASSWORD=secret
+    ports:
+      - 8081:8081
+    depends_on:
+      - redis
    
   seq:
     image: datalust/seq 
@@ -72,4 +86,7 @@ networks:
   my-network:
     #name: my-network
     external: true
+
+volumes:
+  redis-data:
 
