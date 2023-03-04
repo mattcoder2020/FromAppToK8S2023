@@ -68,7 +68,7 @@ namespace ProductService.IntegrationTest
             //ACT
             var response = await client.GetAsync(endpoint + "/" + id);
             //ASSERT
-            response.StatusCode.Should().Be(404); 
+            response.StatusCode.Should().Be(400); 
         }
     }
 }

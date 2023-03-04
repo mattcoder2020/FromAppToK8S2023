@@ -23,6 +23,8 @@ using Common.Messages;
 using ProductService.SQLiteDB;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
+using Common.Redis;
+using ProductService.Models;
 
 namespace ProductService
 {
@@ -63,8 +65,8 @@ namespace ProductService
             services.AddJaeger();
             services.AddOpenTracing();
             services.AddGaugeMetric();
-            
-           
+
+            services.AddScoped<IRedisRepository<Basket>, RedisRepository<Basket>>();
             var builder = new ContainerBuilder();
             builder.Populate(services);
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())

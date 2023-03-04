@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ProductService.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/basket")]
     [ApiController]
     public class BasketController : ControllerBase
     {
@@ -22,7 +22,7 @@ namespace ProductService.API.Controllers
             this.redisrepo = redisrepo;
         }
         // GET: api/<BasketController>
-        [HttpGet]
+        [HttpGet("{basketid}")]
         public async Task<ActionResult<Basket>> Get(string basketid)
         {
             return await redisrepo.GetById(basketid);
@@ -30,14 +30,14 @@ namespace ProductService.API.Controllers
 
         // POST api/<BasketController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Basket value)
         {
-            Basket b = JsonSerializer.Deserialize<Basket>(value);
-            redisrepo.Add(b.BasketId, b);
+            //Basket b = JsonSerializer.Deserialize<Basket>(value);
+            redisrepo.Add(value.BasketId, value);
         }
 
         // PUT api/<BasketController>/5
-        [HttpPut("{id}")]
+        [HttpPut("{basketid}")]
         public void Put(string basketid, [FromBody] string value)
         {
             Basket b = JsonSerializer.Deserialize<Basket>(value);
