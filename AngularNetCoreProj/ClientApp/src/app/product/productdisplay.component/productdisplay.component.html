@@ -7,6 +7,7 @@
     <h6 class="card-subtitle mb-2 text-muted">Desc: {{product.productCategory.description}}</h6>
 
     <button type="button" class="w-100 btn btn-lg btn-primary" routerLink="/product/{{product.id}}">Edit</button>
+    <button type="button" class="w-100 btn btn-lg btn-primary" (click)="AddToBasket()">Add To Basket</button>
   </div>
 </div>
 

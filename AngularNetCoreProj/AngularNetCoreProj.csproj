@@ -26,11 +26,13 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\coremodule\nav-menu\productservice.ts" />
+    <None Remove="ClientApp\src\app\entity\IBasket.ts" />
     <None Remove="ClientApp\src\app\entity\IProduct.ts" />
     <None Remove="ClientApp\src\app\entity\params.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\entity\IBasket.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\entity\params.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\product\productservice.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\entity\IProduct.ts" />

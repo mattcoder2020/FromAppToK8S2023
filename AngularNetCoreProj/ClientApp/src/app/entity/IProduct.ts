@@ -7,3 +7,4 @@ export interface IProduct {
   productCategory: IProductCategory;
   id: number;
 }
+

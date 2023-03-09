@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { IBasket } from '../../entity/IBasket';
+import { IBasketItem } from '../../entity/IBasketItem';
 import { IProduct } from '../../entity/IProduct';
 import { IProductCategory } from '../../entity/IProductCategory';
 import { params } from '../../entity/params';
+import { BasketService } from '../basket.service';
 import { productservice } from '../productservice';
 
 @Component({
@@ -15,7 +18,9 @@ export class ProductmodifyComponent implements OnInit {
   public productcategories: IProductCategory[];
   public product: IProduct;
   public updateresult: string;
-  constructor(private productservice: productservice,
+  private basketitem: IBasketItem;
+
+  constructor(private productservice: productservice, private basketservice: BasketService,
     private activatedRoute: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -38,8 +43,9 @@ export class ProductmodifyComponent implements OnInit {
       success => this.toastr.success('Update Successful!', 'Product Update'),
       error => this.toastr.error(error.error.message, error.error.statuscode)
     )
-
   }
+
+  
 
   Cancel() {
 

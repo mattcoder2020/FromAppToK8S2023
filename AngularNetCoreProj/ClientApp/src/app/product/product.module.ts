@@ -8,6 +8,7 @@ import { ProductlistComponent } from './productlist.component/productlist.compon
 import { ProductmodifyComponent } from './productmodify.component/productmodify.component';
 import { ProductRouteModule } from './product-route/product-route.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { BasketComponent } from './basket.component/basket.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSpinnerModule.forRoot()
 
   ],
-  declarations: [ProductDisplayComponent, ProductlistComponent, ProductmodifyComponent],
+  declarations: [ProductDisplayComponent, ProductlistComponent, ProductmodifyComponent, BasketComponent],
   exports: [ProductDisplayComponent, ProductlistComponent]
 })
 export class Productmodule { }
