@@ -29,7 +29,10 @@ namespace Common.Redis
         public async Task<T> GetById(string id)
         {
             var returnvalue = await redis.StringGetAsync(id);
-            return returnvalue.IsNullOrEmpty ? default(T) : JsonSerializer.Deserialize<T>(returnvalue);
+            if (returnvalue.IsNullOrEmpty)
+                return default(T);
+            else
+                return JsonSerializer.Deserialize<T>(returnvalue);
         }
     }
 }

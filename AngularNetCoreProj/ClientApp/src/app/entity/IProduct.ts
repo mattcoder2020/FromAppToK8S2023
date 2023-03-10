@@ -1,6 +1,6 @@
 import { IProductCategory } from "./IProductCategory";
 
-export interface IProduct {
+export class IProduct {
   name: string;
   productCategoryId: number;
   price: number;

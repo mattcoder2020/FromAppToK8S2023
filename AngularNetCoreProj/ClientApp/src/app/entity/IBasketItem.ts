@@ -1,6 +1,6 @@
-﻿import { IProduct } from "./IProduct";
+import { IProduct } from "./IProduct";
 
 
-export interface IBasketItem extends IProduct {
+export class IBasketItem extends IProduct {
     quantity: number;
 }

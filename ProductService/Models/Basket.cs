@@ -9,10 +9,10 @@ namespace ProductService.Models
     {
         public Basket()
         {
-            if (String.IsNullOrEmpty(BasketId))
-            {
-                BasketId = Guid.NewGuid().ToString();
-            }
+            //if (String.IsNullOrEmpty(BasketId))
+            //{
+            //    BasketId = Guid.NewGuid().ToString();
+            //}
         }
         public string BasketId { get; set; }
     }

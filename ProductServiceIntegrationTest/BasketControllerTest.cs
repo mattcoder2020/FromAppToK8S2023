@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using ProductService.Commands;
 using ProductService.Events;
 using ProductService.Models;
+using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,15 +29,19 @@ namespace ProductService.IntegrationTest
         {   //ARRANGE
            
             //ACT
-            var basket = new Basket { Price = 10, ProductCategoryId = 4, Name = "demo4" };
+            var basket = new Basket { BasketId = Guid.NewGuid().ToString(), Price = 10, ProductCategoryId = 4, Name = "demo4" };
             var stringContent = new StringContent(JsonConvert.SerializeObject(basket), Encoding.UTF8, "application/json");
             var postresponse = await client.PostAsync(endpoint, stringContent);  // post the json commnad to service so it will 
-            
+            var queryresponse = await client.GetAsync(endpoint + "/" + basket.BasketId);
+
             //ASSERT
-            postresponse.StatusCode.Should().Be(200);                            // received sucess returncode 
-            
+            postresponse.StatusCode.Should().Be(200);
+            queryresponse.StatusCode.Should().Be(200);                            // received sucess returncode 
+            //queryresponse..Id.Should().Be(command.Id);                                  // Verify the rabbitmq
+            //createdEvent.Name.Should().Be(command.Name);// received sucess returncode 
+
             //Teardown
-            await client.DeleteAsync(endpoint + "/" + basket.Id.ToString());
+            await client.DeleteAsync(endpoint + "/" + basket.BasketId.ToString());
         }
 
         [Theory]

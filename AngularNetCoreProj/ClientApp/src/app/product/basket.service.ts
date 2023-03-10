@@ -6,12 +6,10 @@ import { IBasket } from '../entity/IBasket';
 import { IBasketItem } from '../entity/IBasketItem';
 import { IProduct } from '../entity/IProduct';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: "root" })
 export class BasketService {
 
-  private basket: IBasket;
+  private basket: IBasket = new IBasket();
   constructor(private http: HttpClient) { }
 
   
@@ -20,6 +18,7 @@ export class BasketService {
     if (id == null) {
       id = uuidv4();
       localStorage.setItem("basketid", id);
+      this.basket = new IBasket();
       this.basket.id = id;
     }
     else {
@@ -38,7 +37,8 @@ export class BasketService {
   {
     var temp = this.basket.items.filter((e) => e.id == basketItem.id);
     if (temp.length > 0) { temp[0] = basketItem; }
-    else (this.basket.items.push(basketItem));
+    else { this.basket.items.push(basketItem) };
+    this.setBasket();
   }
 
 

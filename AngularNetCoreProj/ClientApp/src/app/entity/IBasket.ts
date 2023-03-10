@@ -1,9 +1,9 @@
 import { IBasketItem } from "./IBasketItem";
 
-export interface IBasket
+export class IBasket
 {
-  id: string;
-  items: IBasketItem[];
+  basketid: string;
+  items: IBasketItem[] = [];
   subtotal: number;
   shipment: number;
   total: number;
