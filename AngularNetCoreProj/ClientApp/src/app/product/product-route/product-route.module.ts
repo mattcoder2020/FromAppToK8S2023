@@ -8,7 +8,7 @@ import { BasketComponent } from '../basket.component/basket.component';
 const routes: Routes = 
   [
     { path: '', component: ProductlistComponent },
-    { path: ':id', component: ProductmodifyComponent },
+    { path: ':id', component: ProductmodifyComponent }
    
   ]
 

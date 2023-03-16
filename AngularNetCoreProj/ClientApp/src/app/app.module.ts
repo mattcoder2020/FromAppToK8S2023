@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorInterceptor } from './coremodule/interceptors/error.interceptor';
 import { LoadingInterceptor } from './coremodule/interceptors/loading.interceptor';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BasketComponent } from './product/basket.component/basket.component';
 
  
 
@@ -46,7 +47,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
       { path: 'counter', component: CounterComponent },
       { path: 'product', loadChildren: () => import('./product/product.module').then(mod => mod.Productmodule) },
       { path: 'core', loadChildren: () => import('./coremodule/core.module').then(mod => mod.CoreModule) },
-      { path: 'fetch-data', component: FetchDataComponent }
+      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'basket', component: BasketComponent }
       
     ]),
     BrowserAnimationsModule

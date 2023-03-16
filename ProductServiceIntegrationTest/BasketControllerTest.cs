@@ -29,10 +29,10 @@ namespace ProductService.IntegrationTest
         {   //ARRANGE
            
             //ACT
-            var basket = new Basket { BasketId = Guid.NewGuid().ToString(), Price = 10, ProductCategoryId = 4, Name = "demo4" };
+            var basket = new Basket { basketid = Guid.NewGuid().ToString() };
             var stringContent = new StringContent(JsonConvert.SerializeObject(basket), Encoding.UTF8, "application/json");
             var postresponse = await client.PostAsync(endpoint, stringContent);  // post the json commnad to service so it will 
-            var queryresponse = await client.GetAsync(endpoint + "/" + basket.BasketId);
+            var queryresponse = await client.GetAsync(endpoint + "/" + basket.basketid);
 
             //ASSERT
             postresponse.StatusCode.Should().Be(200);
@@ -41,7 +41,7 @@ namespace ProductService.IntegrationTest
             //createdEvent.Name.Should().Be(command.Name);// received sucess returncode 
 
             //Teardown
-            await client.DeleteAsync(endpoint + "/" + basket.BasketId.ToString());
+            await client.DeleteAsync(endpoint + "/" + basket.basketid.ToString());
         }
 
         [Theory]

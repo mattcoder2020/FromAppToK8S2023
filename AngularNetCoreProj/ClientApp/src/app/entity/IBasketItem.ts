@@ -1,6 +1,11 @@
-import { IProduct } from "./IProduct";
+import { IProductCategory } from "./IProductCategory";
 
 
-export class IBasketItem extends IProduct {
-    quantity: number;
+export class IBasketItem {
+  quantity: number;
+  name: string;
+  productCategoryId: number;
+  price: number;
+  productCategory: string;
+  id: number;
 }
