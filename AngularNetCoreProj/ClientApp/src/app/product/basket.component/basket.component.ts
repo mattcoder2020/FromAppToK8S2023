@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IBasket, IBasketTotal } from '../../entity/IBasket';
+import { IBasket } from '../../entity/IBasket';
+import { IBasketTotal } from "../../entity/IBasketTotal";
 import { IBasketItem } from '../../entity/IBasketItem';
 import { BasketService } from '../basket.service';
 import { ToastrService } from 'ngx-toastr';

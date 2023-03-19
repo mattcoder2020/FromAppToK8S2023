@@ -8,7 +8,7 @@
     <ul class="list-group mb-3" *ngIf="(basket$ | async) as basket">
       <li class="list-group-item d-flex justify-content-between lh-sm" *ngFor="let item of basket.items">
         <div>
-          <h6 class="my-0">{{item.name}}</h6>
+          <h6 class="my-0"><a routerLink="/product/{{item.id}}">{{item.name}}</a></h6>
           <small class="text-muted">Category: {{item.productCategory}}</small>
         </div>
         <span class="text-muted">Price: ${{item.price}}</span>

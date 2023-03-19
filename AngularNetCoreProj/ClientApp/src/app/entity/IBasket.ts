@@ -10,6 +10,3 @@ export class IBasket
   total: number = 0;
 }
 
-export class IBasketTotal {
-  total: number = 0;
-}

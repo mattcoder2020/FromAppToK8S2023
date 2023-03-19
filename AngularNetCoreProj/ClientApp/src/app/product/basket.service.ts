@@ -4,7 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { environment } from '../../environments/environment';
-import { IBasket, IBasketTotal } from '../entity/IBasket';
+import { IBasket } from '../entity/IBasket';
+import { IBasketTotal } from "../entity/IBasketTotal";
 import { IBasketItem } from '../entity/IBasketItem';
 import { IProduct } from '../entity/IProduct';
 import { map } from 'rxjs/operators';
@@ -70,7 +71,7 @@ export class BasketService implements OnInit
   {
     var temp = this.basket.items.filter((e) => e.id == basketItem.id);
     if (temp.length > 0) {
-      temp[0].quantity++;
+      temp[0]=basketItem;
     }
     else {
       basketItem.quantity = 1;
