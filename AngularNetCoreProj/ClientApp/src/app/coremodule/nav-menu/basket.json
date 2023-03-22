@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Beauty Queen v3",
+      "price": 50,
+      "productCategory": "Cheap",
+      "productCategoryId": 5,
+      "quantity": 4
+    },
+    {
+      "id": 2,
+      "name": "Beauty Queen1",
+      "price": 4566,
+      "productCategory": "Expensive",
+      "productCategoryId": 4,
+      "quantity": 4
+    },
+    {
+      "id": 3,
+      "name": "Dinosour",
+      "price": 250,
+      "productCategory": "Cheap",
+      "productCategoryId": 5,
+      "quantity": 2
+    },
+    {
+      "id": 4,
+      "name": "Funky music",
+      "price": 50,
+      "productCategory": "Upscale",
+      "productCategoryId": 6,
+      "quantity": 2
+    }
+  ],
+  "subtotal": 0,
+  "shipment": 0,
+  "total": 0,
+  "basketid": "80a3b1ff-4daf-4f3d-825c-40b66e33399f"
+}

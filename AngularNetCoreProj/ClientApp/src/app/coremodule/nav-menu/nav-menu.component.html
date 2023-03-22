@@ -14,10 +14,10 @@
 
       <a routerLink='/basket' class="position-relative">
         <i class="fa fa-shopping-cart fa-2x mr-5 text-dark"></i>
-        <div *ngIf="(basketTotalQuantity$ | async) as IBasketTotal" class="cart-no">{{IBasketTotal.total}}</div>
+        <div id="basket" *ngIf="(basketTotalQuantity$ | async) as IBasketTotal" class="cart-no">{{IBasketTotal.total}}</div>
       </a>
       <ul class="nav">
-        <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Login</a></li>
+        <li class="nav-item" id="login"><a href="#" class="nav-link link-dark px-2">Login</a></li>
         <li class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
       </ul>
     </div>

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductmodifyComponent } from './productmodify.component';
+//generate all test cases for the component
+  
+
 
 describe('ProductmodifyComponent', () => {
   let component: ProductmodifyComponent;

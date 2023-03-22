@@ -17,7 +17,7 @@ export class BasketService implements OnInit
   public basket: IBasket;
   private basketid: string;
   private basketSource = new BehaviorSubject<IBasket>(null);
-  private basketTotalSource = new BehaviorSubject<IBasketTotal>(null);
+  public basketTotalSource = new BehaviorSubject<IBasketTotal>(null);
   basket$ = this.basketSource.asObservable();
   basketTotal$ = this.basketTotalSource.asObservable();
 
@@ -78,6 +78,15 @@ export class BasketService implements OnInit
       this.basket.items.push(basketItem)
     };
     return this.setBasket();
+  }
+
+  getBasketItem(basketitemid: number) {
+    var temp = this.basket.items.filter((e) => e.id == basketitemid);
+    if (temp.length > 0) {
+      return temp[0];
+    }
+    else
+    {return null;}
   }
 
 

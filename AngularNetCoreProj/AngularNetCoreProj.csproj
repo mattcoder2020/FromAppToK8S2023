@@ -25,10 +25,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\coremodule\nav-menu\basket.json" />
     <None Remove="ClientApp\src\app\coremodule\nav-menu\productservice.ts" />
     <None Remove="ClientApp\src\app\entity\IBasket.ts" />
     <None Remove="ClientApp\src\app\entity\IProduct.ts" />
     <None Remove="ClientApp\src\app\entity\params.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\src\app\coremodule\nav-menu\basket.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

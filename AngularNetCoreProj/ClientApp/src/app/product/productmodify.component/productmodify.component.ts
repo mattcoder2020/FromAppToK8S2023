@@ -19,6 +19,7 @@ export class ProductmodifyComponent implements OnInit {
   public product: IProduct;
   public updateresult: string;
   private basketitem: IBasketItem;
+  private basketitemcount: number;
 
   constructor(private productservice: productservice, private basketservice: BasketService,
     private activatedRoute: ActivatedRoute, private toastr: ToastrService) { }
@@ -32,6 +33,14 @@ export class ProductmodifyComponent implements OnInit {
       (temp: IProduct) => this.product = temp,
       error => console.log(error));
 
+    this.basketitem = this.basketservice.getBasketItem(+this.activatedRoute.snapshot.paramMap.get('id'));
+    if (this.basketitem != null) {
+      this.basketitemcount = this.basketitem.quantity;
+    }
+    else {
+      this.basketitemcount = 0;
+    }
+
   }
 
   Confirm() {
@@ -43,6 +52,21 @@ export class ProductmodifyComponent implements OnInit {
       success => this.toastr.success('Update Successful!', 'Product Update'),
       error => this.toastr.error(error.error.message, error.error.statuscode)
     )
+  }
+
+  incrementItemQuantity(product:IProduct) {
+    this.basketitemcount++;
+    this.basketitem = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: this.basketitemcount,
+      productCategory: product.productCategory.description,
+      productCategoryId: product.productCategoryId
+      
+    }
+
+    this.basketservice.updateBasketItem(this.basketitem);
   }
 
   
