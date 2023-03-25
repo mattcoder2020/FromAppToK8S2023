@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DynamicDI.Query
+namespace OrderService.Query
 {
     public interface IQuery<TResult>
     {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33027.164
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{A638DA2B-D9EA-4DE9-9D40-EC0BA59B1B92}"
 EndProject
@@ -39,6 +39,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularNetCoreProj", "AngularNetCoreProj\AngularNetCoreProj.csproj", "{B8ED03ED-FB88-4518-9247-19A32AF274F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsharpExercise", "CsharpExercise\CsharpExercise.csproj", "{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.IntegrationTest", "OrderServiceIntegrationTest\OrderService.IntegrationTest.csproj", "{1C1B54EA-A05D-4D9F-8E67-D0C795BC0AEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +80,10 @@ Global
 		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1B54EA-A05D-4D9F-8E67-D0C795BC0AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1B54EA-A05D-4D9F-8E67-D0C795BC0AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1B54EA-A05D-4D9F-8E67-D0C795BC0AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1B54EA-A05D-4D9F-8E67-D0C795BC0AEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{253BCF5D-706A-450F-9A47-578156220BD1} = {4E264B36-FC51-4B0E-A841-6EABD0C613AF}
 		{B8ED03ED-FB88-4518-9247-19A32AF274F4} = {413FA903-35D0-44E3-B528-746D24D7A604}
 		{5B57C971-71ED-45DE-AE8D-D0C7A4BCD3C7} = {519819E8-0264-4ADE-9182-9F1EDAC73F1E}
+		{1C1B54EA-A05D-4D9F-8E67-D0C795BC0AEC} = {181528F6-04CC-44D4-91E9-BE64F028E940}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D39E1FFE-C367-4BF8-9A62-8F7EB28C0A31}

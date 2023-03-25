@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
-using DynamicDI.Models;
-using DynamicDI.Query;
-using DynamicDI.QueryHandler;
+using OrderService.Models;
+using OrderService.Query;
+using OrderService.QueryHandler;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DynamicDI.Controllers
+namespace OrderService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

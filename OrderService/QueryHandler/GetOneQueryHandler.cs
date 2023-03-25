@@ -1,11 +1,11 @@
-﻿using DynamicDI.Models;
-using DynamicDI.Query;
+﻿using OrderService.Models;
+using OrderService.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DynamicDI.QueryHandler
+namespace OrderService.QueryHandler
 {
     public class GetOneQueryHandler : IQueryHandler<GetOneQuery, DemoModel>
     {

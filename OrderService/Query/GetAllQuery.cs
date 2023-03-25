@@ -1,10 +1,10 @@
-﻿using DynamicDI.Models;
+﻿using OrderService.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DynamicDI.Query
+namespace OrderService.Query
 {
     public class GetAllQuery : IQuery<List<DemoModel>> 
     {

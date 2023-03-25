@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DynamicDI.Models;
+using OrderService.Models;
 
-namespace DynamicDI.Query
+namespace OrderService.Query
 {
     public class GetOneQuery: IQuery<DemoModel>
     {

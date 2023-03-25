@@ -42,7 +42,7 @@ namespace ProductService.CommandHandlers
             if (existedwithName == null)
             { 
             await repository.AddModel(new Product(command.Id, command.Name, command.CategoryId, command.Price));
-            await _messageBrokerFactory.Publisher.PublishAsync<ProductCreated>(new ProductCreated { Id = command.Id, Name = command.Name }, context);
+            await _messageBrokerFactory.Publisher.PublishAsync<ProductCreated>(new ProductCreated { Id = command.Id, Name = command.Name, Category = command.CategoryId}, context);
             }
             else
             {

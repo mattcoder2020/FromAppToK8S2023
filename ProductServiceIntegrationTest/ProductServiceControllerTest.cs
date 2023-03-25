@@ -46,12 +46,7 @@ namespace ProductService.IntegrationTest
             response.StatusCode.Should().Be(200);                            // received sucess returncode 
             createdEvent.Id.Should().Be(command.Id);                                  // Verify the rabbitmq
             createdEvent.Name.Should().Be(command.Name);
-            //response = await client.GetAsync(endpoint+"/"+ command.Id.ToString());
-            //var entityReturnFromDB = await response.Content.ReadAsAsync<Product>();
-            ////YOU CAN ADD validation to get api to verify if command persisted to DB 
-            //entityReturnFromDB.Id.Should().Be(command.Id);
-            //entityReturnFromDB.Name.Should().Be("demo1");
-
+       
             //Teardown
             await client.DeleteAsync(endpoint + "/" + command.Id.ToString());
         }

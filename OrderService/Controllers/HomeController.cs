@@ -4,13 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using DynamicDI.Models;
+using OrderService.Models;
 using System.Net;
 using System.Net.Sockets;
 using OrderService.Events;
 using Common.Repo;
 
-namespace DynamicDI.Controllers
+namespace OrderService.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace DynamicDI.Models
+namespace OrderService.Models
 {
     public class ErrorViewModel
     {

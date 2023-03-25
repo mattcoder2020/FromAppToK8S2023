@@ -10,12 +10,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OrderService.Events;
+using OrderService.SQLiteDB;
 using Unity;
 
-namespace DynamicDI
+namespace OrderService
 {
     public class Startup
     {
@@ -35,6 +37,8 @@ namespace DynamicDI
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            string connectionstring = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<OrderDBContext>(options => options.UseSqlite(connectionstring));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddJaeger();
             services.AddOpenTracing();
