@@ -24,22 +24,32 @@ namespace OrderService.IntegrationTest
         private readonly GenericSqlServerRepository<Order, OrderDBContext> orderrepo;
         private Product product;
 
-        public OrderServiceControllerTest(WebApplicationFactory<Startup> factory, RabbitMqFixture rabbitmqfixture, OrderDBContext dbcontext)
+        public OrderServiceControllerTest(WebApplicationFactory<Startup> factory, RabbitMqFixture rabbitmqfixture)
         {
             // create a webapi app in memory and its client, so not IP is needed
             client = factory.CreateClient();
+            var services = factory.Server.Host.Services;
+            
             fixture = rabbitmqfixture;
             product = new Product() { Id = 1 };
-            this.dbcontext = dbcontext;
+
+            dbcontext = services.GetService(typeof(OrderDBContext)) as OrderDBContext;
             productrepo = new GenericSqlServerRepository<Product, OrderDBContext>(dbcontext);
             orderrepo = new GenericSqlServerRepository<Order, OrderDBContext>(dbcontext);
         }
+
+        [Fact]
+        public async void deleteitem()
+        {
+            var a = await this.client.DeleteAsync("api/product/1");
+            a.StatusCode.Should().Be(200);
+        }
         [Theory]
-        [InlineData("api/product/")]
+        [InlineData("api/product")]
         public async void Received_GivenNewProduct_ShouldPersistAndQuerable(string apiurl)
         {   //ARRANGE
             string queueName = null;
-            var pc = new ProductCreated { Id = 1, Category = 4, Name = "demo1", Price = new decimal(5.34) };
+            var pc = new ProductCreated { Id = 1000, Category = 4, Name = "demo1", Price = new decimal(5.34) };
                 // post a message 
             await fixture.PublishAsync<ProductCreated>(pc);
 
@@ -58,6 +68,7 @@ namespace OrderService.IntegrationTest
 
             product = await productrepo.FindByPrimaryKey(pc.Id);
 
+            var productFromApi1 = await this.client.GetAsync(apiurl);
             var productFromApi = await this.client.GetAsync(apiurl + "/"+pc.Id);
             var productObjectFromApi = JsonConvert.DeserializeObject<Product>(productFromApi.Content.ReadAsStringAsync().Result);
 

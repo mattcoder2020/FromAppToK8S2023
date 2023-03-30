@@ -41,8 +41,10 @@ namespace ProductService.CommandHandlers
             }
             if (existedwithName == null)
             { 
-            await repository.AddModel(new Product(command.Id, command.Name, command.CategoryId, command.Price));
-            await _messageBrokerFactory.Publisher.PublishAsync<ProductCreated>(new ProductCreated { Id = command.Id, Name = command.Name, Category = command.CategoryId}, context);
+              repository.AddModel(new Product(command.Id, command.Name, command.ProductCategoryId, command.Price));
+              await _dbcontext.SaveChangesAsync();
+                //Send product created event bus msg
+            await _messageBrokerFactory.Publisher.PublishAsync<ProductCreated>(new ProductCreated { Id = command.Id, Name = command.Name, Category = command.ProductCategoryId, Price= command.Price }, context);
             }
             else
             {
@@ -56,7 +58,7 @@ namespace ProductService.CommandHandlers
             if (enumerator.Count() == 0)
             {
                 DataStore<Product>.GetInstance().AddRecord
-                    (new Product(command.Id, command.Name, command.CategoryId, command.Price));
+                    (new Product(command.Id, command.Name, command.ProductCategoryId, command.Price));
                 //Send product created event bus msg
                 await _messageBrokerFactory.Publisher.PublishAsync<ProductCreated>(new ProductCreated { Id = command.Id, Name = command.Name }, context);
             }

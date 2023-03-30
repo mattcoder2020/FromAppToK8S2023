@@ -18,22 +18,22 @@ namespace Common.DataAccess
         {
             _dbcontext = dbcontext;
         }
-        public async Task AddModel(TEntity entity)
+        public void AddModel(TEntity entity)
         {
             _dbcontext.Set<TEntity>().Add(entity);
-            await _dbcontext.SaveChangesAsync();
+           // await _dbcontext.SaveChangesAsync();
         }
 
-        public async Task DeleteModel(TEntity entity)
+        public void DeleteModel(TEntity entity)
         {
             _dbcontext.Set<TEntity>().Remove(entity);
-             await _dbcontext.SaveChangesAsync();
+            // await _dbcontext.SaveChangesAsync();
         }
 
-        public async Task UpdateModel(TEntity entity)
+        public void UpdateModel(TEntity entity)
         {
              _dbcontext.Set<TEntity>().Update(entity);
-            await _dbcontext.SaveChangesAsync();
+           // await _dbcontext.SaveChangesAsync();
         }
 
         public async Task<TEntity> FindByPrimaryKey(int id)

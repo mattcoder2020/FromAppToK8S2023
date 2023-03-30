@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Common.Model;
+using System;
 
 namespace OrderService.Models
 {
-    public class OrderItem
+    public class OrderItem:ModelBase
     {
         public OrderItem()
         {
@@ -16,7 +17,7 @@ namespace OrderService.Models
             Price = price;
             Quantity = quantity;
         }
-        public int Id { get; set; }
+        public int OrderId { get; set; }
         public int Quantity { get; set; }
         public String Name { get; set; }
         public decimal Price { get; set; }

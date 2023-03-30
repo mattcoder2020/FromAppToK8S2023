@@ -22,6 +22,7 @@ import { ErrorInterceptor } from './coremodule/interceptors/error.interceptor';
 import { LoadingInterceptor } from './coremodule/interceptors/loading.interceptor';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BasketComponent } from './product/basket.component/basket.component';
+import { NewproductComponent } from './product/newproduct.component/newproduct.component';
 
  
 
@@ -48,8 +49,9 @@ import { BasketComponent } from './product/basket.component/basket.component';
       { path: 'product', loadChildren: () => import('./product/product.module').then(mod => mod.Productmodule) },
       { path: 'core', loadChildren: () => import('./coremodule/core.module').then(mod => mod.CoreModule) },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'basket', component: BasketComponent }
-      
+      { path: 'basket', component: BasketComponent },
+      { path: 'newproduct', component: NewproductComponent }
+   
     ]),
     BrowserAnimationsModule
   ],

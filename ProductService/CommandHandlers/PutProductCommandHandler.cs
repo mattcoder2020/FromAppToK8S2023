@@ -28,7 +28,7 @@ namespace ProductService.CommandHandlers
         public async Task HandleAsync(PutProductCommand command, ICorrelationContext context)
         {
             var repository = new GenericSqlServerRepository<Product, StoreDBContext>(_dbcontext);
-             await repository.UpdateModel(command.Product);
+             repository.UpdateModel(command.Product);
              await _messageBrokerFactory.Publisher.PublishAsync<ProductUpdated>(new ProductUpdated { Id = command.Product.Id, Name = command.Product.Name, Price = command.Product.Price, Category= command.Product.ProductCategoryId }, context);
             
          }

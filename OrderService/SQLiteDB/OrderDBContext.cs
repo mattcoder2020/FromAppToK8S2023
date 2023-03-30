@@ -2,10 +2,8 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderService.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace OrderService.SQLiteDB
 {
@@ -18,6 +16,7 @@ namespace OrderService.SQLiteDB
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

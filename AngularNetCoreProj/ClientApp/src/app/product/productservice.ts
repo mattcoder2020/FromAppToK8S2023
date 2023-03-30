@@ -25,6 +25,10 @@ export class productservice  {
   updateproduct(product: IProduct) {
     return this.http.put("http://localhost:5002/api/product", product);
   }
+
+  createproduct(product: IProduct) {
+    return this.http.post("http://localhost:5002/api/product", product);
+  }
   getproductsbyfiltration(p: params) {
     let params = new HttpParams();
     //if (p.productcatetoryid != 0)

@@ -11,7 +11,7 @@ namespace OrderService.Models
             
         }
         //create a order class in which aggregate product object in a list
-        public int Id { get; set; }
+        
         public string CustomerName { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }

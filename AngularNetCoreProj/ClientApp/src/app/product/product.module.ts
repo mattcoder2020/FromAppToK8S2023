@@ -10,6 +10,7 @@ import { ProductRouteModule } from './product-route/product-route.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BasketComponent } from './basket.component/basket.component';
 import { CheckoutComponentComponent } from './checkout.component/checkout.component.component';
+import { NewproductComponent } from './newproduct.component/newproduct.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { CheckoutComponentComponent } from './checkout.component/checkout.compon
     NgxSpinnerModule.forRoot()
 
   ],
-  declarations: [ProductDisplayComponent, ProductlistComponent, ProductmodifyComponent, BasketComponent, CheckoutComponentComponent],
+  declarations: [ProductDisplayComponent, ProductlistComponent, ProductmodifyComponent, BasketComponent, CheckoutComponentComponent, NewproductComponent],
   exports: [ProductDisplayComponent, ProductlistComponent]
 })
 export class Productmodule { }

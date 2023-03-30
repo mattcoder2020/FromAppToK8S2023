@@ -14,6 +14,14 @@ namespace OrderService.SQLiteDB
         }
     }
 
+    public class OrderByIdSpec : BaseSpecification<Order>
+    {
+        public OrderByIdSpec(int orderid) :base (e=>e.Id == orderid)
+        {
+            base.AddIncludes(e => e.OrderItems);
+        }
+    }
+
     //public class ProductByNameSpec : BaseSpecification<Product>
     //{
     //    public ProductByNameSpec(string productname) : base(e => e.Name == productname)

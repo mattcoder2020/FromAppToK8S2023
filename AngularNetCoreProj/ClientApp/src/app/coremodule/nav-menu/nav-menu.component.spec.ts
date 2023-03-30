@@ -45,7 +45,7 @@ describe('NavMenuComponent', () => {
 
     let baskettotal: IBasketTotal = new IBasketTotal();
     baskettotal.total = 3;
-    basketservice.basket$.basketTotalSource.next(baskettotal);
+    //basketservice.basket$.basketTotalSource.next(baskettotal);
     fixture.detectChanges();
     const titleText = fixture.nativeElement.querySelector('basket').textContent;
     expect(titleText).toEqual(3);

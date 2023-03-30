@@ -5,6 +5,9 @@ import { IBasketTotal } from "../../entity/IBasketTotal";
 import { IBasketItem } from '../../entity/IBasketItem';
 import { BasketService } from '../basket.service';
 import { ToastrService } from 'ngx-toastr';
+import { IOrder } from 'src/app/entity/IOrder';
+import { OrderService } from 'src/app/order/orderservice';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-basket',
@@ -14,14 +17,16 @@ import { ToastrService } from 'ngx-toastr';
 export class BasketComponent implements OnInit  {
 
   public basket: IBasket;
+  public order: IOrder;
   public basket$: Observable<IBasket>;
   public basketTotalQuantity$: Observable<IBasketTotal>;
-  constructor(private basketservice: BasketService,
+  constructor(private basketservice: BasketService, private orderservice: OrderService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
    
     this.basketservice.getBasket();
+    this.order = new IOrder();
     //this.basket = this.basketservice.basket;
     this.basket$ = this.basketservice.basket$;
     this.basketTotalQuantity$ = this.basketservice.basketTotal$;
@@ -30,10 +35,10 @@ export class BasketComponent implements OnInit  {
 
   decrementItemQuantity(item: IBasketItem) {
     if (item.quantity > 0) item.quantity--;
-    this.basketservice.updateBasketItem(item).subscribe
+    this.basketservice.updateBasketItem(item).
+    subscribe
       (
-        success=>
-        error => this.toastr.error(error.error.message, error.error.statuscode)
+        error => this.toastr.error("Failed to update the basket", "Error")
       );
 
   }
@@ -41,11 +46,17 @@ export class BasketComponent implements OnInit  {
   incrementItemQuantity(item: IBasketItem) {
     item.quantity++;
     this.basketservice.updateBasketItem(item).subscribe
-      (
-        success =>
-          error => this.toastr.error(error.error.message, error.error.statuscode)
-      );
-  }
-  
+              (
+          error => this.toastr.error("Failed to update the basket", "Error")
+        );
+      }
+
+  placeorder(){
+    this.orderservice.createorder(this.order).subscribe
+    (
+      success =>this.toastr.success("Order created successfully", "Success"),
+      error => this.toastr.error(error.error.message, error.error.statuscode)
+    );
+ } 
 
 }

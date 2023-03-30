@@ -1,5 +1,6 @@
 ﻿using Common.Messages;
 using Common.RabbitMQ;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,4 +12,9 @@ namespace Common.Handlers
     {
         Task<Task> HandleAsync(TEvent @event, ICorrelationContext context);
     }
+
+    //public interface IEventHandler<TEvent, TDbContext> where TEvent : IEvent where TDbContext : DbContext
+    //{
+    //    Task<Task> HandleAsync(TEvent @event, TDbContext dbcontext, ICorrelationContext context);
+    //}
 }

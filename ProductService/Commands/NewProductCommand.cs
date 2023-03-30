@@ -9,7 +9,7 @@ namespace ProductService.Commands
     {
             public int Id { get; set; }
             public String Name { get; set; }
-            public int CategoryId { get; set; }
+            public int ProductCategoryId { get; set; }
             public decimal Price { get; set; }
             public ICorrelationContext Context { get; set; }
     }

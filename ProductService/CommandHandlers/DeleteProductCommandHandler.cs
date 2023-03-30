@@ -25,10 +25,11 @@ namespace ProductService.CommandHandlers
             _dbcontext = dbcontext;
             //appMetric = AppMetric;
         } 
-        public async Task HandleAsync(DeleteProductCommand command, ICorrelationContext context)
+        public Task HandleAsync(DeleteProductCommand command, ICorrelationContext context)
         {
             var repository = new GenericSqlServerRepository<Product, StoreDBContext>(_dbcontext);
-             await repository.DeleteModel(new Product(command.Id, string.Empty, 0, 0));
+            repository.DeleteModel(new Product(command.Id, string.Empty, 0, 0));
+            return Task.CompletedTask;
             //await _messageBrokerFactory.Publisher.PublishAsync<ProductCreated>(new ProductCreated { Id = command.Id, Name = command.Name }, context);
             
          }
