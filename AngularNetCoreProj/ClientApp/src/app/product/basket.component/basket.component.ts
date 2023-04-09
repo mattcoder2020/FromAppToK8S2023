@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IOrder } from 'src/app/entity/IOrder';
 import { OrderService } from 'src/app/order/orderservice';
 import { catchError } from 'rxjs/operators';
+import { IOrderItem } from '../../entity/OrderItem';
 
 @Component({
   selector: 'app-basket',
@@ -34,12 +35,22 @@ export class BasketComponent implements OnInit  {
   }
 
   decrementItemQuantity(item: IBasketItem) {
+    //how to remove the basket item from the basket if the quantity is 0
+
     if (item.quantity > 0) item.quantity--;
+    if (item.quantity == 0) this.basketservice.removeItemFromBasket(item).subscribe
+    (
+      error => this.toastr.error("Failed to update the basket", "Error")
+    )
+    else
+    {
     this.basketservice.updateBasketItem(item).
     subscribe
       (
+        success =>
         error => this.toastr.error("Failed to update the basket", "Error")
       );
+    }
 
   }
 
@@ -51,12 +62,32 @@ export class BasketComponent implements OnInit  {
         );
       }
 
-  placeorder(){
-    this.orderservice.createorder(this.order).subscribe
-    (
-      success =>this.toastr.success("Order created successfully", "Success"),
-      error => this.toastr.error(error.error.message, error.error.statuscode)
-    );
+  placeorder() {
+    const requiredFields = ['username', 'email','phone'];
+    const invalidFields = requiredFields.filter(field => !this.order[field]);
+
+    if (requiredFields.length) {
+      requiredFields.forEach(field => {
+        const input = document.querySelector(`[name=${field}]`);
+        input.classList.add('is-invalid');
+      });
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    else {
+      this.basketservice.basket.items.forEach((i) =>
+        this.order.orderItems.push(new IOrderItem(i.id, i.name, this.order.id, i.quantity, i.price, i.productCategoryId)));
+      this.orderservice.createorder(this.order).subscribe
+        (success => {
+          this.toastr.success("Order created successfully", "Success");
+          this.basketservice.deleteBasket().subscribe(
+            success =>
+              error => this.toastr.error("Failed to delete the basket", "Error")
+          )
+        },
+          error => this.toastr.error(error.error.message, error.error.statuscode)
+        );
+    }
  } 
 
 }

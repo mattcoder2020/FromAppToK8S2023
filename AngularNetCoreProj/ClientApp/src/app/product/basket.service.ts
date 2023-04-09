@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 @Injectable({ providedIn: "root" })
 export class BasketService implements OnInit
 {
-
+ 
   public basket: IBasket;
   private basketid: string;
   private basketSource = new BehaviorSubject<IBasket>(null);
@@ -23,20 +23,26 @@ export class BasketService implements OnInit
 
   constructor(private http: HttpClient) {
    
-    this.basketid = localStorage.getItem("basketid");
-    if (this.basketid == null) {
-      this.basketid = uuidv4();
-      localStorage.setItem("basketid", this.basketid);
-     
-    }
+    this.basketid = this.getBasketId();
     this.basket = new IBasket();
     this.basket.basketid = this.basketid;
+    this.getBasket();
   
   }
 
   ngOnInit(): void {
     
-   }
+  }
+
+  getBasketId(): string {
+    let id = localStorage.getItem("basketid");
+    if (id == null) {
+      id = uuidv4();
+      localStorage.setItem("basketid", id);
+    }
+    return id;
+
+  }
 
   getBasket() {
     this.http.get<(IBasket)>(environment.apiurlBasket + "/" + this.basketid)
@@ -59,8 +65,21 @@ export class BasketService implements OnInit
 
   }
   setBasket() {
-    return this.http.post("http://localhost:5002/api/basket/", this.basket).pipe(map(
+    return this.http.post("http://localhost:5002/api/basket/", this.basket).pipe(
+      map(
       sucess => {
+        this.basketSource.next(this.basket);
+        this.calculateTotalQuantity(this.basket);
+      }
+    ));
+  }
+
+  deleteBasket() {
+    let url = "http://localhost:5002/api/basket/" + this.getBasketId();
+    return this.http.delete(url).pipe(
+      map(
+      sucess => {
+        this.basket = new IBasket();
         this.basketSource.next(this.basket);
         this.calculateTotalQuantity(this.basket);
       }
@@ -80,6 +99,13 @@ export class BasketService implements OnInit
     return this.setBasket();
   }
 
+  removeItemFromBasket(item: IBasketItem) {
+    //write code to remove the item from the basket.items collection
+    this.basket.items =     this.basket.items.filter((e) => e.id != item.id); 
+    return this.setBasket();  
+  }   
+ 
+
   getBasketItem(basketitemid: number) {
     var temp = this.basket.items.filter((e) => e.id == basketitemid);
     if (temp.length > 0) {
@@ -89,6 +115,7 @@ export class BasketService implements OnInit
     {return null;}
   }
 
+  
 
   ProductToBasketItem(product: IProduct): IBasketItem
   {

@@ -52,7 +52,7 @@ namespace ProductService.API.Controllers
         }
 
         // DELETE api/<BasketController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{basketid}")]
         public void Delete(string basketid)
         {
             redisrepo.DeleteById(basketid);

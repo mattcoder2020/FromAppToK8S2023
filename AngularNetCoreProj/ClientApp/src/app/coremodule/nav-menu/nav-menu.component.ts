@@ -14,7 +14,9 @@ export class NavMenuComponent {
   basketTotalQuantity$: Observable<IBasketTotal>;
   
   constructor(private basketservice: BasketService) {
+    
     this.basketTotalQuantity$ = basketservice.basketTotal$;
+   
   }
   collapse() {
     this.isExpanded = false;

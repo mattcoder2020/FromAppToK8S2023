@@ -30,7 +30,6 @@ namespace OrderService.Services
         public async Task<Order> AddOrder(Order order)
         {
             var repo = new GenericSqlServerRepository<Order, OrderDBContext>(DbContext);
-            repo.AddModel(order);
             var orderItemRepo = new GenericSqlServerRepository<OrderItem, OrderDBContext>(DbContext);
             var productRepo = new GenericSqlServerRepository<Product, OrderDBContext>(DbContext);
 
@@ -45,7 +44,11 @@ namespace OrderService.Services
                 item.ProductCategory = product.ProductCategoryId;
                 orderItemRepo.AddModel(item);
             }
+            //calculate sum of order.orderitems by aggregate price multiply by quantity in each order item
+            order.Total = order.OrderItems.Sum(i=>i.Price*i.Quantity);
+            repo.AddModel(order);
             await DbContext.SaveChangesAsync();
+            DbContext.Dispose();
             return order;
         }
 

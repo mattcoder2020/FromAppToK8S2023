@@ -10,7 +10,7 @@ export class IOrder {
     paymentMethod: string
     orderStatus: number
     orderDate: string
-    orderItems: IOrderItem[]
+    orderItems:IOrderItem[] =[]
     id: number
   }
   

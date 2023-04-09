@@ -43,7 +43,15 @@ namespace OrderService
             services.AddJaeger();
             services.AddOpenTracing();
             services.AddGaugeMetric();
-         // services.AddConsul();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", cors =>
+                        cors.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials());
+            });
+            // services.AddConsul();
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly())
                 .AsImplementedInterfaces();
@@ -72,7 +80,8 @@ namespace OrderService
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            
+            app.UseCors("CorsPolicy");
+
 
             app.UseMvc(routes =>
             {
