@@ -21,5 +21,10 @@ namespace OrderService.Events
             Price = price;
         }
         public ICorrelationContext Context { get; set; }
+
+        public ProductCreatedRejected OnError(ProductCreated p, Exception exception)
+        {
+            return new ProductCreatedRejected { Code = p.Id.ToString(), Reason = exception.Message };
+        }
     }
 }

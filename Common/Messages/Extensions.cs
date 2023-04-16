@@ -20,6 +20,8 @@ using RawRabbit.Pipe;
 using System.Threading;
 using RawRabbit;
 using RawRabbit.Enrichers.MessageContext;
+using System.Linq;
+using Microsoft.Azure.ServiceBus;
 
 namespace Common.Messages
 {
@@ -133,6 +135,45 @@ namespace Common.Messages
             return messageBrokerFactory.Subscriber;
 
 
+        }
+
+        public static IBusSubscriber SubscribeAllMessages<TMessage>
+            (this IBusSubscriber subscriber, string subscribeMethod)
+        {
+            Func<IEvent, Exception, IRejectedEvent> taskFunc;
+            //{ return (Delegate)mt.GetMethod("OnError").Invoke(null, new object[] { message, exception }); };
+            var messageTypes = Assembly.GetEntryAssembly().GetTypes().AsQueryable()
+                .Where(t => t.IsClass && typeof(TMessage).IsAssignableFrom(t))
+                //  .Where(t => !ExcludedMessages.Contains(t))
+                .ToList();
+
+            messageTypes.ForEach(mt => subscriber.GetType()
+                .GetMethod(subscribeMethod)
+                .MakeGenericMethod(mt)
+                .Invoke(subscriber,
+                    new object[] {
+                        mt.GetCustomAttribute<MessageNamespaceAttribute>()?.Namespace,
+                        mt.GetCustomAttribute<SubscriptionNamespaceAttribute>()?.Namespace,
+                        OnError("OrderService.Events.ProductCreatedOnErrorHandler")
+        }));
+
+            return subscriber;
+        }
+
+        private static Delegate OnError(string eventhandlername)
+            {
+            //how to get the type with just classname
+
+            String name = eventhandlername + ", " + Assembly.GetEntryAssembly().GetName().Name;
+            Type errorHandlerType = Type.GetType(name);
+
+            MethodInfo errorHandlerFactory = errorHandlerType.GetMethod("OnError"); // replace "Create" with the name of your error handler factory method
+            return Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(typeof(IEvent), typeof(Exception), typeof(IRejectedEvent)),null,  errorHandlerFactory);
+            //How to resolve following error
+            //Cannot bind to the target method because its signature or security transparency is not compatible with that of the delegate type
+
+
+            //return Delegate.CreateDelegate(funcType, evType, "OnError");
         }
 
         private class CustomNamingConventions : NamingConventions

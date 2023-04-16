@@ -12,6 +12,7 @@ using Common.Messages;
 using Common.Metrics;
 using Common.Web.Middleware;
 using Common.Swagger;
+using InventoryService.Events;
 
 namespace InventoryService
 {
@@ -57,10 +58,10 @@ namespace InventoryService
             app.UseStatusCodePagesWithReExecute("/error/{0}");
             app.UseSwaggerA();
 
-            //app.UseMessageService()    //get the messaging utility factory instance from the IOC mapper, either rabbitmq or azurebus 
-            //    .SubscribeEvent<ProductCreated>(@namespace:"Matt-product",queueName:"Matt-product", 
-            //    onError: (message, exception) =>  //Place a parameterized call back to the subscribe function
-            //    new ProductCreatedRejected { Code = message.Id.ToString(), Reason = exception.Message });
+            app.UseMessageService()    //get the messaging utility factory instance from the IOC mapper, either rabbitmq or azurebus 
+                .SubscribeEvent<ProductCreated>(@namespace: "Matt-product", queueName: "Matt-product",
+                onError: (message, exception) =>  //Place a parameterized call back to the subscribe function
+                new ProductCreatedRejected { Code = message.Id.ToString(), Reason = exception.Message });
 
             app.UseMvc();
         }
