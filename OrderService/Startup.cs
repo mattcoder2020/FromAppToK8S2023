@@ -75,7 +75,7 @@ namespace OrderService
             //app.UseRabbitMq().SubscribeEvent<ProductCreated>(@namespace : "matt-product", 
             //    onError: (message, exception)=>new ProductCreatedRejected { Code=message.Id.ToString(), Reason=exception.Message} );
 
-            app.UseMessageService().SubscribeAllMessages<IEvent>("SubscribeEvent");
+            app.UseMessageService().SubscribeAllMessages<IEvent>("SubscribeEvent", app);
             //how to make the function invoked using .net reflection method
                         
   //          app.UseMessageService().SubscribeEvent<ProductCreated>(@namespace: "Matt-Product", queueName: "Matt-Product",

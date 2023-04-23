@@ -138,13 +138,10 @@ namespace Common.Messages
         }
 
         public static IBusSubscriber SubscribeAllMessages<TMessage>
-            (this IBusSubscriber subscriber, string subscribeMethod)
+            (this IBusSubscriber subscriber, string subscribeMethod, IApplicationBuilder builder)
         {
-            Func<IEvent, Exception, IRejectedEvent> taskFunc;
-            //{ return (Delegate)mt.GetMethod("OnError").Invoke(null, new object[] { message, exception }); };
             var messageTypes = Assembly.GetEntryAssembly().GetTypes().AsQueryable()
                 .Where(t => t.IsClass && typeof(TMessage).IsAssignableFrom(t))
-                //  .Where(t => !ExcludedMessages.Contains(t))
                 .ToList();
 
             messageTypes.ForEach(mt => subscriber.GetType()
@@ -154,16 +151,32 @@ namespace Common.Messages
                     new object[] {
                         mt.GetCustomAttribute<MessageNamespaceAttribute>()?.Namespace,
                         mt.GetCustomAttribute<SubscriptionNamespaceAttribute>()?.Namespace,
-                        OnError("OrderService.Events.ProductCreatedOnErrorHandler")
+                        OnError(mt, builder)
         }));
-
             return subscriber;
+        }
+
+        private static Delegate OnError(Type eventtype, IApplicationBuilder builder)
+        {
+            IComponentContext _context = builder.ApplicationServices.GetService<IComponentContext>();
+            var handleType = typeof(IEventOnErrorHandler<>).MakeGenericType(eventtype);
+            object obj;
+            try
+            {
+                obj = _context.Resolve(handleType);
+            }
+            catch
+            {
+                return null;
+            }
+            Type ht = obj.GetType();
+            MethodInfo method = ht.GetMethod("OnError");
+                  
+            return Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(eventtype, typeof(Exception), typeof(IRejectedEvent)), null, method);
         }
 
         private static Delegate OnError(string eventhandlername)
             {
-            //how to get the type with just classname
-
             String name = eventhandlername + ", " + Assembly.GetEntryAssembly().GetName().Name;
             Type errorHandlerType = Type.GetType(name);
 

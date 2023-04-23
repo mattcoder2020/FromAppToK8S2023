@@ -1,13 +1,74 @@
 ﻿using CsharpExercise.Lambda;
 using CsharpExercise.Photos;
 using System;
+using System.Linq;
 
 namespace CsharpExercise
 {
     class Program
     {
+        private static int Calpoint(string[] str)
+        {
+            //valide if the array exceeds 1000
+            if (str.Length > 1000)
+                throw new ApplicationException("lengh exceeded 1000");
+            int sum = 0;
+            //prepare an int array
+            var arr = new int[1000];
+            int count = 0;
+
+            //traverse the array,
+            foreach (string s in str)
+            {
+                //Int tryparse ;
+                int temp;
+                if (int.TryParse(s, out temp) == true)
+                {
+                    //if tryparse success, add to the array
+                    arr[count] = temp;
+
+                    if (temp > 3 * 104 || temp < -3 * 104)
+                        throw new ApplicationException("element " + temp + " is out of threshold");
+                    //if element is larger than small than throw error
+
+                    count++;
+
+                }
+                else
+                {
+                    //if tryparse fail, apply the rule and add to the array
+                    switch (s.ToLower())
+                    {
+                        case "d":
+                            arr[count] = arr[count - 1] * 2;
+                            count++;
+                            break;
+                        case "c":
+                            arr[count] = 0;
+                            count--;
+                            break;
+                        case "+":
+                            arr[count] = arr[count - 1] + arr[count - 2];
+                            count++;
+                            break;
+                        default:
+                            throw new ApplicationException("invalid operator");
+
+
+                    }
+
+                }
+                //provide the sum
+
+            }
+            return arr.Sum();
+        }
+
         static void Main(string[] args)
         {
+            string[] str = new string[] { "5", "2", "c", "d", "+" };
+
+            int sum = Calpoint(str);
             SortString(new string[] { "aacd", "bbcd", "aaac", "abc" });
             SortIntegers(new int[] { 4, 3, 1, 2 });
             int[] Fibonics = FindFibonics(10);
@@ -50,6 +111,8 @@ namespace CsharpExercise
             Event.Controller.SubscribeToPub();
 
         }
+
+        
         //   Input: 10
         //   Output: 0 1 1 2 3 5 8 13 21 34 55
         private static int[] FindFibonics(int v)
