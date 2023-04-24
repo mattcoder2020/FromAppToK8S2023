@@ -61,7 +61,7 @@ export class ProductmodifyComponent implements OnInit {
       name: product.name,
       price: product.price,
       quantity: this.basketitemcount,
-      productCategory: product.productCategory.description,
+      productCategory: product.productCategory.Description,
       productCategoryId: product.productCategoryId
       
     }

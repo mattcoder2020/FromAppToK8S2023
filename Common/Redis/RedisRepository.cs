@@ -21,6 +21,19 @@ namespace Common.Redis
             return await redis.StringSetAsync(id, JsonSerializer.Serialize(entity), TimeSpan.FromDays(3));
         }
 
+        public async Task<bool> Add(string id, T entity, int timesecstolive)
+        {
+            return await redis.StringSetAsync(id, JsonSerializer.Serialize(entity), TimeSpan.FromSeconds(timesecstolive));
+        }
+
+  
+        public async Task<bool> Add(string id, object entity, int timesecstolive)
+        {
+            //JsonSerializer.Serialize should preserve casing of the json object's property
+            //
+            return await redis.StringSetAsync(id, JsonSerializer.Serialize(entity, new JsonSerializerOptions { PropertyNameCaseInsensitive =true }), TimeSpan.FromSeconds(timesecstolive));
+        }
+
         public async Task<bool> DeleteById(string id)
         {
             return await redis.KeyDeleteAsync(id);
@@ -33,6 +46,12 @@ namespace Common.Redis
                 return default(T);
             else
                 return JsonSerializer.Deserialize<T>(returnvalue);
+        }
+
+        public async Task<string> GetStringById(string id)
+        {
+            var returnvalue = await redis.StringGetAsync(id);
+            return returnvalue.ToString(); 
         }
     }
 }

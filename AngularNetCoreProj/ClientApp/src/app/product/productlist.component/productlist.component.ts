@@ -34,7 +34,7 @@ export class ProductlistComponent implements OnInit {
 
   getallproductCategory() {
     this.ps1.getallCategory().subscribe(
-      (prodcats: IProductCategory[]) => this.productcategories = [{ id: 0, description: 'All' }, ...prodcats],
+      (prodcats: IProductCategory[]) => this.productcategories = [{ Id: 0, Description: 'All' }, ...prodcats],
       error => { console.log(error) });
   }
 

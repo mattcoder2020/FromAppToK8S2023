@@ -9,9 +9,9 @@
     <h5 class="card-title">Category</h5>
     <ul class="list-group mb-3">
       <li class="list-group-item" *ngFor="let p of productcategories"
-          [class.active]="p.id==selectedproductcategoryid" [value]="p.id"
-          (click)="onCategorySelected(p.id)">
-        {{p.description}}
+          [class.active]="p.Id==selectedproductcategoryid" [value]="p.Id"
+          (click)="onCategorySelected(p.Id)">
+        {{p.Description}}
       </li>
     </ul>
   </section>

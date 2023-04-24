@@ -123,7 +123,7 @@ export class BasketService implements OnInit
       id: product.id,
       name : product.name,
       price : product.price,
-      productCategory : product.productCategory.description,
+      productCategory : product.productCategory.Description,
       productCategoryId: product.productCategoryId,
       quantity : 0
     };

@@ -21,7 +21,8 @@
     <div class="col-md-4">
       <label for="inputState" class="form-label">Product Category</label>
       <select name="inputState" class="form-select" [(ngModel)]="product.productCategoryId">
-        <option *ngFor="let c of productcategories" [selected]="product.productCategoryId == c.id" value={{c.id}}>{{c.description}}</option>
+        <!--<option *ngFor="let c of productcategories" [selected]="product.productCategoryId == c.id" value={{c.id}}>{{c.description}}</option>-->
+        <option *ngFor="let c of productcategories" [selected]="product.productCategoryId == c.Id" value={{c.Id}}>{{c.Description}}</option>
       </select>
     </div>
     <div class="col-12">

@@ -14,6 +14,7 @@ using ProductService.Commands;
 using ProductService.Models;
 using ProductService.Query;
 using ProductService.QueryHandler;
+using Common.Redis;
 
 namespace ProductService.Controllers.API
 {
@@ -71,6 +72,7 @@ namespace ProductService.Controllers.API
         //}
 
         [HttpGet]
+       // [Cache(600)]
         [AppMetricCount(MetricName: "Get-allProductByFiltration")]
         public async Task<Product[]> GetallProductByFiltration([FromQuery] QueryParams productparams)
         {
@@ -80,6 +82,7 @@ namespace ProductService.Controllers.API
         }
 
         [HttpGet]
+        [Cache(600)]
         [Route("productcategory")]
         [AppMetricCount(MetricName: "Get-allProductCateory")]
         public async Task<ProductCategory[]> GetallCategory()
