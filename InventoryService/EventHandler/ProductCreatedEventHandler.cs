@@ -1,26 +1,34 @@
-﻿using Common.Exceptions;
+﻿using Common.DataAccess;
+using Common.Exceptions;
 using Common.Handlers;
 using Common.Messages;
-using Common.Repo;
 using InventoryService.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using InventoryService.Models;
+using InventoryService.NpgSqlDB;
 using System.Threading.Tasks;
 
 namespace InventoryService.EventHandler
 {
     public class ProductCreatedEventHandler:IEventHandler<ProductCreated>
     {
-        public async Task<Task> HandleAsync (ProductCreated @event, ICorrelationContext context)
+        private readonly InventoryDBContext dbcontext;
+        public ProductCreatedEventHandler(InventoryDBContext dbcontext)
         {
-            var datastore = DataStore<ProductCreated>.GetInstance();
-            var list = await datastore.GetRecords(i => i.Name == @event.Name);
-            if (list.Count() > 0)
-                throw new CustomizedException<ProductCreatedEventHandler>("HandleAsync-ProductExisted");
+            this.dbcontext = dbcontext;
+        }
 
-            datastore.AddRecord(@event);
-            return Task.CompletedTask;
+        public async Task<Task> HandleAsync(ProductCreated @event, ICorrelationContext context)
+        {
+
+            var repo = new GenericSqlServerRepository<Product, InventoryDBContext>(dbcontext);
+            var obj = await repo.FindByPrimaryKey(@event.Id);
+            if (obj == null)
+            {
+                repo.AddModel(new Product() { Id = @event.Id, Name = @event.Name, Price = @event.Price, ProductCategoryId = @event.Category });
+                await dbcontext.SaveChangesAsync();
+                return Task.CompletedTask;
+            }
+            throw new CustomizedException<ProductCreatedEventHandler>("HandleAsync-ProductExisted");
         }
     }
 }

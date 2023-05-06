@@ -13,6 +13,8 @@ using Common.Metrics;
 using Common.Web.Middleware;
 using Common.Swagger;
 using InventoryService.Events;
+using Microsoft.EntityFrameworkCore;
+using InventoryService.NpgSqlDB;
 
 namespace InventoryService
 {
@@ -35,7 +37,16 @@ namespace InventoryService
                 AddGaugeMetric();
 
             services.AddSwagger();
-
+            string connectionstring = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<InventoryDBContext>(options => options.UseNpgsql(connectionstring));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", cors =>
+                        cors.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                            .AllowCredentials());
+            });
             //Leverage Autofac to add all types including the interface and implementation base on paraemeter type
             var builder = new ContainerBuilder();
             builder.RegisterAssemblyTypes(Assembly.GetEntryAssembly()).AsImplementedInterfaces();
@@ -57,12 +68,13 @@ namespace InventoryService
             app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseStatusCodePagesWithReExecute("/error/{0}");
             app.UseSwaggerA();
+            app.UseCors("CorsPolicy");
 
-            app.UseMessageService()    //get the messaging utility factory instance from the IOC mapper, either rabbitmq or azurebus 
-                .SubscribeEvent<ProductCreated>(@namespace: "Matt-product", queueName: "Matt-product",
-                onError: (message, exception) =>  //Place a parameterized call back to the subscribe function
-                new ProductCreatedRejected { Code = message.Id.ToString(), Reason = exception.Message });
-
+            //app.UseMessageService()    //get the messaging utility factory instance from the IOC mapper, either rabbitmq or azurebus 
+            //    .SubscribeEvent<ProductCreated>(@namespace: "Matt-product", queueName: "Matt-product",
+            //    onError: (message, exception) =>  //Place a parameterized call back to the subscribe function
+            //    new ProductCreatedRejected { Code = message.Id.ToString(), Reason = exception.Message });
+            app.UseMessageService().SubscribeAllMessages<IEvent>("SubscribeEvent", app);
             app.UseMvc();
         }
     }

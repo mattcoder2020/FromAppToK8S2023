@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { IBasket } from '../../entity/IBasket';
 import { IBasketItem } from '../../entity/IBasketItem';
 import { IProduct } from '../../entity/IProduct';
 import { IProductCategory } from '../../entity/IProductCategory';
-import { params } from '../../entity/params';
 import { BasketService } from '../basket.service';
 import { productservice } from '../productservice';
 

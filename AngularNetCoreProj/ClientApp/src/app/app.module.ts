@@ -23,13 +23,13 @@ import { LoadingInterceptor } from './coremodule/interceptors/loading.intercepto
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BasketComponent } from './product/basket.component/basket.component';
 import { NewproductComponent } from './product/newproduct.component/newproduct.component';
+import { InventoryComponent } from './inventory/inventory.component/inventory.component';
 
  
 
 @NgModule({
   declarations: [
     AppComponent,
-    //NavMenuComponent,
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
@@ -39,14 +39,12 @@ import { NewproductComponent } from './product/newproduct.component/newproduct.c
     HttpClientModule,
     CoreModule,
     NgxSpinnerModule,
-  //  ProductRouteModule,
-  //  Productmodule,
-   // StoreModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'product', loadChildren: () => import('./product/product.module').then(mod => mod.Productmodule) },
+      { path: 'inventory', loadChildren: () => import('./inventory/inventorymodule/inventorymodule.module').then(mod => mod.InventorymoduleModule) },
       { path: 'core', loadChildren: () => import('./coremodule/core.module').then(mod => mod.CoreModule) },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'basket', component: BasketComponent },

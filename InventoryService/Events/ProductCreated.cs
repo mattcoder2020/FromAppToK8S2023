@@ -10,8 +10,19 @@ namespace InventoryService.Events
     [MessageNamespace("Matt-Product")]
     public class ProductCreated : IEvent
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public String Name { get; set; }
+        public int Category { get; set; }
+        public decimal Price { get; set; }
+
+        public ProductCreated(int id, String name, int productCategoryId, decimal price)
+        {
+            Id = id;
+            Name = name;
+            Category = productCategoryId;
+            Price = price;
+        }
         public ICorrelationContext Context { get; set; }
+
     }
 }

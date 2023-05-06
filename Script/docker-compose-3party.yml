@@ -45,17 +45,17 @@ services:
       - redis-data:/data
      
 
-  redis-commander:
-    image: rediscommander/redis-commander:latest
-    environment:
-      - REDIS_HOSTS=local:redis:6379       
-       #- REDIS_HOSTS=laptop-IPS8SK8E:redis:6379
-      - HTTP_USER=root
-      - HTTP_PASSWORD=secret
-    ports:
-      - 8081:8081
-    depends_on:
-      - redis
+  #redis-commander:
+  #  image: rediscommander/redis-commander:latest
+  #  environment:
+  #    - REDIS_HOSTS=local:redis:6379       
+  #     #- REDIS_HOSTS=laptop-IPS8SK8E:redis:6379
+  #    - HTTP_USER=root
+  #    - HTTP_PASSWORD=secret
+  #  ports:
+  #    - 8081:8081
+  #  depends_on:
+  #    - redis
    
   seq:
     image: datalust/seq 
@@ -83,7 +83,19 @@ services:
       - my-network
     # network_mode: host
 
- 
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: appuser
+    ports: 
+      - 5432:5432
+    networks:
+      - my-network
+    volumes:
+      - postgre-data:/data
+
 networks:
   my-network:
     #name: my-network
@@ -91,4 +103,5 @@ networks:
 
 volumes:
   redis-data:
+  postgre-data:
 

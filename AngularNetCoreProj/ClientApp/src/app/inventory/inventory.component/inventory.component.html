@@ -1,0 +1,40 @@
+<!--<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="small" color="#fff" type="timer" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>-->
+<h1 class="display-4 fw-normal">Inventory Product List</h1>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center" data-example-id="list-group-anchors">
+  <section class=col-2>
+    <h5 class="card-title">Category</h5>
+    <ul class="list-group mb-3" *ngIf="productcategories">
+      <li class="list-group-item" *ngFor="let p of productcategories"
+          [class.active]="p.Id==selectedproductcategoryid" [value]="p.Id"
+          (click)="onCategorySelected(p.Id)">
+        {{p.Description}}
+      </li>
+    </ul>
+  </section>
+  <section class=col-9>
+    <ng-container *ngIf="products">
+      <form class="row g-3">
+
+        <div class="row mb-3 text-center">
+          <div class="col-md-8 themed-grid-col">Product Detail</div>
+          <div class="col-6 col-md-4 themed-grid-col">Action</div>
+        </div>
+
+        <div class="col" *ngFor="let product of products; let i = index">
+          <div class="row mb-3 text-center">
+            <div class="col-md-8 themed-grid-col"> {{products[i].id}} - {{products[i].name}}  Price: {{products[i].price | currency}}</div>
+            <div class="col-6 col-md-4 themed-grid-col">
+              <input id="quantity-{{product.id}}" name="quantity-{{product.id}}" [(ngModel)]="products[i].quantity" value={{products[i].quantity}} (ngModelChange)="onQuantityChange(products[i], $event)" />
+             
+            </div>
+            <div class="col-6 col-md-4 themed-grid-col">
+              <button type="button" class="btn btn-secondary" (click)="updatequantity(product)">Update</button>
+            </div>
+          </div>
+         </div>
+      </form>
+
+    </ng-container>
+   
+  </section>
+</div>

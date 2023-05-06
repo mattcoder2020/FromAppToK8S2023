@@ -3,19 +3,20 @@
   <form class="row g-3">
     <div class="col-md-6" *ngIf="product">
       <label for="inputEmail4" class="form-label">ID</label>
-      <input class="form-control" name="pid" value={{product.id}}>
+      <input class="form-control" name="id" [(ngModel)]="product.id" value={{product.id}}>
     </div>
     <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Name</label>
-      <input class="form-control" name="pname" value={{product.name}}>
+      <label for="inputPassword4" class="form-label">Name: {{product.name}}</label>
+      <input class="form-control" [(ngModel)]="product.name" name="name" value={{product.name}}>
+
     </div>
     <div class="col-12">
       <label for="inputAddress" class="form-label">Price</label>
-      <input class="form-control" name="inputAddress" value={{product.price}}>
+      <input class="form-control" [(ngModel)]="product.price" name="price" value={{product.price}}>
     </div>
     <div class="col-md-4">
       <label for="inputState" class="form-label">Product Category</label>
-      <select name="inputState" class="form-select">
+      <select [(ngModel)]="product.productCategoryId" name="productCategoryId" class="form-select">
         <option *ngFor="let c of productcategories" [selected]="product.productCategoryId == c.Id" value={{c.Id}}>{{c.Description}}</option>
       </select>
     </div>

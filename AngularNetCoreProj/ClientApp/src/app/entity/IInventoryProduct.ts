@@ -1,10 +1,10 @@
 import { IProductCategory } from "./IProductCategory";
 
-export class IProduct {
+export class IInventoryProduct {
   name: string;
   productCategoryId: number;
   price: number;
-  productCategory: IProductCategory;
   id: number;
+  quantity: number;
 }
 
