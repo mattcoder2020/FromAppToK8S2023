@@ -4,7 +4,7 @@ using System;
 
 namespace OrderService.Events
 {
-    [SubscriptionNamespace("Matt-Product")]
+    [SubscriptionNamespace("Matt-Order")]
     [MessageNamespace("Matt-Product")]
     public class ProductCreated : IEvent
     {

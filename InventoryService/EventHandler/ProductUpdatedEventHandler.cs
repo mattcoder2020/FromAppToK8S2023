@@ -9,26 +9,31 @@ using System.Threading.Tasks;
 
 namespace InventoryService.EventHandler
 {
-    public class ProductCreatedEventHandler : IEventHandler<ProductCreated>
+    public class ProductUpdatedEventHandler : IEventHandler<ProductUpdated>
     {
         private readonly InventoryDBContext dbcontext;
-        public ProductCreatedEventHandler(InventoryDBContext dbcontext)
+        public ProductUpdatedEventHandler(InventoryDBContext dbcontext)
         {
             this.dbcontext = dbcontext;
         }
 
-        public async Task<Task> HandleAsync(ProductCreated @event, ICorrelationContext context)
+        public async Task<Task> HandleAsync(ProductUpdated @event, ICorrelationContext context)
         {
 
             var repo = new GenericSqlServerRepository<Product, InventoryDBContext>(dbcontext);
             var obj = await repo.FindByPrimaryKey(@event.Id);
-            if (obj == null)
+            if (obj != null)
             {
-                repo.AddModel(new Product() { Id = @event.Id, Name = @event.Name, Price = @event.Price, ProductCategoryId = @event.Category });
+                obj.Id = @event.Id;
+                obj.Name = @event.Name;
+                obj.Price = @event.Price;
+                obj.ProductCategoryId = @event.Category;
+
+                repo.UpdateModel(obj);
                 await dbcontext.SaveChangesAsync();
                 return Task.CompletedTask;
             }
-            throw new CustomizedException<ProductUpdatedEventHandler>("HandleAsync-ProductExisted");
+            throw new CustomizedException<ProductUpdatedEventHandler>("HandleAsync-ProductNotExisted");
         }
     }
 }
