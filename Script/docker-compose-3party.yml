@@ -65,20 +65,7 @@ services:
      #network_mode: host
     volumes:
       - redis-data:/data
-     
-
-  #redis-commander:
-  #  image: rediscommander/redis-commander:latest
-  #  environment:
-  #    - REDIS_HOSTS=local:redis:6379       
-  #     #- REDIS_HOSTS=laptop-IPS8SK8E:redis:6379
-  #    - HTTP_USER=root
-  #    - HTTP_PASSWORD=secret
-  #  ports:
-  #    - 8081:8081
-  #  depends_on:
-  #    - redis
-   
+      
   seq:
     image: datalust/seq 
     container_name: seq
