@@ -1,5 +1,6 @@
 ﻿using Common.DataAccess;
 using Common.Messages;
+using InventoryService.Events;
 using InventoryService.Models;
 using InventoryService.NpgSqlDB;
 using System.Collections.Generic;
@@ -10,9 +11,11 @@ namespace InventoryService.Service
 {
     public class ProductService : IProductService
     {
+        private readonly IMessageBrokerFactory _messageBrokerFactory;
         InventoryDBContext _dbcontext;
-        public ProductService(InventoryDBContext dbcontext)
+        public ProductService(IMessageBrokerFactory messageBrokerFactory, InventoryDBContext dbcontext)
         {
+            _messageBrokerFactory = messageBrokerFactory;
             _dbcontext = dbcontext;
         }
 
@@ -52,6 +55,8 @@ namespace InventoryService.Service
             {
                 product.Quantity = quantity;
                 await _dbcontext.SaveChangesAsync();
+
+                await _messageBrokerFactory.Publisher.PublishAsync<InventoryUpdated>(new InventoryUpdated { ProductId = product.Id, Quantity = product.Quantity }, context);
                 return true;
             }
             return false;

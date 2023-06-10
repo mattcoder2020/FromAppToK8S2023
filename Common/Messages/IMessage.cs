@@ -11,11 +11,11 @@ namespace Common.Messages
         string Code { get; }
     }
     public interface ICommand : IMessage
-    {
-        
-    }
+    {}
+
     public interface IEvent : IMessage
-    { }
+    {}
+
     public interface IMessage
     {
        ICorrelationContext Context { get; set; }

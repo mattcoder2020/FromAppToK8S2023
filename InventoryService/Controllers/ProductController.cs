@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using OpenTracing;
 using System.Threading.Tasks;
 
-namespace ProductService.Controllers.API
+namespace Inventory.Controllers.API
 {
     [Route("api/product")]
     public class ProductController : BaseController
@@ -46,7 +46,7 @@ namespace ProductService.Controllers.API
         public async Task<Product[]> GetallProductByFiltration([FromQuery] QueryParams productparams)
         {
            var products = await _productservice.GetByFiltration(productparams, null);
-            return products;
+           return products;
         }
 
      

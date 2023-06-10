@@ -1,6 +1,28 @@
 version: "3.0"
 
 services:
+  mongo-container:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - my-network
+    restart: always
+
+  sql-container:
+    image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=vuedpi1@34
+      - MSSQL_PID=Express
+    networks:
+      - my-network
+    restart: always
+
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
@@ -104,4 +126,6 @@ networks:
 volumes:
   redis-data:
   postgre-data:
+  mongodb_data_container:
+  
 

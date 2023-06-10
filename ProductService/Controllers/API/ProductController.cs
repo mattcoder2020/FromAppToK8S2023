@@ -21,15 +21,14 @@ namespace ProductService.Controllers.API
     [Route("api/product")]
     public class ProductController : BaseController
     {
-        IComponentContext _componentContext;
+      
         IDispatcher _dispatcher;
         public ProductController
-            (IComponentContext componentContext,
+            (
             IDispatcher dispatcher,
             ITracer tracer) : base(tracer)
         {
-            _componentContext = componentContext;
-            _dispatcher = dispatcher;
+           _dispatcher = dispatcher;
         }
 
         // POST: api/Product

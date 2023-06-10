@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Common.DataAccess;
-using Microsoft.EntityFrameworkCore;
 using OrderService.Models;
 using OrderService.SQLiteDB;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OrderService.Services
 {
@@ -42,6 +40,7 @@ namespace OrderService.Services
                 item.Price = product.Price;
                 item.OrderId = order.Id;
                 item.ProductCategory = product.ProductCategoryId;
+                
                 orderItemRepo.AddModel(item);
             }
             //calculate sum of order.orderitems by aggregate price multiply by quantity in each order item

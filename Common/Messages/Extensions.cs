@@ -140,10 +140,15 @@ namespace Common.Messages
         public static IBusSubscriber SubscribeAllMessages<TMessage>
             (this IBusSubscriber subscriber, string subscribeMethod, IApplicationBuilder builder)
         {
+            //Get all the message types from the entry assembly
             var messageTypes = Assembly.GetEntryAssembly().GetTypes().AsQueryable()
                 .Where(t => t.IsClass && typeof(TMessage).IsAssignableFrom(t))
                 .ToList();
 
+            // Iterate through all IEvent implementation class and fetch its topic subscription attribute / namespace attribute
+            // and subscribe to the topic dynamically so that we don't have to subscribe to each topic manually
+            
+            
             messageTypes.ForEach(mt => subscriber.GetType()
                 .GetMethod(subscribeMethod)
                 .MakeGenericMethod(mt)
@@ -151,6 +156,8 @@ namespace Common.Messages
                     new object[] {
                         mt.GetCustomAttribute<MessageNamespaceAttribute>()?.Namespace,
                         mt.GetCustomAttribute<SubscriptionNamespaceAttribute>()?.Namespace,
+     // one tricky thing here is that to get a delegate of the OnError method of the event handler
+     // here we pass in builder to retrieve the eventhandler instance from the DI container base on eventtype
                         OnError(mt, builder)
         }));
             return subscriber;
@@ -173,20 +180,6 @@ namespace Common.Messages
             MethodInfo method = ht.GetMethod("OnError");
                   
             return Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(eventtype, typeof(Exception), typeof(IRejectedEvent)), null, method);
-        }
-
-        private static Delegate OnError(string eventhandlername)
-            {
-            String name = eventhandlername + ", " + Assembly.GetEntryAssembly().GetName().Name;
-            Type errorHandlerType = Type.GetType(name);
-
-            MethodInfo errorHandlerFactory = errorHandlerType.GetMethod("OnError"); // replace "Create" with the name of your error handler factory method
-            return Delegate.CreateDelegate(typeof(Func<,,>).MakeGenericType(typeof(IEvent), typeof(Exception), typeof(IRejectedEvent)),null,  errorHandlerFactory);
-            //How to resolve following error
-            //Cannot bind to the target method because its signature or security transparency is not compatible with that of the delegate type
-
-
-            //return Delegate.CreateDelegate(funcType, evType, "OnError");
         }
 
         private class CustomNamingConventions : NamingConventions
