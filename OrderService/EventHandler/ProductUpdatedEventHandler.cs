@@ -9,31 +9,27 @@ using System.Threading.Tasks;
 
 namespace OrderService.EventHandler
 {
-    public class ProductUpdatedEventHandler : IEventHandler<ProductUpdated>
+    public class InventoryUpdatedEventHandler : IEventHandler<InventoryUpdated>
     {
-        private readonly OrderDBContext dbcontext;
-        public ProductUpdatedEventHandler(OrderDBContext dbcontext)
+        private readonly OrderDBContext _dbcontext;
+        public InventoryUpdatedEventHandler(OrderDBContext dbcontext)
         {
-            this.dbcontext = dbcontext;
+            this._dbcontext = dbcontext;
         }
 
-        public async Task<Task> HandleAsync(ProductUpdated @event, ICorrelationContext context)
+        public async Task<Task> HandleAsync(InventoryUpdated @event, ICorrelationContext context)
         {
 
-            var repo = new GenericSqlServerRepository<Product, OrderDBContext>(dbcontext);
-            var obj = await repo.FindByPrimaryKey(@event.Id);
+            var repo = new GenericSqlServerRepository<Product, OrderDBContext>(_dbcontext);
+            var obj = await repo.FindByPrimaryKey(@event.ProductId);
             if (obj != null)
             {
-                obj.Id = @event.Id;
-                obj.Name = @event.Name;
-                obj.Price = @event.Price;
-                obj.ProductCategoryId = @event.Category;
-
+                obj.Quantity = @event.Quantity;
                 repo.UpdateModel(obj);
-                await dbcontext.SaveChangesAsync();
+                await _dbcontext.SaveChangesAsync();
                 return Task.CompletedTask;
             }
-            throw new CustomizedException<ProductUpdatedEventHandler>("HandleAsync-ProductNotExisted");
+            throw new CustomizedException<InventoryUpdatedEventHandler>("HandleAsync-InventoryUpdated");
         }
     }
 }

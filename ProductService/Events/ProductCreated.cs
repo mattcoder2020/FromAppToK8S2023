@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace ProductService.Events
 {
-    [MessageNamespace("Matt-Product")]
+    [SubscriptionNamespace("ProductService")]
+    [MessageNamespace("ProductCreated")]
     public class ProductCreated:IEvent
     {
         public int Id { get; set; }

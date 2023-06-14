@@ -1,9 +1,9 @@
 ﻿using Common.Messages;
 using System;
 
-namespace OrderService.Events
+namespace InventoryService.Events
 {
-    [SubscriptionNamespace("OrderService")]
+    [SubscriptionNamespace("InventoryService")]
     [MessageNamespace("ProductUpdated")]
     public class ProductUpdated : IEvent
     {

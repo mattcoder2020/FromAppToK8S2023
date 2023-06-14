@@ -3,7 +3,7 @@ using System;
 
 namespace ProductService.Events
 {
-    [MessageNamespace("Matt-Product")]
+    [MessageNamespace("ProductUpdated")]
     public class ProductUpdated : IEvent
     {
         public int Id { get; set; }

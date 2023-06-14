@@ -56,7 +56,7 @@ namespace InventoryService.Service
                 product.Quantity = quantity;
                 await _dbcontext.SaveChangesAsync();
 
-                await _messageBrokerFactory.Publisher.PublishAsync<InventoryUpdated>(new InventoryUpdated { ProductId = product.Id, Quantity = product.Quantity }, context);
+                await _messageBrokerFactory.Publisher.SendAsync<InventoryUpdated>(new InventoryUpdated { ProductId = product.Id, Quantity = product.Quantity }, context);
                 return true;
             }
             return false;

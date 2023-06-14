@@ -1,11 +1,11 @@
 ﻿using Common.Messages;
 using System;
 
-namespace InventoryService.Events
+namespace OrderService.Events
 {
-    [SubscriptionNamespace("InventoryService")]
+    //[SubscriptionNamespace("OrderService")]
     [MessageNamespace("InventoryUpdated")]
-    public class InventoryUpdated : ICommand
+    public class InventoryUpdated : IEvent
     {
         public int ProductId { get; set; }
         public int Quantity { get; set; }

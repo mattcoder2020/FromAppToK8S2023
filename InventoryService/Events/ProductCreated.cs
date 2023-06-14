@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace InventoryService.Events
 {
-    [SubscriptionNamespace("Matt-Inventory")]
-    [MessageNamespace("Matt-Product")]
+    [SubscriptionNamespace("InventoryService")]
+    [MessageNamespace("ProductCreated")]
     public class ProductCreated : IEvent
     {
         public int Id { get; private set; }
