@@ -42,6 +42,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.IntegrationTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsharpExercise", "CsharpExercise\CsharpExercise.csproj", "{ED183219-AD18-4654-9F61-72073F86670F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Coupon Service", "Coupon Service", "{6EC8E37D-36AE-41AA-A161-9C65589C0DA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponServiceAPI", "CouponServiceAPI\CouponServiceAPI.csproj", "{ADE6CB42-67C3-485F-AD09-2083C660249F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +88,10 @@ Global
 		{ED183219-AD18-4654-9F61-72073F86670F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED183219-AD18-4654-9F61-72073F86670F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED183219-AD18-4654-9F61-72073F86670F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE6CB42-67C3-485F-AD09-2083C660249F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE6CB42-67C3-485F-AD09-2083C660249F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE6CB42-67C3-485F-AD09-2083C660249F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE6CB42-67C3-485F-AD09-2083C660249F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,6 +107,7 @@ Global
 		{B8ED03ED-FB88-4518-9247-19A32AF274F4} = {413FA903-35D0-44E3-B528-746D24D7A604}
 		{1C1B54EA-A05D-4D9F-8E67-D0C795BC0AEC} = {181528F6-04CC-44D4-91E9-BE64F028E940}
 		{ED183219-AD18-4654-9F61-72073F86670F} = {519819E8-0264-4ADE-9182-9F1EDAC73F1E}
+		{ADE6CB42-67C3-485F-AD09-2083C660249F} = {6EC8E37D-36AE-41AA-A161-9C65589C0DA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D39E1FFE-C367-4BF8-9A62-8F7EB28C0A31}
