@@ -8,7 +8,7 @@ let connection = null;
 setupConnection = () => {
     connection = new signalR.HubConnectionBuilder()
         /////.withUrl("http://signalr.internal.com:30503/matt")
-        .withUrl("http://localhost:5000/matt")
+        .withUrl("http://localhost:5002/matt")
         .build();
 
    
