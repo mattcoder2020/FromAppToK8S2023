@@ -31,7 +31,7 @@ namespace Common.Redis
             redis = new RedisRepository<string>(multiplexer);
             string keyname = GeneratedKeyFromHttpRequest(context);
             string cachedResult = await redis.GetStringById(keyname);
-            if (!string.IsNullOrEmpty(cachedResult))
+            if (!string.IsNullOrEmpty(cachedResult) && cachedResult.Length > 3)
             {
                 context.Result = new ContentResult { Content = cachedResult, StatusCode = 200, ContentType = "applicaion/json" };
                 return;
