@@ -9,6 +9,8 @@ import { IOrder } from 'src/app/entity/IOrder';
 import { OrderService } from 'src/app/order/orderservice';
 import { catchError } from 'rxjs/operators';
 import { IOrderItem } from '../../entity/OrderItem';
+import { ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-basket',
@@ -21,6 +23,8 @@ export class BasketComponent implements OnInit  {
   public order: IOrder;
   public basket$: Observable<IBasket>;
   public basketTotalQuantity$: Observable<IBasketTotal>;
+  @ViewChild('myForm', { static: false }) myForm: NgForm;
+
   constructor(private basketservice: BasketService, private orderservice: OrderService,
     private toastr: ToastrService) { }
 
@@ -65,16 +69,11 @@ export class BasketComponent implements OnInit  {
   placeorder() {
     const requiredFields = ['username', 'email','phone'];
     const invalidFields = requiredFields.filter(field => !this.order[field]);
+    //declare a boolean variable to check whether the form is valid or not
+    let isFormValid = true;
 
-    if (requiredFields.length) {
-      requiredFields.forEach(field => {
-        const input = document.querySelector(`[name=${field}]`);
-        input.classList.add('is-invalid');
-      });
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    else {
+    if (this.myForm.valid)
+
       this.basketservice.basket.items.forEach((i) =>
         this.order.orderItems.push(new IOrderItem(i.id, i.name, this.order.id, i.quantity, i.price, i.productCategoryId)));
       this.orderservice.createorder(this.order).subscribe
@@ -87,7 +86,7 @@ export class BasketComponent implements OnInit  {
         },
           error => this.toastr.error(error.error.message, error.error.statuscode)
         );
-    }
+   
  } 
 
 }

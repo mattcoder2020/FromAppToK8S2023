@@ -1,0 +1,82 @@
+﻿@model AspnetMVC.ViewModels.ProductAndProductCategoryList
+
+@{
+    ViewData["Title"] = "Product List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Get the selected sort option from ViewBag
+    string selectedSortOption = "Name";
+}
+
+
+<h1>View</h1>
+
+<p>
+    <a asp-action="Create">Create New Product</a>
+</p>
+<form asp-action="Filterby">
+<section class=col-1>
+    <h5 class="card-title">Sort By</h5>
+        <select class="custom-select mb-4" name="selectsortoptions" id="selectsortoptions">
+            @foreach (var item in Model.sortOptions)
+            {
+                <option value="@item" selected="@(item == selectedSortOption)">@item.ToString()</option>
+            }
+         </select>
+
+
+
+
+    <h5 class="card-title">Category</h5>
+    <ul class="list-group mb-3">
+         @foreach (var item in Model.ProductCategories)
+        {
+            <li class="list-group-item" value="p.value" >@item.Description </li>
+        }
+    </ul>
+</form>
+</section>
+<section class=col-7>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Product Category
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Id
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductCategory.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    </section>
