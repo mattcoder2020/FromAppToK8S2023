@@ -4,38 +4,38 @@
     ViewData["Title"] = "Product List";
     Layout = "~/Views/Shared/_Layout.cshtml";
     // Get the selected sort option from ViewBag
-    string selectedSortOption = "Name";
+    //string selectedSortOption = (string)TempData["SelectedSortOption"];
+    //string selectedCategory = (string)TempData["SelectedSortOption"];
 }
-
-
-<h1>View</h1>
-
+<h1>Product List</h1>
 <p>
     <a asp-action="Create">Create New Product</a>
 </p>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center" data-example-id="list-group-anchors">
+    <section class=col-2>
 <form asp-action="Filterby">
-<section class=col-1>
+  
     <h5 class="card-title">Sort By</h5>
-        <select class="custom-select mb-4" name="selectsortoptions" id="selectsortoptions">
+            <select class="custom-select mb-4" name="selectsortoption" id="selectsortoption" asp-for="SelectedSortOption">
             @foreach (var item in Model.sortOptions)
             {
-                <option value="@item" selected="@(item == selectedSortOption)">@item.ToString()</option>
+                <option value="@item" selected="@(item == Model.SelectedSortOption)">@item.ToString()</option>
             }
          </select>
-
-
-
-
     <h5 class="card-title">Category</h5>
-    <ul class="list-group mb-3">
+            <select class="custom-select mb-4" asp-for="SelectedCategory">
          @foreach (var item in Model.ProductCategories)
         {
-            <li class="list-group-item" value="p.value" >@item.Description </li>
+           <option value="@item.Id" selected="@(item.Id == Model.SelectedCategory)">@item.Description</option>
+
+           @* <li class="list-group-item" value="p.value" >@item.Description </li>*@
         }
-    </ul>
+            </select>
+    
+    <input type="submit" value="Apply" class="btn btn-success form-control" />
 </form>
 </section>
-<section class=col-7>
+<section class=col-9>
 <table class="table">
     <thead>
         <tr>
@@ -80,3 +80,4 @@
     </tbody>
 </table>
     </section>
+</div>

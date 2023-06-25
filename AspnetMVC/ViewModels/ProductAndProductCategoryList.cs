@@ -19,7 +19,7 @@ namespace AspnetMVC.ViewModels
             }
         }
         public string SelectedSortOption { get; set; }
-        public string SelectedOrderByOption { get; set; }
+        public int SelectedCategory { get; set; }
 
 
     }

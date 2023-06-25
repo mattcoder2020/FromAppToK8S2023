@@ -22,5 +22,17 @@ namespace AspnetMVC.Controllers
             viewmodel.ProductCategories = JsonConvert.DeserializeObject<List<ProductCategory>>(returnValue);
             return View(viewmodel);
         }
+        [HttpPost]
+        public async Task<IActionResult> FilterBy(ProductAndProductCategoryList viewmodel)
+        {
+            var queryparams = new QueryParams();
+            queryparams.OrderBy = viewmodel.SelectedSortOption;
+            queryparams.ProductCategoryId = viewmodel.SelectedCategory;
+            String returnValue = await this.productService.GetProductsByFiltration(queryparams);
+            viewmodel.Products = JsonConvert.DeserializeObject<List<Product>>(returnValue);
+            returnValue = await this.productService.GetAllCategory();
+            viewmodel.ProductCategories = JsonConvert.DeserializeObject<List<ProductCategory>>(returnValue);
+            return View("index", viewmodel);
+        }
     }
 }
