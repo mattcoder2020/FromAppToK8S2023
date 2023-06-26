@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Product List";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int i = 0;
     // Get the selected sort option from ViewBag
     //string selectedSortOption = (string)TempData["SelectedSortOption"];
     //string selectedCategory = (string)TempData["SelectedSortOption"];
@@ -16,10 +17,10 @@
 <form asp-action="Filterby">
   
     <h5 class="card-title">Sort By</h5>
-            <select class="custom-select mb-4" name="selectsortoption" id="selectsortoption" asp-for="SelectedSortOption">
-            @foreach (var item in Model.sortOptions)
+            <select class="custom-select mb-4" asp-for="SelectedSortOption">
+            @for ( int e =0; e < Model.sortOptions.Count; e++)
             {
-                <option value="@item" selected="@(item == Model.SelectedSortOption)">@item.ToString()</option>
+                    <option value="@Model.sortOptions.Get(e)" selected="@(Model.sortOptions.Get(e) == Model.SelectedSortOption)">@Model.sortOptions.GetKey(e)</option>
             }
          </select>
     <h5 class="card-title">Category</h5>
@@ -27,8 +28,7 @@
          @foreach (var item in Model.ProductCategories)
         {
            <option value="@item.Id" selected="@(item.Id == Model.SelectedCategory)">@item.Description</option>
-
-           @* <li class="list-group-item" value="p.value" >@item.Description </li>*@
+                  
         }
             </select>
     

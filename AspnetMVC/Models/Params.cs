@@ -8,7 +8,7 @@ namespace AspnetMVC.Models
     public class QueryParams
     {
         public int? ProductCategoryId { get; set; }
-        public string OrderBy { get; set; }
+        public string? OrderBy { get; set; }
         public int? Id { get; set; }
     }
 }

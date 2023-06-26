@@ -12,9 +12,11 @@ namespace AspnetMVC.ViewModels
             get
             {
                 var v = new NameValueCollection();
+                v.Add("None", value: "none");
+                v.Add("Name", value: "name");
                 v.Add("Price from low to high", value: "price_asc");
                 v.Add("Price from high to low", value: "price_desc");
-                v.Add("Name", value: "name");
+                
                 return v;
             }
         }
