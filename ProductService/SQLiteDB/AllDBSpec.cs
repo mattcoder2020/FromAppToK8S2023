@@ -9,7 +9,9 @@ namespace ProductService.SQLiteDB
     public class ProductByProductIdSpec : BaseSpecification<Product>
     {
         public ProductByProductIdSpec(int Id) : base(e => e.Id == Id)
-        {}
+        {
+            base.AddIncludes(e => e.ProductCategory);
+        }
     }
 
     public class ProductByNameSpec : BaseSpecification<Product>

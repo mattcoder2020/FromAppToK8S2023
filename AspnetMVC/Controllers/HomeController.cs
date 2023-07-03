@@ -1,4 +1,5 @@
 ﻿using AspnetMVC.Models;
+using AspnetMVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,14 +8,18 @@ namespace AspnetMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IBasketService basketService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IBasketService basketService)
         {
             _logger = logger;
+            this.basketService = basketService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var basket = await basketService.GetBasket();
+            TempData["quantity"] = basketService.GetBasketQuantity(basket);
             return View();
         }
 

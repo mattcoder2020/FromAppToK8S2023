@@ -28,7 +28,7 @@ namespace ProductService.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public int price { get; set; }
+        public decimal price { get; set; }
         public string productCategory { get; set; }
         public int productCategoryId { get; set; }
         public int quantity { get; set; }

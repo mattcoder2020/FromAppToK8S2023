@@ -40,6 +40,7 @@ export class BasketService implements OnInit
       id = uuidv4();
       localStorage.setItem("basketid", id);
     }
+    return "matt_basket";
     return id;
 
   }
@@ -100,8 +101,7 @@ export class BasketService implements OnInit
   }
 
   removeItemFromBasket(item: IBasketItem) {
-    //write code to remove the item from the basket.items collection
-    this.basket.items =     this.basket.items.filter((e) => e.id != item.id); 
+    this.basket.items = this.basket.items.filter((e) => e.id != item.id); 
     return this.setBasket();  
   }   
  
@@ -114,8 +114,6 @@ export class BasketService implements OnInit
     else
     {return null;}
   }
-
-  
 
   ProductToBasketItem(product: IProduct): IBasketItem
   {
