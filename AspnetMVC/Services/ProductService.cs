@@ -8,43 +8,50 @@ namespace AspnetMVC
     public class ProductService : IProductService
     {
         private HttpClient _http;
+        private readonly IConfiguration configuration;
+        private readonly String baseUrl;
 
-        public ProductService(HttpClient http)
+        public ProductService(HttpClient http, IConfiguration configuration)
         {
             _http = http;
+            this.configuration = configuration;
+            //fetch a appsetting value with key "abc"
+            baseUrl = this.configuration.GetSection("ProductServiceUrl").Value;
         }
 
         public async Task<string> GetById(int id)
         {
-            var response = await _http.GetAsync($"http://localhost:5002/api/product/{id}");
+            
+            var response = await _http.GetAsync(baseUrl+ $"/api/product/{id}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> GetAll()
         {
-            var response = await _http.GetAsync("http://localhost:5002/api/product");
+            var url = baseUrl + $"/api/product";
+            var response = await _http.GetAsync(url);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> GetAllCategory()
         {
-            var response = await _http.GetAsync("http://localhost:5002/api/product/productcategory");
+            var response = await _http.GetAsync(baseUrl + $"/api/product/productcategory");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> UpdateProduct(Product product)
         {
-            var response = await _http.PutAsJsonAsync("http://localhost:5002/api/product", product);
+            var response = await _http.PutAsJsonAsync(baseUrl + $"/api/product/", product);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
 
         public async Task<string> CreateProduct(Product product)
         {
-            var response = await _http.PostAsJsonAsync("http://localhost:5002/api/product", product);
+            var response = await _http.PostAsJsonAsync(baseUrl + $"/api/product/", product);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }
@@ -62,7 +69,7 @@ namespace AspnetMVC
 
             var queryString = queryParams.ToString();
 
-            var response = await _http.GetAsync($"http://localhost:5002/api/product?{queryString}");
+            var response = await _http.GetAsync(baseUrl+ $"/api/product/?{queryString}");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync();
         }

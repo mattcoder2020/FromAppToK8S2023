@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "OrderService.IntegrationTest": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:49251;http://localhost:49257"
+    }
+  }
+}
