@@ -31,9 +31,11 @@ namespace OrderService.Controllers.Api
         // provide a unit test for this method
 
         [HttpPost]
-         public async void Post([FromBody] Order value)
+        public async void Post([FromBody] Order value)
         {
-             await OrderService.AddOrder(value);
+
+            await OrderService.AddOrder(value);
+           
         }
 
 

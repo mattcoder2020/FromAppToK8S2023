@@ -23,12 +23,15 @@ namespace Common.Web.Middleware
             this.env = env;
         }
 
-        public async Task InvokeAsync(HttpContext context)
+        public async Task Invoke(HttpContext context)
         {
             try
             {
                 await del(context);
             }
+            //why the catch snippet is not working?
+            //https://stackoverflow.com/questions/38630076/asp-net-core-web-api-exception-handling
+
             catch (Exception ex)
             {
                 context.Response.ContentType = "application/json";

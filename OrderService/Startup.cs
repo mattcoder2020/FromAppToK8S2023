@@ -6,6 +6,7 @@ using Common.Jaeger;
 using Common.Messages;
 using Common.Metrics;
 using Common.RabbitMQ;
+using Common.Web.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -65,6 +66,8 @@ namespace OrderService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseMiddleware<ErrorHandlingMiddleware>();
+
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
             else
@@ -74,7 +77,6 @@ namespace OrderService
             }
             //app.UseRabbitMq().SubscribeEvent<ProductCreated>(@namespace : "matt-product", 
             //    onError: (message, exception)=>new ProductCreatedRejected { Code=message.Id.ToString(), Reason=exception.Message} );
-
             app.UseMessageService().SubscribeAllMessages<IEvent>("SubscribeEvent", app);
             //how to make the function invoked using .net reflection method
                         

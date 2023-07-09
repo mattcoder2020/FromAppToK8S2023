@@ -34,8 +34,8 @@ namespace OrderService.Services
             foreach (var item in order.OrderItems)
             {
                 var product = await productRepo.FindByPrimaryKey(item.Id);
-                if (product == null)
-                    throw new Exception("Product not found");
+                //if (product == null)
+                //    throw new Exception("Product not found");
                 item.Name = product.Name;
                 item.Price = product.Price;
                 item.OrderId = order.Id;

@@ -30,22 +30,25 @@
   </div>
   <div class="col-md-7 col-lg-8">
     <h4 class="mb-3">Billing address</h4>
-    <form class="needs-validation" #myForm="ngForm" (ngSubmit)="placeorder()">
+    <form class="needs-validation" #myForm="ngForm" (ngSubmit)="placeorder()" novalidate>
       <div class="row g-3">
         <div class="col-12">
           <label for="username" class="form-label">Username</label>
           <div class="input-group has-validation">
             <span class="input-group-text">@</span>
-               <input [(ngModel)]="order.customerName" type="text" class="form-control" id="username" name="username" required>
-               <div class="invalid-feedback">
-                     Your username is required.
-               </div>
+            <!-- insert an defaul value to input below-->
+
+
+            <input [(ngModel)]="order.customerName" [formControl]="customerNameControl" type="text" class="form-control" id="username" name="customerName" required >
+            <div  *ngIf="customerNameControl.invalid">
+              Your username is required.
+            </div>
           </div>
         </div>
         <div class="col-12">
           <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" [(ngModel)]="order.email" class="form-control" name="email" value="you@example.com" required>
-          <div class="invalid-feedback">
+          <input type="email" [(ngModel)]="order.email" [formControl]="emailControl" class="form-control" id="email" name="email" value="you@example.com" required>
+          <div  *ngIf="emailControl.invalid">>
             Please enter a valid email address for shipping updates.
           </div>
         </div>

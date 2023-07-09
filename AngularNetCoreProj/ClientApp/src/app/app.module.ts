@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 //import { login } from './login/login';
@@ -40,6 +41,7 @@ import { InventoryComponent } from './inventory/inventory.component/inventory.co
     CoreModule,
     NgxSpinnerModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'counter', component: CounterComponent },
