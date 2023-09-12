@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebIdentityService.Entity;
 
-namespace IdentityService.DB
+namespace WebIdentityService.DB
 {
-    public class AppIdentityDbContext: IdentityDbContext
+    public class AppIdentityDbContext: IdentityDbContext<AppUser>
     {
         public AppIdentityDbContext(DbContextOptions options):  base(options)
         {

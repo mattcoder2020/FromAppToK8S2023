@@ -1,8 +1,8 @@
-﻿namespace IdentityService.Entity
+﻿namespace WebIdentityService.Entity
 {
     public class Address
     {
-        public Address() { }
+        public int id { get; set; }
         public string State { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
